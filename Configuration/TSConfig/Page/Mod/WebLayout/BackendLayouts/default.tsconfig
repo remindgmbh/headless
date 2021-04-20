@@ -1,0 +1,51 @@
+mod {
+  web_layout {
+    BackendLayouts {
+      default {
+        title = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:backend_layout.default
+        config {
+          backend_layout {
+            colCount = 3
+            rowCount = 3
+            rows {
+              1 {
+                columns {
+                  1 {
+                    name = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:backend_layout.column.beforeBreadcrumbs
+                    colPos = 1
+                    colspan = 3
+                  }
+                }
+              }
+              2 {
+                columns {
+                  1 {
+                    name = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:backend_layout.column.center
+                    colPos = 0
+                    colspan = 3
+                  }
+                }
+              }
+              3 {
+                columns {
+                  1 {
+                    name = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:backend_layout.column.footerLeft
+                    colPos = 2
+                  }
+                  2 {
+                    name = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:backend_layout.column.footerCenter
+                    colPos = 3
+                  }
+                  3 {
+                    name = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:backend_layout.column.footerRight
+                    colPos = 4
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+tx_gridelements.setup {
+	tabs {
+        title = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:tx_gridelements.tabs
+        horizontal = 1
+        config {
+            colCount = 1
+            rowCount = 1
+            rows {
+                1 {
+                    columns {
+                        1 {
+                            name = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:tx_gridelements.content
+                            colPos = 0
+                        }
+                    }
+                }
+            }
+        }
+	}
+}

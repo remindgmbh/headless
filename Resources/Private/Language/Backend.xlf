@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T09:11:39Z"
+          product-name="bootstrap_package">
+        <header/>
+        <body>
+            <trans-unit id="backend_layout.default">
+                <source>Default</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.column.center">
+                <source>Mitte</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.column.beforeBreadcrumbs">
+                <source>Über Breadcrumbs</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.column.footerLeft">
+                <source>Footer: Links</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.column.footerCenter">
+                <source>Footer: Mitte</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.column.footerRight">
+                <source>Footer: Rechts</source>
+            </trans-unit>
+            <trans-unit id="frame_class.backgroundPrimary">
+                <source>Hintergrund in Primärfarbe</source>
+            </trans-unit>
+            <trans-unit id="frame_class.backgroundSecondary">
+                <source>Hintergrund in Sekundärfarbe</source>
+            </trans-unit>
+            <trans-unit id="frame_class.backgroundAccent">
+                <source>Hintergrund in Akzentfarbe</source>
+            </trans-unit>
+            <trans-unit id="tx_gridelements.accordion">
+                <source>Akkordion</source>
+            </trans-unit>
+            <trans-unit id="tx_gridelements.carousel">
+                <source>Ka­rus­sell</source>
+            </trans-unit>
+            <trans-unit id="tx_gridelements.tabs">
+                <source>Tabs</source>
+            </trans-unit>
+            <trans-unit id="tx_gridelements.content">
+                <source>Inhalt</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
