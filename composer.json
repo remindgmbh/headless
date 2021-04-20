@@ -1,0 +1,39 @@
+{
+    "name": "remind/headless-be-content",
+    "type": "typo3-cms-extension",
+    "description": "This extension contains default content elements definitions for TYPO3 Headless",
+    "license": ["GPL-3.0-or-later"],
+    "authors": [
+        {
+            "name": "REMIND GmbH",
+            "email": "technik@remind.de"
+        },
+        {
+            "name": "David Mellen",
+            "email": "d.mellen@remind.de"
+        }
+    ],
+    "autoload": {
+       "psr-4": {
+          "Remind\\HeadlessBeContent\\": "Classes/"
+       }
+    },
+    "require": {
+       "typo3/cms-core": "^10.4.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.remind.de/"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "rmnd_headless_be_content",
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".build/web"
+        }
+    }
+ }
