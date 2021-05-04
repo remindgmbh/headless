@@ -1,0 +1,4 @@
+lib.appearance.fields.background = TEXT
+lib.appearance.fields.background {
+    field = background_class
+}

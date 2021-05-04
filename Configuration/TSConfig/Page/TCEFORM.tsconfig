@@ -12,12 +12,7 @@ TCEFORM {
             keepItems = 0
         }
         frame_class {
-            keepItems = none
-            addItems {
-                background-primary = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:frame_class.backgroundPrimary
-                background-secondary = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:frame_class.backgroundSecondary
-                background-accent = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:frame_class.backgroundAccent
-            }
+            keepItems = default, none
         }
     }
 }

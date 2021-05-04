@@ -1,0 +1,2 @@
+## Include helpers
+@import 'EXT:rmnd_headless/Configuration/TypoScript/Helper/*.typoscript'

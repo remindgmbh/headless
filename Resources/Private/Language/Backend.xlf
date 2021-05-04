@@ -22,15 +22,6 @@
             <trans-unit id="backend_layout.column.footerRight">
                 <source>Footer: Rechts</source>
             </trans-unit>
-            <trans-unit id="frame_class.backgroundPrimary">
-                <source>Hintergrund in Primärfarbe</source>
-            </trans-unit>
-            <trans-unit id="frame_class.backgroundSecondary">
-                <source>Hintergrund in Sekundärfarbe</source>
-            </trans-unit>
-            <trans-unit id="frame_class.backgroundAccent">
-                <source>Hintergrund in Akzentfarbe</source>
-            </trans-unit>
             <trans-unit id="tx_gridelements.accordion">
                 <source>Akkordion</source>
             </trans-unit>
@@ -42,6 +33,21 @@
             </trans-unit>
             <trans-unit id="tx_gridelements.content">
                 <source>Inhalt</source>
+            </trans-unit>
+            <trans-unit id="tt_content.background_class">
+                <source>Hintergrund</source>
+            </trans-unit>
+            <trans-unit id="tt_content.background_class.none">
+                <source>Kein</source>
+            </trans-unit>
+            <trans-unit id="tt_content.background_class.primary">
+                <source>Primärfarbe</source>
+            </trans-unit>
+            <trans-unit id="tt_content.background_class.secondary">
+                <source>Sekundärfarbe</source>
+            </trans-unit>
+            <trans-unit id="tt_content.background_class.accent">
+                <source>Akzentfarbe</source>
             </trans-unit>
         </body>
     </file>
