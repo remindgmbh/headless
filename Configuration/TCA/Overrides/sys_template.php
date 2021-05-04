@@ -2,7 +2,7 @@
 defined('TYPO3_MODE') || die();
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-    'rmnd_headless_be_content',
+    'rmnd_headless',
     'Configuration/TypoScript',
-    'Remind Headless Content'
+    'Remind Headless'
 );

@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Remind Headless Backend Content',
-    'description' => 'This extension contains default content elements definitions for TYPO3 Headless',
+    'title' => 'Remind Headless',
+    'description' => 'This extension contains default content elements and layout definitions for TYPO3 Headless',
     'category' => 'plugin',
     'author' => 'David Mellen',
     'author_company' => 'REMIND GmbH',

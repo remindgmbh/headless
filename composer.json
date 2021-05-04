@@ -1,7 +1,7 @@
 {
-    "name": "remind/headless-be-content",
+    "name": "remind/headless",
     "type": "typo3-cms-extension",
-    "description": "This extension contains default content elements definitions for TYPO3 Headless",
+    "description": "This extension contains default content elements and layout definitions for TYPO3 Headless",
     "license": ["GPL-3.0-or-later"],
     "authors": [
         {
@@ -15,7 +15,7 @@
     ],
     "autoload": {
        "psr-4": {
-          "Remind\\HeadlessBeContent\\": "Classes/"
+          "Remind\\Headless\\": "Classes/"
        }
     },
     "require": {
@@ -31,7 +31,7 @@
     "prefer-stable": true,
     "extra": {
         "typo3/cms": {
-            "extension-key": "rmnd_headless_be_content",
+            "extension-key": "rmnd_headless",
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": ".build/web"
         }
