@@ -7,8 +7,8 @@
             <trans-unit id="backend_layout.default">
                 <source>Default</source>
             </trans-unit>
-            <trans-unit id="backend_layout.column.center">
-                <source>Mitte</source>
+            <trans-unit id="backend_layout.column.main">
+                <source>Hauptinhalt</source>
             </trans-unit>
             <trans-unit id="backend_layout.column.beforeBreadcrumbs">
                 <source>Über Breadcrumbs</source>

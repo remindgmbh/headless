@@ -20,7 +20,7 @@ mod {
               2 {
                 columns {
                   1 {
-                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:backend_layout.column.center
+                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:backend_layout.column.main
                     colPos = 0
                     colspan = 3
                   }
