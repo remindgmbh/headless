@@ -1,6 +1,6 @@
 tx_gridelements.setup {
 	accordion {
-        title = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:tx_gridelements.accordion
+        title = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tx_gridelements.accordion
         config {
             colCount = 1
             rowCount = 1
@@ -8,7 +8,7 @@ tx_gridelements.setup {
                 1 {
                     columns {
                         1 {
-                            name = LLL:EXT:rmnd_headless_be_content/Resources/Private/Language/Backend.xlf:tx_gridelements.content
+                            name = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tx_gridelements.content
                             colPos = 0
                         }
                     }
