@@ -49,6 +49,12 @@
             <trans-unit id="tt_content.background_color.accent">
                 <source>Akzentfarbe</source>
             </trans-unit>
+            <trans-unit id="tt_content.background_color.white">
+                <source>Weiß</source>
+            </trans-unit>
+            <trans-unit id="tt_content.background_color.black">
+                <source>Schwarz</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

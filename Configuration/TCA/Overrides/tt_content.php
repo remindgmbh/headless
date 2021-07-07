@@ -15,6 +15,8 @@ defined('TYPO3_MODE') || die();
                     ['LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_color.primary', 'primary'],
                     ['LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_color.secondary', 'secondary'],
                     ['LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_color.accent', 'accent'],
+                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_color.white', 'white'],
+                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_color.black', 'black'],
                 ],
                 'default' => ''
             ],
