@@ -1,0 +1,42 @@
+lib.content.10 = COA
+lib.content.10 {
+    10 = CONTENT
+    10 {
+        table = tt_content
+        select {
+            orderBy = sorting
+            where = {#colPos} not in (10,11,12)
+        }
+        renderObj.stdWrap.innerWrap = |###BREAK###
+    }
+    20 = CONTENT
+    20 {
+        table = tt_content
+        select {
+            orderBy = sorting
+            where = {#colPos}=10
+        }
+        slide = -1
+        renderObj.stdWrap.innerWrap = |###BREAK###
+    }
+    30 = CONTENT
+    30 {
+        table = tt_content
+        select {
+            orderBy = sorting
+            where = {#colPos}=11
+        }
+        slide = -1
+        renderObj.stdWrap.innerWrap = |###BREAK###
+    }
+    40 = CONTENT
+    40 {
+        table = tt_content
+        select {
+            orderBy = sorting
+            where = {#colPos}=12
+        }
+        slide = -1
+        renderObj.stdWrap.innerWrap = |###BREAK###
+    }
+}
