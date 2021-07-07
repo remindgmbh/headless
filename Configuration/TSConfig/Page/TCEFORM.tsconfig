@@ -11,8 +11,6 @@ TCEFORM {
         layout {
             keepItems = 0
         }
-        frame_class {
-            keepItems = default, none
-        }
+        frame_class.disabled = 1
     }
 }
