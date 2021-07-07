@@ -55,6 +55,9 @@
             <trans-unit id="tt_content.background_color.black">
                 <source>Schwarz</source>
             </trans-unit>
+            <trans-unit id="tt_content.background_wide">
+                <source>Hintergrund über gesamte Breite</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -3,4 +3,9 @@ lib.appearance.fields {
     backgroundColor {
         field = background_color
     }
+    backgroundWide = TEXT
+    backgroundWide {
+        field = background_wide
+        intval = 1
+    }
 }

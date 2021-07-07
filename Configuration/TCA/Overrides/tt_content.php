@@ -20,6 +20,22 @@ defined('TYPO3_MODE') || die();
                 ],
                 'default' => ''
             ],
+            'onChange' => 'reload',
+        ],
+        'background_wide' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_wide',
+            'config' => [
+                'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                   [
+                      0 => '',
+                      1 => '',
+                   ]
+                ],
+            ],
+            'displayCond' => 'FIELD:background_color:REQ:true',
         ],
     ]
 );
@@ -29,4 +45,11 @@ defined('TYPO3_MODE') || die();
     'frames',
     '--linebreak--,background_color',
     'after:frame_class'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
+    'tt_content',
+    'frames',
+    'background_wide,--linebreak--',
+    'after:background_color'
 );
