@@ -8,4 +8,12 @@ lib.appearance.fields {
         field = background_wide
         intval = 1
     }
+    spaceBeforeInside = TEXT
+    spaceBeforeInside {
+        field = space_before_inside
+    }
+    spaceAfterInside = TEXT
+    spaceAfterInside {
+        field = space_after_inside
+    }
 }

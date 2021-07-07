@@ -58,6 +58,12 @@
             <trans-unit id="tt_content.background_wide">
                 <source>Hintergrund über gesamte Breite</source>
             </trans-unit>
+            <trans-unit id="tt_content.space_before_inside">
+                <source>Abstand davor (im Hintergrund)</source>
+            </trans-unit>
+            <trans-unit id="tt_content.space_after_inside">
+                <source>Abstand danach (im Hintergrund)</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
