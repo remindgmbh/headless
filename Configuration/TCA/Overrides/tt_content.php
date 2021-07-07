@@ -73,6 +73,12 @@ defined('TYPO3_MODE') || die();
             ],
             'displayCond' => 'FIELD:background_color:REQ:true',
         ],
+        'tx_gridelements_title' => [
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.tx_gridelements_title',
+            'config' => [
+                'type' => 'input',
+            ],
+        ],
     ]
 );
 
@@ -103,3 +109,12 @@ defined('TYPO3_MODE') || die();
     'space_after_inside',
     'after:space_after_class'
 );
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
+    'tt_content',
+    'headers',
+    '--linebreak--,tx_gridelements_title',
+    'after:subheader'
+);
+
+
