@@ -34,19 +34,19 @@
             <trans-unit id="tx_gridelements.content">
                 <source>Inhalt</source>
             </trans-unit>
-            <trans-unit id="tt_content.background_class">
+            <trans-unit id="tt_content.background_color">
                 <source>Hintergrund</source>
             </trans-unit>
-            <trans-unit id="tt_content.background_class.none">
+            <trans-unit id="tt_content.background_color.none">
                 <source>Kein</source>
             </trans-unit>
-            <trans-unit id="tt_content.background_class.primary">
+            <trans-unit id="tt_content.background_color.primary">
                 <source>Primärfarbe</source>
             </trans-unit>
-            <trans-unit id="tt_content.background_class.secondary">
+            <trans-unit id="tt_content.background_color.secondary">
                 <source>Sekundärfarbe</source>
             </trans-unit>
-            <trans-unit id="tt_content.background_class.accent">
+            <trans-unit id="tt_content.background_color.accent">
                 <source>Akzentfarbe</source>
             </trans-unit>
         </body>

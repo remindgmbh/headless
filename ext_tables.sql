@@ -1,3 +1,3 @@
 CREATE TABLE tt_content (
-    background_class VARCHAR(60) DEFAULT '' NOT NULL
+    background_color VARCHAR(60) DEFAULT '' NOT NULL,
 );
