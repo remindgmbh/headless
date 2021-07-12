@@ -9,5 +9,47 @@ TCEFORM {
             disabled = 1
         }
         frame_class.disabled = 1
+        image {
+            types.textpic {
+                config {
+                    maxitems = 1
+                }
+            }
+        }
+        imagecols {
+            types.textpic {
+                label = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.textpic.ratio
+                keepItems = 1,2
+                altLabels {
+                    1 = 1:1
+                    2 = 2:1
+                }
+            }
+        }
+        imageorient {
+            types.textpic {
+                keepItems = 25,26
+            }
+        }
+        imagewidth {
+            types.textpic {
+                disabled = 1
+            }
+        }
+        imageheight {
+            types.textpic {
+                disabled = 1
+            }
+        }
+        imageborder {
+            types.textpic {
+                disabled = 1
+            }
+        }
+        image_zoom {
+            types.textpic {
+                disabled = 1
+            }
+        }
     }
 }

@@ -1,0 +1,13 @@
+tt_content.textpic {
+    fields {
+        content {
+            fields {
+                ratio = TEXT
+                ratio {
+                    field = imagecols
+                    intval = 1
+                }
+            }
+        }
+    }
+}
