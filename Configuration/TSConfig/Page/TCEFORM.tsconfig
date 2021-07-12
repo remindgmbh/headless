@@ -6,7 +6,7 @@ TCEFORM {
     }
     tt_content {
         layout {
-            keepItems = 0
+            disabled = 1
         }
         frame_class.disabled = 1
     }
