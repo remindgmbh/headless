@@ -67,6 +67,9 @@
             <trans-unit id="tt_content.space_after_inside">
                 <source>Abstand danach (im Hintergrund)</source>
             </trans-unit>
+            <trans-unit id="tt_content.header_layout.text">
+                <source>Text</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

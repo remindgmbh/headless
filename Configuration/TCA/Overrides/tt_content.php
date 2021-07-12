@@ -4,6 +4,25 @@ defined('TYPO3_MODE') || die();
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
     'tt_content',
     [
+        'header_layout' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.type',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.header_layout.text','0'],
+                    ['H1','1'],
+                    ['H2','2'],
+                    ['H3','3'],
+                    ['H4','4'],
+                    ['H5','5'],
+                    ['H6','6'],
+                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_layout.I.6','100']
+                ],
+                'default' => 0
+            ]
+        ],
         'background_color' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_color',
@@ -116,5 +135,3 @@ defined('TYPO3_MODE') || die();
     '--linebreak--,tx_gridelements_title',
     'after:subheader'
 );
-
-

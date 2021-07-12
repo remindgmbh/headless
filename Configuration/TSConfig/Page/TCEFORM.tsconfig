@@ -5,9 +5,6 @@ TCEFORM {
         }
     }
     tt_content {
-        header_layout {
-            keepItems = 0, 100
-        }
         layout {
             keepItems = 0
         }
