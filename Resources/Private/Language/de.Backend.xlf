@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/Backend.xlf" product-name="rmnd_headless">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/de.Backend.xlf" product-name="rmnd_headless">
         <header/>
         <body>
             <trans-unit id="backend_layout.default">
-                <source>Default</source>
+                <target>Default</target>
             </trans-unit>
             <trans-unit id="backend_layout.column.main">
-                <source>Main</source>
+                <target>Hauptinhalt</target>
             </trans-unit>
             <trans-unit id="backend_layout.column.above_breadcrumbs">
-                <source>Above Breadcrumbs</source>
+                <target>Über Breadcrumbs</target>
             </trans-unit>
             <trans-unit id="backend_layout.column.footer.left">
-                <source>Footer: Left</source>
+                <target>Footer: Links</target>
             </trans-unit>
             <trans-unit id="backend_layout.column.footer.center">
-                <source>Footer: Center</source>
+                <target>Footer: Mitte</target>
             </trans-unit>
             <trans-unit id="backend_layout.column.footer.right">
-                <source>Footer: Right</source>
+                <target>Footer: Rechts</target>
             </trans-unit>
             <trans-unit id="tx_gridelements.accordion">
-                <source>Accordion</source>
+                <target>Akkordion</target>
             </trans-unit>
             <trans-unit id="tx_gridelements.carousel">
-                <source>Carousel</source>
+                <target>Ka­rus­sell</target>
             </trans-unit>
             <trans-unit id="tx_gridelements.tabs">
-                <source>Tabs</source>
+                <target>Tabs</target>
             </trans-unit>
             <trans-unit id="tx_gridelements.content">
-                <source>Content</source>
+                <target>Inhalt</target>
             </trans-unit>
             <trans-unit id="tt_content.tx_gridelements_title">
-                <source>Grid Element Title</source>
+                <target>Grid Element Titel</target>
             </trans-unit>
             <trans-unit id="tt_content.background_color">
-                <source>Background Color</source>
+                <target>Hintergrund</target>
             </trans-unit>
             <trans-unit id="tt_content.background_color.none">
-                <source>None</source>
+                <target>Kein</target>
             </trans-unit>
             <trans-unit id="tt_content.background_color.primary">
-                <source>Primary Color</source>
+                <target>Primärfarbe</target>
             </trans-unit>
             <trans-unit id="tt_content.background_color.secondary">
-                <source>Secondary Color</source>
+                <target>Sekundärfarbe</target>
             </trans-unit>
             <trans-unit id="tt_content.background_color.accent">
-                <source>Accent Color</source>
+                <target>Akzentfarbe</target>
             </trans-unit>
             <trans-unit id="tt_content.background_color.white">
-                <source>White</source>
+                <target>Weiß</target>
             </trans-unit>
             <trans-unit id="tt_content.background_color.black">
-                <source>Black</source>
+                <target>Schwarz</target>
             </trans-unit>
             <trans-unit id="tt_content.background_full_width">
-                <source>Full Width Background</source>
+                <target>Hintergrund über gesamte Breite</target>
             </trans-unit>
             <trans-unit id="tt_content.space_before_inside">
-                <source>Space Before (inside Background)</source>
+                <target>Abstand davor (im Hintergrund)</target>
             </trans-unit>
             <trans-unit id="tt_content.space_after_inside">
-                <source>Space After (inside Background)</source>
+                <target>Abstand danach (im Hintergrund)</target>
             </trans-unit>
             <trans-unit id="tt_content.textpic.ratio">
-                <source>Text/Image Ratio</source>
+                <target>Text/Bild Verhältnis</target>
             </trans-unit>
             <trans-unit id="tt_content.header_layout.text">
-                <source>Text</source>
+                <target>Text</target>
             </trans-unit>
         </body>
     </file>

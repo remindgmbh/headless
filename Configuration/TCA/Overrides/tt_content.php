@@ -41,9 +41,9 @@ defined('TYPO3_MODE') || die();
             ],
             'onChange' => 'reload',
         ],
-        'background_wide' => [
+        'background_full_width' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_wide',
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.background_full_width',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
@@ -111,7 +111,7 @@ defined('TYPO3_MODE') || die();
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
     'tt_content',
     'frames',
-    'background_wide,--linebreak--',
+    'background_full_width,--linebreak--',
     'after:background_color'
 );
 
