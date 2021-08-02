@@ -3,9 +3,9 @@ lib.appearance.fields {
     backgroundColor {
         field = background_color
     }
-    backgroundWide = TEXT
-    backgroundWide {
-        field = background_wide
+    backgroundFullWidth = TEXT
+    backgroundFullWidth {
+        field = background_full_width
         intval = 1
     }
     spaceBeforeInside = TEXT
