@@ -18,3 +18,9 @@ defined('TYPO3_MODE') || die();
     'Configuration/TSConfig/Page/tx_gridelements.tsconfig',
     'RMND Headless: Grid Elements'
 );
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerPageTSConfigFile(
+    'rmnd_headless',
+    'Configuration/TSConfig/Page/Mod/Wizards/NewContentElement/WizardItems.tsconfig',
+    'RMND Headless: Wizard Items'
+);
