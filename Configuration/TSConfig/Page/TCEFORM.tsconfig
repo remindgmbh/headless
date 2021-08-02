@@ -5,19 +5,13 @@ TCEFORM {
         }
     }
     tt_content {
-        layout {
-            disabled = 1
-        }
         frame_class.disabled = 1
-        image {
-            types.textpic {
-                config {
-                    maxitems = 1
-                }
-            }
+        image.types {
+            textpic.config.maxitems = 1
+            header_slide.config.maxitems = 1
         }
-        imagecols {
-            types.textpic {
+        imagecols.types {
+            textpic {
                 label = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.textpic.ratio
                 keepItems = 1,2
                 altLabels {
@@ -26,30 +20,24 @@ TCEFORM {
                 }
             }
         }
-        imageorient {
-            types.textpic {
-                keepItems = 25,26
-            }
+        imageorient.types {
+            textpic.keepItems = 25,26
         }
-        imagewidth {
-            types.textpic {
-                disabled = 1
-            }
+        imagewidth.types {
+            textpic.disabled = 1
         }
-        imageheight {
-            types.textpic {
-                disabled = 1
-            }
+        imageheight.types {
+            textpic.disabled = 1
         }
-        imageborder {
-            types.textpic {
-                disabled = 1
-            }
+        imageborder.types {
+            textpic.disabled = 1
         }
-        image_zoom {
-            types.textpic {
-                disabled = 1
-            }
+        image_zoom.types {
+            textpic.disabled = 1
         }
+        layout.disabled = 1
+        linkToTop.disabled = 1
+        media.disabled = 1
+        sectionIndex.disabled = 1
     }
 }
