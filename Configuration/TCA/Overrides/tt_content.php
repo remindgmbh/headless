@@ -40,6 +40,7 @@ defined('TYPO3_MODE') || die();
                 'default' => ''
             ],
             'onChange' => 'reload',
+            'displayCond' => 'FIELD:colPos:!=:-1',
         ],
         'background_full_width' => [
             'exclude' => 0,
@@ -97,6 +98,7 @@ defined('TYPO3_MODE') || die();
             'config' => [
                 'type' => 'input',
             ],
+            'displayCond' => 'FIELD:colPos:=:-1',
         ],
     ]
 );
