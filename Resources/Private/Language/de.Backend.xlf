@@ -24,9 +24,6 @@
             <trans-unit id="tx_gridelements.accordion">
                 <target>Akkordion</target>
             </trans-unit>
-            <trans-unit id="tx_gridelements.header_slider">
-                <target>Header Slider</source>
-            </trans-unit>
             <trans-unit id="tx_gridelements.carousel">
                 <target>Ka­rus­sell</target>
             </trans-unit>
@@ -74,12 +71,6 @@
             </trans-unit>
             <trans-unit id="tt_content.header_layout.text">
                 <target>Text</target>
-            </trans-unit>
-            <trans-unit id="tt_content.header_slide.title">
-                <target>Header Slide</target>
-            </trans-unit>
-            <trans-unit id="tt_content.header_slide.description">
-                <target>Element zur Benutzung in Header Slider.</target>
             </trans-unit>
         </body>
     </file>
