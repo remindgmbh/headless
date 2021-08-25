@@ -5,7 +5,7 @@ lib.content.10 {
         table = tt_content
         select {
             orderBy = sorting
-            where = {#colPos} not in (1,10,11,12)
+            where = {#colPos} not in (1,2)
         }
         renderObj.stdWrap.innerWrap = |###BREAK###
     }
@@ -24,27 +24,7 @@ lib.content.10 {
         table = tt_content
         select {
             orderBy = sorting
-            where = {#colPos}=10
-        }
-        slide = -1
-        renderObj.stdWrap.innerWrap = |###BREAK###
-    }
-    40 = CONTENT
-    40 {
-        table = tt_content
-        select {
-            orderBy = sorting
-            where = {#colPos}=11
-        }
-        slide = -1
-        renderObj.stdWrap.innerWrap = |###BREAK###
-    }
-    50 = CONTENT
-    50 {
-        table = tt_content
-        select {
-            orderBy = sorting
-            where = {#colPos}=12
+            where = {#colPos}=2
         }
         slide = -1
         renderObj.stdWrap.innerWrap = |###BREAK###

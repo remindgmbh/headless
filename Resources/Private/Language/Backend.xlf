@@ -12,14 +12,8 @@
             <trans-unit id="backend_layout.column.above_breadcrumbs">
                 <source>Above Breadcrumbs</source>
             </trans-unit>
-            <trans-unit id="backend_layout.column.footer.left">
-                <source>Footer: Left</source>
-            </trans-unit>
-            <trans-unit id="backend_layout.column.footer.center">
-                <source>Footer: Center</source>
-            </trans-unit>
-            <trans-unit id="backend_layout.column.footer.right">
-                <source>Footer: Right</source>
+            <trans-unit id="backend_layout.column.footer">
+                <source>Footer</source>
             </trans-unit>
             <trans-unit id="tx_gridelements.accordion">
                 <source>Accordion</source>

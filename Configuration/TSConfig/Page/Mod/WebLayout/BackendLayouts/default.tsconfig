@@ -29,16 +29,8 @@ mod {
               3 {
                 columns {
                   1 {
-                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:backend_layout.column.footer.left
-                    colPos = 10
-                  }
-                  2 {
-                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:backend_layout.column.footer.center
-                    colPos = 11
-                  }
-                  3 {
-                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:backend_layout.column.footer.right
-                    colPos = 12
+                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:backend_layout.column.footer
+                    colPos = 2
                   }
                 }
               }
