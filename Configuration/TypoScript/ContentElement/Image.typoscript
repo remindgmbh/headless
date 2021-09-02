@@ -1,12 +1,7 @@
-tt_content.textpic {
+tt_content.image {
     fields {
         content {
             fields {
-                ratio = TEXT
-                ratio {
-                    field = imagecols
-                    intval = 1
-                }
                 gallery >
                 images = TEXT
                 images {

@@ -19,22 +19,16 @@ TCEFORM {
                     2 = 2:1
                 }
             }
+            image.disabled = 1
         }
         imageorient.types {
             textpic.keepItems = 25,26
+            image.disabled = 1
         }
-        imagewidth.types {
-            textpic.disabled = 1
-        }
-        imageheight.types {
-            textpic.disabled = 1
-        }
-        imageborder.types {
-            textpic.disabled = 1
-        }
-        image_zoom.types {
-            textpic.disabled = 1
-        }
+        imagewidth.disabled = 1
+        imageheight.disabled = 1
+        imageborder.disabled = 1
+        image_zoom.disabled = 1
         layout.disabled = 1
         linkToTop.disabled = 1
         media.disabled = 1
