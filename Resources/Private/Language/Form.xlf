@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/Form.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="formEditor.elements.Form.editor.successText.label" resname="formEditor.elements.Form.editor.successText.label">
+                <source>Success Text</source>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.Form.editor.loadingText.label" resname="formEditor.elements.Form.editor.loadingText.label">
+                <source>Loading Text</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
