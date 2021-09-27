@@ -5,3 +5,7 @@ CREATE TABLE tt_content (
     space_after_inside VARCHAR(60) DEFAULT '' NOT NULL,
     tx_gridelements_title VARCHAR(60) DEFAULT '' NOT NULL,
 );
+
+CREATE TABLE pages (
+    overview_label VARCHAR(60) DEFAULT '' NOT NULL,
+);

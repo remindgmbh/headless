@@ -66,6 +66,9 @@
             <trans-unit id="tt_content.header_layout.text">
                 <source>Text</source>
             </trans-unit>
+            <trans-unit id="pages.overview_label">
+                <source>Overview Label</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
