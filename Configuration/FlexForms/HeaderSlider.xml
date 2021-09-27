@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <sheets>
+        <settings>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:rmnd_headless/Resources/Private/Language/FlexForms.xlf:header_slider.settings</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <autoplay_status>
+                        <label>LLL:EXT:rmnd_headless/Resources/Private/Language/FlexForms.xlf:header_slider.autoplay.status</label>
+                        <config>
+                            <type>check</type>
+                            <renderType>checkboxToggle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0"></numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
+                        <onChange>reload</onChange>
+                    </autoplay_status>
+                    <autoplay_duration>
+                        <label>LLL:EXT:rmnd_headless/Resources/Private/Language/FlexForms.xlf:header_slider.autoplay.duration</label>
+                        <config>
+                            <type>input</type>
+                            <default>3000</default>
+                            <eval>int</eval>
+                            <range>
+                                <lower>500</lower>
+                                <upper>10000</upper>
+                            </range>
+                            <slider>
+                                <step>50</step>
+                            </slider>
+                        </config>
+                        <displayCond>FIELD:autoplay_status:REQ:TRUE</displayCond>
+                    </autoplay_duration>
+                </el>
+            </ROOT>
+        </settings>
+    </sheets>
+</T3DataStructure>

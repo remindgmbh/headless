@@ -1,0 +1,23 @@
+tt_content.header_slider =< lib.contentElementWithHeader
+tt_content.header_slider {
+    fields {
+        content {
+            fields {
+                autoplay {
+                    fields {
+                        status = BOOL
+                        status {
+                            data = flexform: pi_flexform:autoplay_status
+                        }
+                        duration = TEXT
+                        duration {
+                            data = flexform: pi_flexform:autoplay_duration
+                            intval = 1
+                        }
+                    }
+                }
+                items =< lib.rmndContentItems 
+            }
+        }
+    }
+}

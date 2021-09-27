@@ -66,6 +66,12 @@
             <trans-unit id="tt_content.header_layout.text">
                 <source>Text</source>
             </trans-unit>
+            <trans-unit id="tt_content.header_slider.title">
+                <source>Header Slider</source>
+            </trans-unit>
+            <trans-unit id="tt_content.header_slider.description">
+                <source>Containing multiple slides consisting of image and text</source>
+            </trans-unit>
             <trans-unit id="pages.overview_label">
                 <source>Overview Label</source>
             </trans-unit>

@@ -66,6 +66,12 @@
             <trans-unit id="tt_content.header_layout.text">
                 <target>Text</target>
             </trans-unit>
+            <trans-unit id="tt_content.header_slider.title">
+                <target>Header Slider</target>
+            </trans-unit>
+            <trans-unit id="tt_content.header_slider.description">
+                <target>Enthält beliebige Slides bestehend aus Bild und Text</target>
+            </trans-unit>
             <trans-unit id="pages.overview_label">
                 <target>Übersicht Beschriftung</target>
             </trans-unit>

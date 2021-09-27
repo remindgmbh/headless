@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/Backend.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="header_slider.autoplay.status">
+                <source>Enable Autoplay</source>
+            </trans-unit>
+            <trans-unit id="header_slider.autoplay.duration">
+                <source>Duration in ms</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

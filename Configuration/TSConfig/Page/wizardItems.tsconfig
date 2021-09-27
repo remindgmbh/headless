@@ -1,0 +1,15 @@
+mod.wizards.newContentElement.wizardItems {
+   common {
+      elements {
+         header_slider {
+            iconIdentifier = content-header
+            title = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.header_slider.title
+            description = LLL:EXT:rmnd_headless/Resources/Private/Language/Backend.xlf:tt_content.header_slider.description
+            tt_content_defValues {
+               CType = header_slider
+            }
+         }
+      }
+      show := addToList(header_slider)
+   }
+}

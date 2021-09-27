@@ -11,6 +11,8 @@ $EM_CONF[$_EXTKEY] = [
     'clearCacheOnLoad' => true,
     'version' => '1.0.0',
     'constraints' => [
-        'depends' => []
+        'depends' => [
+            'rmnd_content' => 'dev-main'
+        ]
     ],
 ];
