@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/Overrides/locallang_headless.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="input.username" resname="input.username">
+                <source>Username</source>
+            </trans-unit>
+            <trans-unit id="input.password" resname="input.password">
+                <source>Password</source>
+            </trans-unit>
+            <trans-unit id="input.submit" resname="input.submit">
+                <source>Login</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
