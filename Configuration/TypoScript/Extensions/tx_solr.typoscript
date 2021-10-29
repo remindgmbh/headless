@@ -1,0 +1,103 @@
+plugin.tx_solr {
+
+    search {
+        results {
+            resultsHighlighting = 1
+            resultsHighlighting {
+                highlightFields = content,title
+            }
+        }
+    }
+
+    index.queue {
+        pages = 1
+        pages {
+            table = pages
+
+            // allowed page types (doktype) when indexing records from table "pages"
+            allowedPageTypes = 1,4,7
+
+            // Only index standard pages and mount points that are not overlayed.
+            additionalWhereClause = (doktype = 1 OR doktype=4 OR (doktype=7 AND mount_pid_ol=0)) AND no_search = 0
+
+            //exclude some html parts inside TYPO3SEARCH markers by classname (comma list)
+            // excludeContentByClass = typo3-search-exclude
+
+            fields {
+                title = title
+
+                content = SOLR_CONTENT
+                content {
+                    cObject = COA
+                    cObject {
+                        stdWrap.required = 1
+                        stdWrap.wrap = |<br>
+                        10 = CONTENT
+                        10 {
+                            table = tt_content
+                            renderObj = COA
+                            renderObj {
+                                stdWrap.required = 1
+                                stdWrap.wrap = |<br>
+                                10 = TEXT
+                                10 {
+                                    value.field = header
+                                    stdWrap.required = 1
+                                    stdWrap.wrap = |<br>
+                                }
+                                20 = TEXT
+                                20 {
+                                    value.field = subheader
+                                    stdWrap.required = 1
+                                    stdWrap.wrap = |<br>
+                                }
+                                30 = TEXT
+                                30 {
+                                    value.field = bodytext
+                                    stdWrap.required = 1
+                                    stdWrap.wrap = |<br>
+                                }
+                            }
+                        }
+                        20 = CONTENT
+                        20 {
+                            table = rmnd_content_items
+                            renderObj = COA
+                            renderObj {
+                                stdWrap.required = 1
+                                stdWrap.wrap = |<br>
+                                10 = TEXT
+                                10 {
+                                    value.field = header
+                                    stdWrap.required = 1
+                                    stdWrap.wrap = |<br>
+                                }
+                                20 = TEXT
+                                20 {
+                                    value.field = subheader
+                                    stdWrap.required = 1
+                                    stdWrap.wrap = |<br>
+                                }
+                                30 = TEXT
+                                30 {
+                                    value.field = bodytext
+                                    stdWrap.required = 1
+                                    stdWrap.wrap = |<br>
+                                }
+                            }
+                        }
+                    }
+                }
+
+                url = TEXT
+                url {
+                    typolink.parameter = TEXT
+                    typolink.parameter.field = uid
+                    typolink.useCacheHash = 1
+                    typolink.returnLast = url
+                }
+            }
+
+        }
+    }
+}
