@@ -4,7 +4,7 @@ plugin.tx_solr {
         results {
             resultsHighlighting = 1
             resultsHighlighting {
-                highlightFields = content,title
+                highlightFields = content
             }
         }
     }
