@@ -79,12 +79,15 @@ class SolrSearchController extends SearchController
     {
         $pluginNamespace = $this->typoScriptConfiguration->getSearchPluginNamespace();
 
+        $targetPageUid = $this->typoScriptConfiguration->getSearchTargetPage();
+
         $queryParams = [
             'q' => $pluginNamespace . '[q]',
             'page' => $pluginNamespace . '[page]',
         ];
 
         $form = [
+            'targetPage' => $this->uriBuilder->reset()->setTargetPageUid($targetPageUid)->build(),
             'pluginNamespace' => $pluginNamespace,
             'queryParams' => $queryParams
         ];
