@@ -5,6 +5,7 @@ namespace Remind\Headless\XClass\Controller;
 use ApacheSolrForTypo3\Solr\Controller\SearchController;
 use ApacheSolrForTypo3\Solr\Domain\Search\ResultSet\Result\SearchResult;
 use ApacheSolrForTypo3\Solr\Domain\Search\ResultSet\SearchResultSet;
+use ApacheSolrForTypo3\Solr\System\Url\UrlHelper;
 use ApacheSolrForTypo3\Solr\System\Solr\SolrUnavailableException;
 use ApacheSolrForTypo3\Solr\ViewHelpers\Document\HighlightResultViewHelper;
 use ApacheSolrForTypo3\Solr\Util;
@@ -86,10 +87,16 @@ class SolrSearchController extends SearchController
             'page' => $pluginNamespace . '[page]',
         ];
 
+        $suggestUrl = $this->getSuggestUrl($targetPageUid);
+        
         $form = [
-            'targetPage' => $this->uriBuilder->reset()->setTargetPageUid($targetPageUid)->build(),
+            'targetUrl' => $this->uriBuilder->reset()->setTargetPageUid($targetPageUid)->build(),
             'pluginNamespace' => $pluginNamespace,
-            'queryParams' => $queryParams
+            'queryParams' => $queryParams,
+            'suggest' => [
+                'url' => $suggestUrl,
+                'queryParam' => $pluginNamespace . '[queryString]',
+            ],
         ];
 
         return json_encode(['form' => $form]);
@@ -102,5 +109,17 @@ class SolrSearchController extends SearchController
             ['resultSet' => $searchResultSet, 'document' => $searchResult, 'fieldName' => $fieldName],
             new \TYPO3\CMS\Fluid\Core\Rendering\RenderingContext(),
         );
+    }
+
+    protected function getSuggestUrl(int $targetPageUid): string
+    {
+        $typeNum = (int)$this->typoScriptConfiguration->getValueByPath('plugin.tx_solr.suggest.typeNum');
+        $suggestUrl = $this->uriBuilder->reset()->setTargetPageUid($targetPageUid)->setTargetPageType($typeNum)->setUseCacheHash(false)->build();
+
+        /** @var URLHelper $urlService */
+        $urlService = GeneralUtility::makeInstance(UrlHelper::class, $suggestUrl);
+        $suggestUrl = $urlService->withoutQueryParameter('cHash')->__toString();
+
+        return $suggestUrl;
     }
 }
