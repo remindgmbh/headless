@@ -1,3 +1,3 @@
-@import 'EXT:rmnd_headless/Configuration/TypoScript/ContentElement/*.typoscript'
-@import 'EXT:rmnd_headless/Configuration/TypoScript/Helper/*.typoscript'
-@import 'EXT:rmnd_headless/Configuration/TypoScript/Extensions/*.typoscript'
+@import 'EXT:rmnd_headless/Configuration/TypoScript/Setup/ContentElement/*.typoscript'
+@import 'EXT:rmnd_headless/Configuration/TypoScript/Setup/Helper/*.typoscript'
+@import 'EXT:rmnd_headless/Configuration/TypoScript/Setup/Extensions/*.typoscript'
