@@ -1,0 +1,10 @@
+tt_content.tabs =< lib.contentElementWithHeader
+tt_content.tabs {
+    fields {
+        content {
+            fields {
+                items =< lib.rmndContentItems 
+            }
+        }
+    }
+}
