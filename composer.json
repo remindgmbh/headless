@@ -19,7 +19,9 @@
        }
     },
     "require": {
-       "typo3/cms-core": "^10.4.0"
+       "typo3/cms-core": "^10.4.0",
+       "friendsoftypo3/headless": "^2.6",
+       "remind/content": "dev-main"
     },
     "repositories": [
         {
