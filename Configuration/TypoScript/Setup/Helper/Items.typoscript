@@ -1,0 +1,72 @@
+lib.rmndContentItems = JSON
+lib.rmndContentItems {
+    dataProcessing {
+        10 = FriendsOfTYPO3\Headless\DataProcessing\DatabaseQueryProcessor
+        10 {
+            table = rmnd_content_items
+            where.data = field:_LOCALIZED_UID // field:uid
+		    where.wrap = tt_content = |
+            pidInList.field = pid
+            as = items
+            fields {
+                id = TEXT
+                id {
+                    field = uid
+                    intval = 1
+                }
+                pid = TEXT
+                pid {
+                    field = pid
+                    intval = 1
+                }
+                header = TEXT
+                header {
+                    field = header
+                }
+                headerLayout = TEXT
+                headerLayout {
+                    field = header_layout
+                    intval = 1
+                }
+                headerLink = TEXT
+                headerLink {
+                    field = header_link
+                    htmlSpecialChars = 1
+                    typolink {
+                        parameter {
+                            field = header_link
+                        }
+                        returnLast = url
+                    }
+                }
+                headerPosition = TEXT
+                headerPosition {
+                    field = header_position
+                }
+                subheader = TEXT
+                subheader {
+                    field = subheader
+                }
+                title = TEXT
+                title {
+                    field = title
+                }
+                bodytext = TEXT
+                bodytext {
+                    field = bodytext
+                    parseFunc =< lib.parseFunc_links
+                }
+                images = TEXT
+                images {
+                    dataProcessing {
+                        10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+                        10 {
+                            references.fieldName = image
+                            as = files
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
