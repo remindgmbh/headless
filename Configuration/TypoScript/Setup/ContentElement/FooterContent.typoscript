@@ -1,0 +1,14 @@
+tt_content.footer_content =< lib.contentElement
+tt_content.footer_content {
+    fields {
+        content {
+            dataProcessing {
+                10 = Remind\Headless\DataProcessing\FlexFormProcessor
+                10 {
+                    fieldName = pi_flexform
+                    as = flexform
+                }
+            }
+        }
+    }
+}
