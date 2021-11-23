@@ -3,16 +3,12 @@ tt_content.header_slider {
     fields {
         content {
             fields {
-                autoplay {
-                    fields {
-                        status = BOOL
-                        status {
-                            data = flexform: pi_flexform:autoplay_status
-                        }
-                        duration = TEXT
-                        duration {
-                            data = flexform: pi_flexform:autoplay_duration
-                            intval = 1
+                flexform {
+                    dataProcessing {
+                        10 = Remind\Headless\DataProcessing\FlexFormProcessor
+                        10 {
+                            fieldName = pi_flexform
+                            as = flexform
                         }
                     }
                 }
