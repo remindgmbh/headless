@@ -1,6 +1,0 @@
-lib.contentElementWithHeader.fields.content.fields {
-    gridElementTitle = TEXT
-    gridElementTitle {
-        field = tx_gridelements_title
-    }
-}
