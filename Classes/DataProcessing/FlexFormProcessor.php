@@ -49,13 +49,9 @@ class FlexFormProcessor implements DataProcessorInterface
 
         $this->flexFormTools->cleanFlexFormXML($table, $fieldName, $processedData['data']);
 
-        $this->flexFormTools->traverseFlexFormXMLData($table, $fieldName, $processedData['data'], $this, 'convertUrl');
+        $this->flexFormTools->traverseFlexFormXMLData($table, $fieldName, $processedData['data'], $this, 'parseElement');
 
-        $dataWithConvertedUrls = $this->flexFormTools->cleanFlexFormXML;
-
-        $xmlString = $this->flexFormTools->flexArray2Xml($dataWithConvertedUrls, true);
-
-        $flexformData = $this->flexFormService->convertFlexFormContentToArray($xmlString);
+        $flexformData = $this->convertFlexFormContentToArray($this->flexFormTools->cleanFlexFormXML);
 
         // save result in "data" (default) or given variable name
         $targetVariableName = $cObj->stdWrapValue('as', $processorConfiguration);
@@ -69,10 +65,51 @@ class FlexFormProcessor implements DataProcessorInterface
         return $processedData;
     }
 
-    function convertUrl(array $element, string $value, $PA, string $path, FlexFormTools $flexFormTools): void
+    function parseElement(array $element, string $value, $PA, string $path, FlexFormTools $flexFormTools): void
     {
         if ($element['TCEforms']['config']['renderType'] === 'inputLink') {
             $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, $this->cObj->getTypoLink_URL($value));
         }
+
+        if ($element['TCEforms']['config']['type'] === 'check') {
+            $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, (bool)$value);
+        }
+
+        if ($element['TCEforms']['config']['eval'] === 'int') {
+            $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, (int)$value);
+        }
+    }
+
+    // taken from TYPO3\CMS\Core\Service\FlexFormService but without converting from string to array first
+    protected function convertFlexFormContentToArray($flexFormArray, $languagePointer = 'lDEF', $valuePointer = 'vDEF'): array
+    {
+        $settings = [];
+        $flexFormArray = $flexFormArray['data'] ?? [];
+        foreach (array_values($flexFormArray) as $languages) {
+            if (!is_array($languages[$languagePointer])) {
+                continue;
+            }
+            foreach ($languages[$languagePointer] as $valueKey => $valueDefinition) {
+                if (strpos($valueKey, '.') === false) {
+                    $settings[$valueKey] = $this->flexFormService->walkFlexFormNode($valueDefinition, $valuePointer);
+                } else {
+                    $valueKeyParts = explode('.', $valueKey);
+                    $currentNode = &$settings;
+                    foreach ($valueKeyParts as $valueKeyPart) {
+                        $currentNode = &$currentNode[$valueKeyPart];
+                    }
+                    if (is_array($valueDefinition)) {
+                        if (array_key_exists($valuePointer, $valueDefinition)) {
+                            $currentNode = $valueDefinition[$valuePointer];
+                        } else {
+                            $currentNode = $this->flexFormService->walkFlexFormNode($valueDefinition, $valuePointer);
+                        }
+                    } else {
+                        $currentNode = $valueDefinition;
+                    }
+                }
+            }
+        }
+        return $settings;
     }
 }
