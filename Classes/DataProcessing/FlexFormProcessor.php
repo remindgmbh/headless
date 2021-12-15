@@ -17,7 +17,7 @@ class FlexFormProcessor implements DataProcessorInterface
     protected FlexFormService $flexFormService;
 
     protected FlexFormTools $flexFormTools;
-    
+
     public function __construct()
     {
         $this->flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
@@ -26,15 +26,19 @@ class FlexFormProcessor implements DataProcessorInterface
 
     /**
      * @param ContentObjectRenderer $cObj The data of the content element or page
-     * @param array $contentObjectConfiguration The configuration of Content Object
-     * @param array $processorConfiguration The configuration of this processor
+     * @param array $contentObjectConf The configuration of Content Object
+     * @param array $processorConf The configuration of this processor
      * @param array $processedData Key/value store of processed data (e.g. to be passed to a Fluid View)
      * @return array the processed data as key/value store
      */
-    public function process(ContentObjectRenderer $cObj, array $contentObjectConfiguration, array $processorConfiguration, array $processedData): array
-    {
+    public function process(
+        ContentObjectRenderer $cObj,
+        array $contentObjectConf,
+        array $processorConf,
+        array $processedData
+    ): array {
         $this->cObj = $cObj;
-        $fieldName = $cObj->stdWrapValue('fieldName', $processorConfiguration);
+        $fieldName = $cObj->stdWrapValue('fieldName', $processorConf);
 
         // default flexform field name
         if (empty($fieldName)) {
@@ -49,12 +53,18 @@ class FlexFormProcessor implements DataProcessorInterface
 
         $this->flexFormTools->cleanFlexFormXML($table, $fieldName, $processedData['data']);
 
-        $this->flexFormTools->traverseFlexFormXMLData($table, $fieldName, $processedData['data'], $this, 'parseElement');
+        $this->flexFormTools->traverseFlexFormXMLData(
+            $table,
+            $fieldName,
+            $processedData['data'],
+            $this,
+            'parseElement'
+        );
 
         $flexformData = $this->convertFlexFormContentToArray($this->flexFormTools->cleanFlexFormXML);
 
         // save result in "data" (default) or given variable name
-        $targetVariableName = $cObj->stdWrapValue('as', $processorConfiguration);
+        $targetVariableName = $cObj->stdWrapValue('as', $processorConf);
 
         if (!empty($targetVariableName)) {
             $processedData[$targetVariableName] = $flexformData;
@@ -65,10 +75,19 @@ class FlexFormProcessor implements DataProcessorInterface
         return $processedData;
     }
 
-    function parseElement(array $element, string $value, $PA, string $path, FlexFormTools $flexFormTools): void
-    {
+    public function parseElement(
+        array $element,
+        string $value,
+        $additionalParameters,
+        string $path,
+        FlexFormTools $flexFormTools
+    ): void {
         if ($element['TCEforms']['config']['renderType'] === 'inputLink') {
-            $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, $this->cObj->getTypoLink_URL($value));
+            $flexFormTools->setArrayValueByPath(
+                $path,
+                $flexFormTools->cleanFlexFormXML,
+                $this->cObj->getTypoLink_URL($value)
+            );
         }
 
         if ($element['TCEforms']['config']['type'] === 'check') {
@@ -81,8 +100,11 @@ class FlexFormProcessor implements DataProcessorInterface
     }
 
     // taken from TYPO3\CMS\Core\Service\FlexFormService but without converting from string to array first
-    protected function convertFlexFormContentToArray($flexFormArray, $languagePointer = 'lDEF', $valuePointer = 'vDEF'): array
-    {
+    protected function convertFlexFormContentToArray(
+        $flexFormArray,
+        $languagePointer = 'lDEF',
+        $valuePointer = 'vDEF'
+    ): array {
         $settings = [];
         $flexFormArray = $flexFormArray['data'] ?? [];
         foreach (array_values($flexFormArray) as $languages) {

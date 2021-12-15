@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Remind\Headless\XClass\Controller;
 
 use ApacheSolrForTypo3\Solr\Controller\SearchController;
@@ -10,17 +12,17 @@ use ApacheSolrForTypo3\Solr\System\Solr\SolrUnavailableException;
 use ApacheSolrForTypo3\Solr\ViewHelpers\Document\HighlightResultViewHelper;
 use ApacheSolrForTypo3\Solr\Util;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInvoker;
 
 class SolrSearchController extends SearchController
 {
-
     /**
      * @var ViewHelperInvoker
      */
     protected $viewHelperInvoker;
 
-    function __construct()
+    public function __construct()
     {
         $this->viewHelperInvoker = GeneralUtility::makeInstance(ViewHelperInvoker::class);
     }
@@ -88,7 +90,7 @@ class SolrSearchController extends SearchController
         ];
 
         $suggestUrl = $this->getSuggestUrl($targetPageUid);
-        
+
         $form = [
             'targetUrl' => $this->uriBuilder->reset()->setTargetPageUid($targetPageUid)->build(),
             'pluginNamespace' => $pluginNamespace,
@@ -102,19 +104,27 @@ class SolrSearchController extends SearchController
         return json_encode(['form' => $form]);
     }
 
-    protected function getHighlightedContent(SearchResultSet $searchResultSet, SearchResult $searchResult, string $fieldName)
-    {
+    protected function getHighlightedContent(
+        SearchResultSet $searchResultSet,
+        SearchResult $searchResult,
+        string $fieldName
+    ) {
         return $this->viewHelperInvoker->invoke(
             HighlightResultViewHelper::class,
             ['resultSet' => $searchResultSet, 'document' => $searchResult, 'fieldName' => $fieldName],
-            new \TYPO3\CMS\Fluid\Core\Rendering\RenderingContext(),
+            new RenderingContext(),
         );
     }
 
     protected function getSuggestUrl(int $targetPageUid): string
     {
         $typeNum = (int)$this->typoScriptConfiguration->getValueByPath('plugin.tx_solr.suggest.typeNum');
-        $suggestUrl = $this->uriBuilder->reset()->setTargetPageUid($targetPageUid)->setTargetPageType($typeNum)->setUseCacheHash(false)->build();
+        $suggestUrl = $this->uriBuilder
+            ->reset()
+            ->setTargetPageUid($targetPageUid)
+            ->setTargetPageType($typeNum)
+            ->setUseCacheHash(false)
+            ->build();
 
         /** @var URLHelper $urlService */
         $urlService = GeneralUtility::makeInstance(UrlHelper::class, $suggestUrl);
