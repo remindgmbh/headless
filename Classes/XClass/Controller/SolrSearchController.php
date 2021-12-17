@@ -13,6 +13,7 @@ use ApacheSolrForTypo3\Solr\ViewHelpers\Document\HighlightResultViewHelper;
 use ApacheSolrForTypo3\Solr\Util;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInvoker;
 
 class SolrSearchController extends SearchController
@@ -73,6 +74,12 @@ class SolrSearchController extends SearchController
         } catch (SolrUnavailableException $e) {
             $this->handleSolrUnavailable();
         }
+    }
+
+    public function solrNotAvailableAction()
+    {
+        // return response code 200 with error message to be handled in frontend
+        return LocalizationUtility::translate('LLL:EXT:solr/Resources/Private/Language/locallang.xlf:searchUnavailable');
     }
 
     /**
