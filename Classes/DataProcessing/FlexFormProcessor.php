@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Remind\Headless\DataProcessing;
+namespace Remind\Typo3Headless\DataProcessing;
 
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Service\FlexFormService;

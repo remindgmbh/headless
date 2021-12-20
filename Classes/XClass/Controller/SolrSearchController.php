@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Remind\Headless\XClass\Controller;
+namespace Remind\Typo3Headless\XClass\Controller;
 
 use ApacheSolrForTypo3\Solr\Controller\SearchController;
 use ApacheSolrForTypo3\Solr\Domain\Search\ResultSet\Result\SearchResult;
@@ -79,7 +79,9 @@ class SolrSearchController extends SearchController
     public function solrNotAvailableAction()
     {
         // return response code 200 with error message to be handled in frontend
-        return LocalizationUtility::translate('LLL:EXT:solr/Resources/Private/Language/locallang.xlf:searchUnavailable');
+        return LocalizationUtility::translate(
+            'LLL:EXT:solr/Resources/Private/Language/locallang.xlf:searchUnavailable'
+        );
     }
 
     /**

@@ -3,7 +3,7 @@ tt_content.footer_content {
     fields {
         content {
             dataProcessing {
-                10 = Remind\Headless\DataProcessing\FlexFormProcessor
+                10 = Remind\Typo3Headless\DataProcessing\FlexFormProcessor
                 10 {
                     fieldName = pi_flexform
                     as = flexform

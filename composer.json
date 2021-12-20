@@ -1,5 +1,5 @@
 {
-    "name": "remind/headless",
+    "name": "remind/typo3-headless",
     "type": "typo3-cms-extension",
     "description": "This extension contains default content elements and layout definitions for TYPO3 Headless",
     "license": [ "GPL-3.0-or-later" ],
@@ -15,12 +15,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Remind\\Headless\\": "Classes"
+            "Remind\\Typo3Headless\\": "Classes"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Remind\\Headless\\Tests\\": "Tests"
+            "Remind\\Typo3Headless\\Tests\\": "Tests"
         }
     },
     "config": {
