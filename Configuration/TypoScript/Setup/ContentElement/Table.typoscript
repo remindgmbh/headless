@@ -1,0 +1,11 @@
+tt_content.table {
+    fields {
+        content {
+            fields {
+                tableTfoot {
+                    intval = 1
+                }
+            }
+        }
+    }
+}
