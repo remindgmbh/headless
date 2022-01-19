@@ -2,6 +2,11 @@ lib.appearance.fields {
     backgroundColor = TEXT
     backgroundColor {
         field = background_color
+        if {
+            equals.field = background_color
+            value = none
+            negate = 1
+        }
     }
     backgroundFullWidth = TEXT
     backgroundFullWidth {
