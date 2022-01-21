@@ -9,6 +9,12 @@
             <trans-unit id="formEditor.elements.Form.editor.loadingText.label" resname="formEditor.elements.Form.editor.loadingText.label">
                 <source>Loading Text</source>
             </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.size.label" resname="formEditor.elements.FormElement.editor.size.label">
+                <source>Size</source>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.size.default.label" resname="formEditor.elements.FormElement.editor.size.default.label">
+                <source>Full Width</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
