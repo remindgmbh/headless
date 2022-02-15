@@ -3,6 +3,12 @@
     <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/de.Form.xlf" product-name="rmnd_headless">
         <header/>
         <body>
+            <trans-unit id="formEditor.elements.Form.finisher.JsonRedirect.label" resname="formEditor.elements.Form.finisher.JsonRedirect.label">
+                <target>JSON Redirect</target>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.Form.finisher.JsonRedirect.editor.header.label" resname="formEditor.elements.Form.finisher.JsonRedirect.editor.header.label">
+                <target>JSON Redirect</target>
+            </trans-unit>
             <trans-unit id="formEditor.elements.Form.editor.successText.label" resname="formEditor.elements.Form.editor.successText.label">
                 <target>Erfolg Text</target>
             </trans-unit>
@@ -14,6 +20,9 @@
             </trans-unit>
             <trans-unit id="formEditor.elements.FormElement.editor.size.default.label" resname="formEditor.elements.FormElement.editor.size.default.label">
                 <target>Gesamte Breite</target>
+            </trans-unit>
+            <trans-unit id="tt_content.finishersDefinition.JsonRedirect.label" resname="tt_content.finishersDefinition.JsonRedirect.label">
+                <target>JSON Redirect</target>
             </trans-unit>
         </body>
     </file>

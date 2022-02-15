@@ -1,7 +1,9 @@
 plugin.tx_form {
     settings {
         yamlConfigurations {
-            100 = EXT:rmnd_headless/Configuration/Form/CustomFormSetup.yaml
+            100 = EXT:rmnd_headless/Configuration/Form/BaseSetup.yaml
+            101 = EXT:rmnd_headless/Configuration/Form/FormElementSize.yaml
+            102 = EXT:rmnd_headless/Configuration/Form/JsonRedirectFinisher.yaml
         }
     }
 }
@@ -9,7 +11,9 @@ plugin.tx_form {
 module.tx_form {
     settings {
         yamlConfigurations {
-            100 = EXT:rmnd_headless/Configuration/Form/CustomFormSetup.yaml
+            100 = EXT:rmnd_headless/Configuration/Form/BaseSetup.yaml
+            101 = EXT:rmnd_headless/Configuration/Form/FormElementSize.yaml
+            102 = EXT:rmnd_headless/Configuration/Form/JsonRedirectFinisher.yaml
         }
     }
 }

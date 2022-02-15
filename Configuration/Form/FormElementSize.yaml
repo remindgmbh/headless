@@ -3,29 +3,7 @@ TYPO3:
     Form:
       prototypes:
         standard:
-          formEditor:
-            translationFiles:
-              20: "EXT:rmnd_headless/Resources/Private/Language/Form.xlf"
           formElementsDefinition:
-            Form:
-              formEditor:
-                predefinedDefaults:
-                  i18n:
-                    identifier: i18n
-                editors:
-                  # Overwrite submitButtonLabel propertyPath to be included in json output
-                  300:
-                    propertyPath: i18n.properties.submit
-                  400:
-                    identifier: successText
-                    templateName: Inspector-TextEditor
-                    label: formEditor.elements.Form.editor.successText.label
-                    propertyPath: i18n.properties.success
-                  401:
-                    identifier: loadingText
-                    templateName: Inspector-TextEditor
-                    label: formEditor.elements.Form.editor.loadingText.label
-                    propertyPath: i18n.properties.loading
             AdvancedPassword: &size
               formEditor:
                 editors:
@@ -95,6 +73,3 @@ TYPO3:
               <<: *size
             Textarea:
               <<: *size
-          finishersDefinition:
-            JsonRedirect:
-              implementationClassName: 'FriendsOfTYPO3\Headless\Form\Finisher\JsonRedirectFinisher'
