@@ -44,7 +44,7 @@ class SolrSearchController extends SearchController
             $searchResults = $searchResultSet->getSearchResults();
 
             $mapSearchResult = fn (SearchResult $searchResult) => [
-                'title' => $this->getHighlightedContent($searchResultSet, $searchResult, 'title'),
+                'title' => $searchResult->getTitle(),
                 'content' => $this->getHighlightedContent($searchResultSet, $searchResult, 'content'),
                 'url' => json_decode($searchResult->getUrl(), true)
             ];
