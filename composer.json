@@ -34,7 +34,7 @@
         "php": "^7.4.0",
         "typo3/cms-core": "^10.4.0 | ^11.5",
         "friendsoftypo3/headless": "^2.6 | ^3.0.2",
-        "remind/typo3-content": "^1.0.0 | dev-main"
+        "remind/typo3-content": "^1.0.0 | dev-main | dev-develop"
     },
     "require-dev": {
         "phpmd/phpmd": "^2.10.2",
