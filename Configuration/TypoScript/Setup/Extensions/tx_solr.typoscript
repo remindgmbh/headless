@@ -35,7 +35,7 @@ plugin.tx_solr {
     suggest = 1
     suggest {
         numberOfSuggestions = 10
-        suggestField = title
+        suggestField = spell
         typeNum = {$plugin.tx_solr.suggest.typeNum}
     }
 
