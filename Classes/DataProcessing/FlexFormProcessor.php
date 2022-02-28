@@ -14,6 +14,8 @@ class FlexFormProcessor implements DataProcessorInterface
 {
     protected ContentObjectRenderer $cObj;
 
+    protected Array $processorConf;
+
     protected FlexFormService $flexFormService;
 
     protected FlexFormTools $flexFormTools;
@@ -38,6 +40,7 @@ class FlexFormProcessor implements DataProcessorInterface
         array $processedData
     ): array {
         $this->cObj = $cObj;
+        $this->processorConf = $processorConf;
         $fieldName = $cObj->stdWrapValue('fieldName', $processorConf);
 
         // default flexform field name
@@ -96,6 +99,11 @@ class FlexFormProcessor implements DataProcessorInterface
 
         if ($element['TCEforms']['config']['eval'] === 'int') {
             $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, (int)$value);
+        }
+
+        if ($element['TCEforms']['config']['type'] === 'text' && $this->processorConf['parseFunc']) {
+            $content = $this->cObj->parseFunc($value, [], $this->processorConf['parseFunc']);
+            $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, $content);
         }
     }
 
