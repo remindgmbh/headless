@@ -1,0 +1,21 @@
+initialData {
+    10 {
+        fields {
+            navigation {
+                dataProcessing {
+                    10 {
+                        overwriteMenuLevelConfig {
+                            stdWrap.cObject {
+                                100 = TEXT
+                                100 {
+                                    field = overview_label
+                                    wrap = ,"overviewLabel":"|"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
