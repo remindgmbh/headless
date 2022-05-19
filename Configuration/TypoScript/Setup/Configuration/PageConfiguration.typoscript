@@ -11,6 +11,15 @@ page {
                     }
                 }
             }
+            logout = TEXT
+            logout {
+                typolink {
+                    parameter = {$pid.login}
+                    additionalParams = &logintype=logout
+                    returnLast = url
+                }
+                if.isTrue.data = TSFE:fe_user|user|username
+            }
         }
     }
 }

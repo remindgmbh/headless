@@ -1,0 +1,16 @@
+lib.content = CONTENT_JSON
+lib.content {
+    table = tt_content
+    select {
+        orderBy = sorting
+        where = {#colPos} not in (1,2)
+    }
+    merge {
+        table = tt_content
+        select {
+            orderBy = sorting
+            where = {#colPos} in (1,2)
+        }
+        slide = -1
+    }
+}
