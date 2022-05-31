@@ -4,8 +4,8 @@ lib.rmndContentItems {
         10 = FriendsOfTYPO3\Headless\DataProcessing\DatabaseQueryProcessor
         10 {
             table = rmnd_content_items
-            where.data = field:_LOCALIZED_UID // field:uid
-		    where.wrap = tt_content = |
+            where.data = field:uid
+            where.wrap = tt_content = |
             orderBy = sorting
             pidInList.field = pid
             as = items
