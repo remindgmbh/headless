@@ -6,6 +6,7 @@ namespace Remind\Typo3Headless\DataProcessing;
 
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Service\FlexFormService;
+use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
@@ -14,7 +15,7 @@ class FlexFormProcessor implements DataProcessorInterface
 {
     protected ContentObjectRenderer $cObj;
 
-    protected Array $processorConf;
+    protected array $processorConf;
 
     protected FlexFormService $flexFormService;
 
@@ -86,24 +87,20 @@ class FlexFormProcessor implements DataProcessorInterface
         FlexFormTools $flexFormTools
     ): void {
         if ($element['TCEforms']['config']['renderType'] === 'inputLink') {
-            $flexFormTools->setArrayValueByPath(
-                $path,
-                $flexFormTools->cleanFlexFormXML,
-                $this->cObj->getTypoLink_URL($value)
-            );
+            ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, $this->cObj->getTypoLink_URL($value));
         }
 
         if ($element['TCEforms']['config']['type'] === 'check') {
-            $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, (bool)$value);
+            ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, (bool)$value);
         }
 
         if ($element['TCEforms']['config']['eval'] === 'int') {
-            $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, (int)$value);
+            ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, (int)$value);
         }
 
         if ($element['TCEforms']['config']['type'] === 'text' && $this->processorConf['parseFunc']) {
             $content = $this->cObj->parseFunc($value, [], $this->processorConf['parseFunc']);
-            $flexFormTools->setArrayValueByPath($path, $flexFormTools->cleanFlexFormXML, $content);
+            ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, $content);
         }
     }
 
