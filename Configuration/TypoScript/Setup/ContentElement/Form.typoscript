@@ -1,3 +1,4 @@
+// Add header
 tt_content.form_formframework =< lib.contentElementWithHeader
 tt_content.form_formframework {
     fields {
@@ -12,7 +13,7 @@ tt_content.form_formframework {
                             field = pid
                         }
                         additionalParams = &tx_form_formframework[action]=perform&tx_form_formframework[controller]=FormFrontend
-                        returnLast = url
+                        returnLast = result
                     }
                 }
 
