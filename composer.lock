@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b404ba0500e1c9cef438778302b2514",
+    "content-hash": "f82f8fa1c5fafbde1c0e367f64758c31",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5837,6 +5837,114 @@
     ],
     "packages-dev": [
         {
+            "name": "apache-solr-for-typo3/solr",
+            "version": "11.5.0-rc-2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-Solr/ext-solr.git",
+                "reference": "862e02d27c64f53c9107e3ffcad38a4bd2d2f2a4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-Solr/ext-solr/zipball/862e02d27c64f53c9107e3ffcad38a4bd2d2f2a4",
+                "reference": "862e02d27c64f53c9107e3ffcad38a4bd2d2f2a4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-simplexml": "*",
+                "php": "^7.4.0 || ^8.0",
+                "solarium/solarium": "6.2.3",
+                "typo3/cms-backend": "*",
+                "typo3/cms-core": "^11.5.4",
+                "typo3/cms-extbase": "*",
+                "typo3/cms-fluid": "*",
+                "typo3/cms-frontend": "*",
+                "typo3/cms-reports": "*",
+                "typo3/cms-scheduler": "*",
+                "typo3/cms-tstemplate": "*"
+            },
+            "replace": {
+                "apache-solr-for-typo3/solrfluid": "*",
+                "typo3-ter/solr": "self.version",
+                "typo3-ter/solrfluid": "*"
+            },
+            "require-dev": {
+                "phpspec/prophecy-phpunit": "*",
+                "phpunit/phpunit": "^9.5",
+                "sclable/xml-lint": "*",
+                "scrutinizer/ocular": "*",
+                "typo3/cms-fluid-styled-content": "*",
+                "typo3/coding-standards": ">=0.5.0",
+                "typo3/testing-framework": "^6.12"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-release-11.5.x": "11.5.x-dev"
+                },
+                "typo3/cms": {
+                    "extension-key": "solr",
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/Web"
+                },
+                "TYPO3-Solr": {
+                    "version-matrix": {
+                        "ext-tika": "^11.0",
+                        "ext-solrfal": "^11.0",
+                        "ext-solrconsole": "^11.0",
+                        "ext-solrdebugtools": "^11.0",
+                        "ext-solrfluidgrouping": "^11.0",
+                        "ext-solrmlt": "^11.0",
+                        "Apache-Solr": "8.11.1",
+                        "configset": "ext_solr_11_5_0"
+                    },
+                    "ext-solrfal": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ApacheSolrForTypo3\\Solr\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Ingo Renner",
+                    "email": "ingo@typo3.org",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "Apache Solr for TYPO3",
+            "homepage": "https://www.typo3-solr.com",
+            "keywords": [
+                "TYPO3 CMS",
+                "search",
+                "solr",
+                "typo3"
+            ],
+            "support": {
+                "docs": "https://docs.typo3.org/p/apache-solr-for-typo3/solr/main/en-us/",
+                "email": "solr-eb-support@dkd.de",
+                "forum": "https://talk.typo3.org",
+                "issues": "https://github.com/TYPO3-Solr/ext-solr/issues",
+                "slack": "https://typo3.slack.com/archives/C02FF05Q4",
+                "source": "https://github.com/TYPO3-Solr/ext-solr"
+            },
+            "funding": [
+                {
+                    "url": "https://www.typo3-solr.com/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-04-22T07:18:09+00:00"
+        },
+        {
             "name": "composer/pcre",
             "version": "3.0.0",
             "source": {
@@ -7909,6 +8017,69 @@
             "time": "2020-09-28T06:39:44+00:00"
         },
         {
+            "name": "solarium/solarium",
+            "version": "6.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/solariumphp/solarium.git",
+                "reference": "f91185d07d9d3f40ef92810e182e621c51635e8b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/solariumphp/solarium/zipball/f91185d07d9d3f40ef92810e182e621c51635e8b",
+                "reference": "f91185d07d9d3f40ef92810e182e621c51635e8b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.3 || ^8.0",
+                "psr/event-dispatcher": "^1.0",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0",
+                "symfony/event-dispatcher-contracts": "^1.0 || ^2.0"
+            },
+            "require-dev": {
+                "escapestudios/symfony2-coding-standard": "^3.11",
+                "guzzlehttp/guzzle": "^7.2",
+                "nyholm/psr7": "^1.2",
+                "php-http/guzzle7-adapter": "^0.1",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpunit/phpunit": "^9.5",
+                "roave/security-advisories": "dev-master",
+                "symfony/event-dispatcher": "^4.3 || ^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Solarium\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "See GitHub contributors",
+                    "homepage": "https://github.com/solariumphp/solarium/contributors"
+                }
+            ],
+            "description": "PHP Solr client",
+            "homepage": "http://www.solarium-project.org",
+            "keywords": [
+                "php",
+                "search",
+                "solr"
+            ],
+            "support": {
+                "issues": "https://github.com/solariumphp/solarium/issues",
+                "source": "https://github.com/solariumphp/solarium/tree/6.2.3"
+            },
+            "time": "2022-01-31T15:37:35+00:00"
+        },
+        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.7.1",
             "source": {
@@ -8071,6 +8242,180 @@
                 }
             ],
             "description": "Classes for the frontend of TYPO3.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2022-06-15T07:33:04+00:00"
+        },
+        {
+            "name": "typo3/cms-reports",
+            "version": "v11.5.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/reports.git",
+                "reference": "756f276ff3a46350ff2ffe8ae8a29a0bf7091d5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/reports/zipball/756f276ff3a46350ff2ffe8ae8a29a0bf7091d5c",
+                "reference": "756f276ff3a46350ff2ffe8ae8a29a0bf7091d5c",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "11.5.12"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "suggest": {
+                "typo3/cms-scheduler": "Determine system's status and send it via email"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "11.5.x-dev"
+                },
+                "typo3/cms": {
+                    "Package": {
+                        "partOfFactoryDefault": true
+                    },
+                    "extension-key": "reports"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Reports\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The reports module groups several system reports.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2022-06-15T07:33:04+00:00"
+        },
+        {
+            "name": "typo3/cms-scheduler",
+            "version": "v11.5.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/scheduler.git",
+                "reference": "bf45099f491e2041f895ad4b14ca261dcc47045e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/scheduler/zipball/bf45099f491e2041f895ad4b14ca261dcc47045e",
+                "reference": "bf45099f491e2041f895ad4b14ca261dcc47045e",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "11.5.12"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "11.5.x-dev"
+                },
+                "typo3/cms": {
+                    "extension-key": "scheduler"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Scheduler\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The TYPO3 Scheduler lets you register tasks to happen at a specific time",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org/c/typo3/cms-scheduler/11.5/en-us",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2022-06-15T07:33:04+00:00"
+        },
+        {
+            "name": "typo3/cms-tstemplate",
+            "version": "v11.5.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/tstemplate.git",
+                "reference": "ec75a2f8535d528bf587c4a6c52ab96c633a3afe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/tstemplate/zipball/ec75a2f8535d528bf587c4a6c52ab96c633a3afe",
+                "reference": "ec75a2f8535d528bf587c4a6c52ab96c633a3afe",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "11.5.12"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "11.5.x-dev"
+                },
+                "typo3/cms": {
+                    "Package": {
+                        "partOfFactoryDefault": true
+                    },
+                    "extension-key": "tstemplate"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Tstemplate\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Framework for management of TypoScript template records for the CMS frontend.",
             "homepage": "https://typo3.org",
             "support": {
                 "chat": "https://typo3.org/help",

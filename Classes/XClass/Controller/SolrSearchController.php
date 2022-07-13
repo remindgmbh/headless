@@ -11,9 +11,12 @@ use ApacheSolrForTypo3\Solr\System\Url\UrlHelper;
 use ApacheSolrForTypo3\Solr\System\Solr\SolrUnavailableException;
 use ApacheSolrForTypo3\Solr\ViewHelpers\Document\HighlightResultViewHelper;
 use ApacheSolrForTypo3\Solr\Util;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
+use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException;
+use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
 use TYPO3Fluid\Fluid\Core\ViewHelper\ViewHelperInvoker;
 
 class SolrSearchController extends SearchController
@@ -30,8 +33,13 @@ class SolrSearchController extends SearchController
 
     /**
      * Results
+     * @return ResponseInterface
+     * @throws AspectNotFoundException
+     * @throws NoSuchArgumentException
+     * @throws InvalidSlotException
+     * @throws InvalidSlotReturnException
      */
-    public function resultsAction()
+    public function resultsAction(): ResponseInterface
     {
         try {
             $arguments = (array)$this->request->getArguments();
@@ -46,7 +54,7 @@ class SolrSearchController extends SearchController
             $mapSearchResult = fn (SearchResult $searchResult) => [
                 'title' => $searchResult->getTitle(),
                 'content' => $this->getHighlightedContent($searchResultSet, $searchResult, 'content'),
-                'url' => json_decode($searchResult->getUrl(), true)
+                'url' => $searchResult->getUrl()
             ];
 
             $allResultCount = $searchResultSet->getAllResultCount();
@@ -69,26 +77,25 @@ class SolrSearchController extends SearchController
                 'allResultCount' => $allResultCount,
                 'query' => $query
             ];
+            $form = $this->getForm();
 
-            return json_encode(array_merge(['result' => $result], json_decode($this->formAction(), true)));
+            return $this->htmlResponse(json_encode(array_merge(['result' => $result], ['form' => $form])));
         } catch (SolrUnavailableException $e) {
-            $this->handleSolrUnavailable();
+            return $this->handleSolrUnavailable();
         }
-    }
-
-    public function solrNotAvailableAction()
-    {
-        // return response code 200 with error message to be handled in frontend
-        return LocalizationUtility::translate(
-            'LLL:EXT:solr/Resources/Private/Language/locallang.xlf:searchUnavailable'
-        );
     }
 
     /**
      * Form
      */
-    public function formAction()
+    public function formAction(): ResponseInterface
     {
+        $form = $this->getForm();
+
+        return $this->htmlResponse(json_encode(['form' => $form]));
+    }
+
+    protected function getForm(): array {
         $pluginNamespace = $this->typoScriptConfiguration->getSearchPluginNamespace();
 
         $targetPageUid = $this->typoScriptConfiguration->getSearchTargetPage();
@@ -110,7 +117,7 @@ class SolrSearchController extends SearchController
             ],
         ];
 
-        return json_encode(['form' => $form]);
+        return $form;
     }
 
     protected function getHighlightedContent(
@@ -121,7 +128,7 @@ class SolrSearchController extends SearchController
         return $this->viewHelperInvoker->invoke(
             HighlightResultViewHelper::class,
             ['resultSet' => $searchResultSet, 'document' => $searchResult, 'fieldName' => $fieldName],
-            new RenderingContext(),
+            $this->view->getRenderingContext()
         );
     }
 
@@ -132,7 +139,6 @@ class SolrSearchController extends SearchController
             ->reset()
             ->setTargetPageUid($targetPageUid)
             ->setTargetPageType($typeNum)
-            ->setUseCacheHash(false)
             ->build();
 
         /** @var URLHelper $urlService */
