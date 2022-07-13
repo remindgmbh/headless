@@ -1,0 +1,28 @@
+tt_content.image_gallery =< lib.contentElementWithHeader
+tt_content.image_gallery {
+    fields {        
+        content {
+            fields {
+                settings {
+                    dataProcessing {
+                        10 = Remind\Typo3Headless\DataProcessing\FlexFormProcessor
+                        10 {
+                            fieldName = pi_flexform
+                            as = flexform
+                        }
+                    }
+                }
+                images = TEXT
+                images {
+                    dataProcessing {
+                        10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
+                        10 {
+                            references.fieldName = image
+                            as = files
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
