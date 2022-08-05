@@ -1,5 +1,5 @@
 plugin.tx_solr {
     suggest {
-        typeNum = 7384
+        typeNum = {$typeNum.solrSuggest}
     }
 }

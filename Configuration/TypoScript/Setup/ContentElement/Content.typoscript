@@ -3,13 +3,13 @@ lib.content {
     table = tt_content
     select {
         orderBy = sorting
-        where = {#colPos} not in (1,2)
+        where = {#colPos} = {$backendLayouts.colPos.main}
     }
     merge {
         table = tt_content
         select {
             orderBy = sorting
-            where = {#colPos} in (1,2)
+            where = {#colPos} = {$backendLayouts.colPos.aboveBreadcrumbs}
         }
         slide = -1
     }
