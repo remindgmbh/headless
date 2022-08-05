@@ -19,3 +19,20 @@ initialData {
         }
     }
 }
+
+[frontend.user.isLoggedIn]
+    initialData {
+        10 {
+            fields {
+                logoutLink = TEXT
+                logoutLink {
+                    typolink {
+                        parameter = {$pid.login}
+                        additionalParams = &logintype=logout
+                        returnLast = url
+                    }
+                }
+            }
+        }
+    }
+[END]
