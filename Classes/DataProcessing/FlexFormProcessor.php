@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
+use TYPO3\CMS\Form\Hooks\DataStructureIdentifierHook;
 
 class FlexFormProcessor implements DataProcessorInterface
 {
@@ -55,6 +56,13 @@ class FlexFormProcessor implements DataProcessorInterface
 
         $table = $cObj->getCurrentTable();
 
+        // Workaround for https://forge.typo3.org/issues/97972 since local patches from packages don't work (see https://github.com/cweagans/composer-patches/issues/339)
+        $hook = $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][FlexFormTools::class]['flexParsing'][DataStructureIdentifierHook::class];
+
+        if ($hook) {
+            unset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][FlexFormTools::class]['flexParsing'][DataStructureIdentifierHook::class]);
+        }
+
         $this->flexFormTools->cleanFlexFormXML($table, $fieldName, $processedData['data']);
 
         $this->flexFormTools->traverseFlexFormXMLData(
@@ -64,6 +72,10 @@ class FlexFormProcessor implements DataProcessorInterface
             $this,
             'parseElement'
         );
+
+        if ($hook) {
+            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][FlexFormTools::class]['flexParsing'][DataStructureIdentifierHook::class] = $hook;
+        }
 
         $flexformData = $this->convertFlexFormContentToArray($this->flexFormTools->cleanFlexFormXML);
 
