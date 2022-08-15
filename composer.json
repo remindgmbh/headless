@@ -36,12 +36,12 @@
     },
     "require": {
         "php": "^7.4.0 | ^8.0",
-        "typo3/cms-core": "^11.5",
-        "friendsoftypo3/headless": "^3.1",
+        "typo3/cms-core": "^11.5.14",
+        "friendsoftypo3/headless": "^3.1.2",
         "remind/typo3-content": "^1.0.0 | dev-main | dev-develop"
     },
     "require-dev": {
-        "apache-solr-for-typo3/solr": "^11.5.0-rc-2",
+        "apache-solr-for-typo3/solr": "^11.5.0-rc-3",
         "phpmd/phpmd": "^2.10.2",
         "remind/confluence-changelog": "^0.3.0",
         "sebastian/phpcpd": "^6.0.3",
