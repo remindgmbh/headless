@@ -21,6 +21,12 @@
             <trans-unit id="formEditor.elements.FormElement.editor.size.default.label" resname="formEditor.elements.FormElement.editor.size.default.label">
                 <source>Full Width</source>
             </trans-unit>
+            <trans-unit id="news.dateMenu.all" resname="news.dateMenu.all">
+                <source>All</source>
+            </trans-unit>
+            <trans-unit id="news.tagsList.all" resname="news.tagsList.all">
+                <source>All Tags</source>
+            </trans-unit>
             <trans-unit id="tt_content.finishersDefinition.JsonRedirect.label" resname="tt_content.finishersDefinition.JsonRedirect.label">
                 <source>JSON Redirect</source>
             </trans-unit>

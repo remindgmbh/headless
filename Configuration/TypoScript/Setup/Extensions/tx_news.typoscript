@@ -1,0 +1,15 @@
+plugin.tx_news {
+	view {
+		templateRootPaths {
+			2 = EXT:rmnd_headless/Resources/Private/Templates/News/
+		}
+
+		partialRootPaths {
+			2 = EXT:rmnd_headless/Resources/Private/Partials/News/
+		}
+
+		layoutRootPaths {
+			2 = EXT:rmnd_headless/Resources/Private/Layouts/News/
+		}
+	}
+}
