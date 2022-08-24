@@ -98,23 +98,23 @@ class FlexFormProcessor implements DataProcessorInterface
         string $path,
         FlexFormTools $flexFormTools
     ): void {
-        if ($element['TCEforms']['config']['renderType'] === 'inputLink') {
+        if (($element['TCEforms']['config']['renderType'] ?? null) === 'inputLink') {
             $link = $this->cObj->getTypoLink_URL($value);
             $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, $link);
             return;
         }
 
-        if ($element['TCEforms']['config']['type'] === 'check') {
+        if (($element['TCEforms']['config']['type'] ?? null) === 'check') {
             $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, (bool)$value);
             return;
         }
 
-        if ($element['TCEforms']['config']['eval'] === 'int') {
+        if (($element['TCEforms']['config']['eval'] ?? null) === 'int') {
             $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, (int)$value);
             return;
         }
 
-        if ($element['TCEforms']['config']['type'] === 'text' && $this->processorConf['parseFunc']) {
+        if (($element['TCEforms']['config']['type'] ?? null) === 'text' && $this->processorConf['parseFunc']) {
             $content = $this->cObj->parseFunc($value, [], $this->processorConf['parseFunc']);
             $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, $content);
             return;
