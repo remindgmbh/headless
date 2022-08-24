@@ -2,10 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace Remind\Typo3Headless\ViewHelpers\News;
+namespace Remind\Typo3Headless\ViewHelpers;
 
-use GeorgRinger\News\Pagination\QueryResultPaginator;
-use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Pagination\PaginationInterface;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -15,11 +14,14 @@ class PaginationViewHelper extends AbstractViewHelper
     use CompileWithRenderStatic;
 
     const ARGUMENT_PAGINATION = 'pagination';
-    const ARGUMENT_PAGINATOR = 'paginator';
+    const ARGUMENT_CURRENT_PAGE = 'currentPage';
+    const ARGUMENT_QUERY_PARAM = 'queryParam';
+
     public function initializeArguments()
     {
         $this->registerArgument(self::ARGUMENT_PAGINATION, 'object', 'pagination', true);
-        $this->registerArgument(self::ARGUMENT_PAGINATOR, 'object', 'paginator', true);
+        $this->registerArgument(self::ARGUMENT_CURRENT_PAGE, 'int', 'current page', true);
+        $this->registerArgument(self::ARGUMENT_QUERY_PARAM, 'string', 'query param', true);
     }
 
     public static function renderStatic(
@@ -28,11 +30,11 @@ class PaginationViewHelper extends AbstractViewHelper
         RenderingContextInterface $renderingContext
         )
     {
-        /** @var SimplePagination $pagination */
+        /** @var PaginationInterface $pagination */
         $pagination = $arguments[self::ARGUMENT_PAGINATION];
-
-        /** @var QueryResultPaginator $paginator */
-        $paginator = $arguments[self::ARGUMENT_PAGINATOR];
+        /** @var int $currentPage */
+        $currentPage = $arguments[self::ARGUMENT_CURRENT_PAGE];
+        $queryParam = $arguments[self::ARGUMENT_QUERY_PARAM];
 
         $uriBuilder = $renderingContext->getUriBuilder();
 
@@ -44,13 +46,12 @@ class PaginationViewHelper extends AbstractViewHelper
         $first = $uriBuilder
             ->reset()
             ->setAddQueryString(true)
-            ->setArgumentsToBeExcludedFromQueryString(['tx_news_pi1[currentPage]'])
-            ->uriFor();
+            ->uriFor(null, [$queryParam => $firstPageNumber]);
 
         $last = $uriBuilder
             ->reset()
             ->setAddQueryString(true)
-            ->uriFor(null, ['currentPage' => $lastPageNumber]);
+            ->uriFor(null, [$queryParam => $lastPageNumber]);
 
         if ($previousPageNumber && $previousPageNumber >= $firstPageNumber) {
             if ($previousPageNumber === $firstPageNumber) {
@@ -59,7 +60,7 @@ class PaginationViewHelper extends AbstractViewHelper
                 $prev = $uriBuilder
                     ->reset()
                     ->setAddQueryString(true)
-                    ->uriFor(null, ['currentPage' => $previousPageNumber]);
+                    ->uriFor(null, [$queryParam => $previousPageNumber]);
             }
         }
 
@@ -67,7 +68,7 @@ class PaginationViewHelper extends AbstractViewHelper
             $next = $uriBuilder
                 ->reset()
                 ->setAddQueryString(true)
-                ->uriFor(null, ['currentPage' => $nextPageNumber]);
+                ->uriFor(null, [$queryParam => $nextPageNumber]);
         }
 
         $pages = [];
@@ -79,13 +80,13 @@ class PaginationViewHelper extends AbstractViewHelper
                 $link = $uriBuilder
                     ->reset()
                     ->setAddQueryString(true)
-                    ->uriFor(null, ['currentPage' => $page]);
+                    ->uriFor(null, [$queryParam => $page]);
             }
             
             $pages[] = [
-                'page' => $page,
+                'pageNumber' => $page,
                 'link' => $link,
-                'current' => $page === $paginator->getCurrentPageNumber()
+                'current' => $page === $currentPage
             ];
         }
 

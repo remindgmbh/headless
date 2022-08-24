@@ -1,0 +1,10 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	xmlns:r="http://typo3.org/ns/Remind/Typo3Headless/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:spaceless>
+	<f:format.raw>
+		<f:format.json value="{
+			'form': '{r:solr.form(pluginNamespace: pluginNamespace, settings: settings)}',
+			'results': '{r:solr.results(resultSet: resultSet, pagination: pagination, currentPage: currentPage)}'
+		}" />
+	</f:format.raw>
+</f:spaceless>
