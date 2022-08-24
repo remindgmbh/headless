@@ -35,6 +35,8 @@ class TagsListViewHelper extends AbstractViewHelper
         $settings = $arguments[self::ARGUMENT_SETTINGS];
         $overwriteDemand = $arguments[self::ARGUMENT_OVERWRITE_DEMAND];
 
+        $overwriteDemandTags = $overwriteDemand ? (int)($overwriteDemand['tags'] ?? false) : false;
+
         $uriBuilder = $renderingContext->getUriBuilder();
 
         $result = [
@@ -54,7 +56,7 @@ class TagsListViewHelper extends AbstractViewHelper
         $result['tags'][] = [
             'title' => LocalizationUtility::translate('news.tagsList.all', 'rmnd_headless'),
             'slug' => $uri,
-            'active' => !$overwriteDemand['tags']
+            'active' => !$overwriteDemandTags
         ];
 
         foreach ($tags as $tag) {
@@ -77,7 +79,7 @@ class TagsListViewHelper extends AbstractViewHelper
                 'pid' => $tag->getPid(),
                 'title' => $tag->getTitle(),
                 'slug' => $uri,
-                'active' => (int)$overwriteDemand['tags'] === $tag->getUid(),
+                'active' => $overwriteDemandTags === $tag->getUid(),
                 'seo' => [
                     'title' => $tag->getSeoTitle(),
                     'description' => $tag->getSeoDescription(),

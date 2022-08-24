@@ -34,6 +34,9 @@ class DateMenuViewHelper extends AbstractViewHelper
         $settings = $arguments[self::ARGUMENT_SETTINGS];
         $overwriteDemand = $arguments[self::ARGUMENT_OVERWRITE_DEMAND];
 
+        $overwriteDemandYear = $overwriteDemand ? (int)($overwriteDemand['year'] ?? false) : false;
+        $overwriteDemandMonth = $overwriteDemand ? ($overwriteDemand['month'] ?? false) : false;
+
         $uriBuilder = $renderingContext->getUriBuilder();
 
         $result = [
@@ -55,7 +58,7 @@ class DateMenuViewHelper extends AbstractViewHelper
         $allYears = [
             'title' => LocalizationUtility::translate('news.dateMenu.all', 'rmnd_headless'),
             'slug' => $uri,
-            'active' => !$overwriteDemand['year'],
+            'active' => !$overwriteDemandYear,
             'count' => 0
         ];
 
@@ -81,7 +84,7 @@ class DateMenuViewHelper extends AbstractViewHelper
             $year = [
                 'title' => $yearTitle,
                 'slug' => $yearUri,
-                'active' => (int)$overwriteDemand['year'] === $yearTitle && !$overwriteDemand['month'],
+                'active' => $overwriteDemandYear === $yearTitle && !$overwriteDemandMonth,
                 'count' => $count,
                 'months' => []
             ];
@@ -103,7 +106,7 @@ class DateMenuViewHelper extends AbstractViewHelper
                 $year['months'][] = [
                     'title' => $month,
                     'slug' => $monthUri,
-                    'active' => (int)$overwriteDemand['year'] === $yearTitle && (int)$overwriteDemand['month'] === $month,
+                    'active' => $overwriteDemandYear === $yearTitle && $overwriteDemandMonth === $month,
                     'count' => $count
                 ];
             }
