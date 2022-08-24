@@ -43,7 +43,9 @@ class PaginationViewHelper extends AbstractViewHelper
 
         $first = $uriBuilder
             ->reset()
-            ->build();
+            ->setAddQueryString(true)
+            ->setArgumentsToBeExcludedFromQueryString(['tx_news_pi1[currentPage]'])
+            ->uriFor();
 
         $last = $uriBuilder
             ->reset()
