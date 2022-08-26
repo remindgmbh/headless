@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Remind\Typo3Headless\ViewHelpers\News;
 
 use GeorgRinger\News\Domain\Model\Category;
+use GeorgRinger\News\ViewHelpers\Category\CountViewHelper;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
@@ -37,6 +38,7 @@ class CategoryMenuViewHelper extends AbstractViewHelper
 
         $overwriteDemandCategories = $overwriteDemand ? (int)($overwriteDemand['categories'] ?? false) : false;
 
+        $viewHelperInvoker = $renderingContext->getViewHelperInvoker();
         $uriBuilder = $renderingContext->getUriBuilder();
 
         $result = [
@@ -53,11 +55,14 @@ class CategoryMenuViewHelper extends AbstractViewHelper
             ->setTargetPageUid((int)$settings['listPid'])
             ->build();
 
-        $result['categories'][] = [
+        $allCategories = [
             'title' => LocalizationUtility::translate('news.categoryMenu.all', 'rmnd_headless'),
             'slug' => $uri,
-            'active' => !$overwriteDemandCategories
+            'active' => !$overwriteDemandCategories,
+            'count' => 0,
         ];
+
+        $result['categories'][] = &$allCategories;
 
         foreach ($categories as $category) {
 
@@ -78,6 +83,14 @@ class CategoryMenuViewHelper extends AbstractViewHelper
                     ]
                 ])
                 ->build();
+
+            $count = $viewHelperInvoker->invoke(
+                CountViewHelper::class,
+                ['categoryUid' => $item->getUid()],
+                $renderingContext)
+            ;
+
+            $allCategories['count'] += $count;
             
             $result['categories'][] = [
                 'uid' => $item->getUid(),
@@ -85,6 +98,7 @@ class CategoryMenuViewHelper extends AbstractViewHelper
                 'title' => $item->getTitle(),
                 'slug' => $uri,
                 'active' => $overwriteDemandCategories === $item->getUid(),
+                'count' => $count,
                 'seo' => [
                     'title' => $item->getSeoTitle(),
                     'description' => $item->getSeoDescription(),
