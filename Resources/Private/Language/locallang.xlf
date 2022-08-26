@@ -21,6 +21,9 @@
             <trans-unit id="formEditor.elements.FormElement.editor.size.default.label" resname="formEditor.elements.FormElement.editor.size.default.label">
                 <source>Full Width</source>
             </trans-unit>
+            <trans-unit id="news.categoryMenu.all" resname="news.categoryMenu.all">
+                <source>All Categories</source>
+            </trans-unit>
             <trans-unit id="news.dateMenu.all" resname="news.dateMenu.all">
                 <source>All</source>
             </trans-unit>

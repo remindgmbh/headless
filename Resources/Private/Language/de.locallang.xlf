@@ -21,6 +21,9 @@
             <trans-unit id="formEditor.elements.FormElement.editor.size.default.label" resname="formEditor.elements.FormElement.editor.size.default.label">
                 <target>Gesamte Breite</target>
             </trans-unit>
+            <trans-unit id="news.categoryMenu.all" resname="news.categoryMenu.all">
+                <target>Alle Kategorien</target>
+            </trans-unit>
             <trans-unit id="news.dateMenu.all" resname="news.dateMenu.all">
                 <target>Alle</target>
             </trans-unit>
