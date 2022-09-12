@@ -7,7 +7,7 @@ TYPO3:
             AdvancedPassword: &size
               formEditor:
                 editors:
-                  700:
+                  1662984119:
                     identifier: size
                     templateName: Inspector-SingleSelectEditor
                     label: formEditor.elements.FormElement.editor.size.label
