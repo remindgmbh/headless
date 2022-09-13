@@ -41,7 +41,7 @@
         "remind/typo3-content": "^1.0.0 | dev-main | dev-develop"
     },
     "require-dev": {
-        "apache-solr-for-typo3/solr": "^11.5.0-rc-3",
+        "apache-solr-for-typo3/solr": "^11.5.0",
         "phpmd/phpmd": "^2.10.2",
         "remind/confluence-changelog": "^0.3.0",
         "sebastian/phpcpd": "^6.0.3",
