@@ -11,7 +11,7 @@ TYPO3:
                     selectOptions:
                       70:
                         value: JsonRedirect
-                        label: formEditor.elements.Form.finisher.JsonRedirect.label
+                        label: formEditor.elements.Form.editor.finishers.Redirect.label
                 propertyCollections:
                   finishers:
                     70:
@@ -20,7 +20,7 @@ TYPO3:
                         100:
                           identifier: header
                           templateName: Inspector-CollectionElementHeaderEditor
-                          label: formEditor.elements.Form.finisher.JsonRedirect.editor.header.label
+                          label: formEditor.elements.Form.finisher.Redirect.editor.header.label
                         200:
                           identifier: pageUid
                           templateName: Inspector-Typo3WinBrowserEditor
@@ -41,10 +41,10 @@ TYPO3:
                 label: formEditor.elements.Form.finisher.Redirect.editor.header.label
                 predefinedDefaults:
                   options:
-                    pageUid: ''
-                    additionalParameters: ''
+                    pageUid: ""
+                    additionalParameters: ""
               FormEngine:
-                label: tt_content.finishersDefinition.JsonRedirect.label
+                label: tt_content.finishersDefinition.Redirect.label
                 elements:
                   pageUid:
                     label: tt_content.finishersDefinition.Redirect.pageUid.label
@@ -58,4 +58,3 @@ TYPO3:
                       fieldWizard:
                         recordsOverview:
                           disabled: 1
-

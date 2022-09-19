@@ -3,12 +3,6 @@
     <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/Form.xlf" product-name="rmnd_headless">
         <header/>
         <body>
-            <trans-unit id="formEditor.elements.Form.finisher.JsonRedirect.label" resname="formEditor.elements.Form.finisher.JsonRedirect.label">
-                <source>JSON Redirect</source>
-            </trans-unit>
-            <trans-unit id="formEditor.elements.Form.finisher.JsonRedirect.editor.header.label" resname="formEditor.elements.Form.finisher.JsonRedirect.editor.header.label">
-                <source>JSON Redirect</source>
-            </trans-unit>
             <trans-unit id="formEditor.elements.Form.editor.successText.label" resname="formEditor.elements.Form.editor.successText.label">
                 <source>Success Text</source>
             </trans-unit>
@@ -29,9 +23,6 @@
             </trans-unit>
             <trans-unit id="news.tagsList.all" resname="news.tagsList.all">
                 <source>All Tags</source>
-            </trans-unit>
-            <trans-unit id="tt_content.finishersDefinition.JsonRedirect.label" resname="tt_content.finishersDefinition.JsonRedirect.label">
-                <source>JSON Redirect</source>
             </trans-unit>
         </body>
     </file>

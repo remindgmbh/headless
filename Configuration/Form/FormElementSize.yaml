@@ -14,7 +14,7 @@ TYPO3:
                     propertyPath: properties.size
                     selectOptions:
                       10:
-                        value: ''
+                        value: ""
                         label: formEditor.elements.FormElement.editor.size.default.label
                       20:
                         value: 25
