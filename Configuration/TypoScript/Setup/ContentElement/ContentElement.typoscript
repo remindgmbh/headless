@@ -28,6 +28,12 @@ lib.contentElement {
                 }
                 message = TEXT
                 message {
+                    stdWrap {
+                        if {
+                            isNull.field = cookie_category
+                            negate = 1
+                        }
+                    }
                     field = cookie_message
                     parseFunc =< lib.parseFunc_links
                 }
