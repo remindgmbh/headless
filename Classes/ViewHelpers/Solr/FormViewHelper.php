@@ -31,6 +31,7 @@ class FormViewHelper extends AbstractViewHelper
 
         $config = Util::getSolrConfiguration();
         $targetPageUid = $config->getSearchTargetPage();
+        $getParameter = $config->getValueByPathOrDefaultValue('plugin.tx_solr.search.query.getParameter', 'q');
 
         $uriBuilder = $renderingContext->getUriBuilder();
 
@@ -38,6 +39,13 @@ class FormViewHelper extends AbstractViewHelper
             ->reset()
             ->setTargetPageUid($targetPageUid)
             ->build();
+
+        $searchUrlWithQueryParam = $uriBuilder
+            ->reset()
+            ->setArguments([$pluginNamespace . '[' . $getParameter . ']' => '*'])
+            ->build();
+
+        $queryParam = str_replace('=*', '', str_replace($searchUrl . '?', '', urldecode($searchUrlWithQueryParam)));
 
         $suggestUrl = $uriBuilder
             ->reset()
@@ -48,7 +56,7 @@ class FormViewHelper extends AbstractViewHelper
         $result = [
             'search' => [
                 'url' => $searchUrl,
-                'queryParam' => $pluginNamespace . '[q]',
+                'queryParam' => $queryParam,
             ],
             'suggest' => [
                 'url' => $suggestUrl,
