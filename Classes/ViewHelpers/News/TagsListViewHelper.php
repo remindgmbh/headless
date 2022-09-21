@@ -65,7 +65,7 @@ class TagsListViewHelper extends AbstractViewHelper
         $uri = $uriBuilder
             ->reset()
             ->setTargetPageUid((int)$settings['listPid'])
-            ->build();
+            ->uriFor();
 
         $allTags = [
             'title' => LocalizationUtility::translate('news.tagsList.all', 'rmnd_headless'),
@@ -82,14 +82,7 @@ class TagsListViewHelper extends AbstractViewHelper
             $uri = $uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$settings['listPid'])
-                ->setArguments([
-                    'tx_news_pi1' => [
-                        'overwriteDemand' => [
-                            'tags' => $tag->getUid()
-                        ]
-                    ]
-                ])
-                ->build();
+                ->uriFor(null, ['overwriteDemand' => ['tags' => $tag->getUid()]]);
 
             $count = $viewHelperInvoker->invoke(
                 CountViewHelper::class,

@@ -65,7 +65,7 @@ class DateMenuViewHelper extends AbstractViewHelper
         $uri = $uriBuilder
             ->reset()
             ->setTargetPageUid((int)$settings['listPid'])
-            ->build();
+            ->uriFor();
 
         $allYears = [
             'title' => LocalizationUtility::translate('news.dateMenu.all', 'rmnd_headless'),
@@ -80,14 +80,7 @@ class DateMenuViewHelper extends AbstractViewHelper
             $yearUri = $uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$settings['listPid'])
-                ->setArguments([
-                    'tx_news_pi1' => [
-                        'overwriteDemand' => [
-                            'year' => $yearTitle
-                        ]
-                    ]
-                ])
-                ->build();
+                ->uriFor(null, ['overwriteDemand' => ['year' => $yearTitle]]);
 
             $count = $data['total'][$yearTitle];
 
@@ -102,23 +95,17 @@ class DateMenuViewHelper extends AbstractViewHelper
             ];
 
             foreach ($months as $month => $count) {
+                $monthTitle = strval($month);
+
                 $monthUri = $uriBuilder
                     ->reset()
                     ->setTargetPageUid((int)$settings['listPid'])
-                    ->setArguments([
-                        'tx_news_pi1' => [
-                            'overwriteDemand' => [
-                                'year' => $yearTitle,
-                                'month' => $month
-                            ]
-                        ]
-                    ])
-                    ->build();
+                    ->uriFor(null, ['overwriteDemand' => ['year' => $yearTitle, 'month' => $monthTitle]]);
 
                 $year['months'][] = [
-                    'title' => $month,
+                    'title' => $monthTitle,
                     'slug' => $monthUri,
-                    'active' => $overwriteDemandYear === $yearTitle && $overwriteDemandMonth === $month,
+                    'active' => $overwriteDemandYear === $yearTitle && $overwriteDemandMonth === $monthTitle,
                     'count' => $count
                 ];
             }

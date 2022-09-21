@@ -65,7 +65,7 @@ class CategoryMenuViewHelper extends AbstractViewHelper
         $uri = $uriBuilder
             ->reset()
             ->setTargetPageUid((int)$settings['listPid'])
-            ->build();
+            ->uriFor();
 
         $allCategories = [
             'title' => LocalizationUtility::translate('news.categoryMenu.all', 'rmnd_headless'),
@@ -87,14 +87,7 @@ class CategoryMenuViewHelper extends AbstractViewHelper
             $uri = $uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$settings['listPid'])
-                ->setArguments([
-                    'tx_news_pi1' => [
-                        'overwriteDemand' => [
-                            'categories' => $item->getUid()
-                        ]
-                    ]
-                ])
-                ->build();
+                ->uriFor(null, ['overwriteDemand' => ['categories' => $item->getUid()]]);
 
             $count = $viewHelperInvoker->invoke(
                 CountViewHelper::class,
