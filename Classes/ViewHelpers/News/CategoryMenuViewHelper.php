@@ -7,6 +7,7 @@ namespace Remind\Typo3Headless\ViewHelpers\News;
 use GeorgRinger\News\Domain\Model\Category;
 use GeorgRinger\News\ViewHelpers\Category\CountViewHelper;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -32,6 +33,17 @@ class CategoryMenuViewHelper extends AbstractViewHelper
         RenderingContextInterface $renderingContext
         )
     {
+        if (!$renderingContext instanceof RenderingContext) {
+            throw new \RuntimeException(
+                sprintf(
+                    'RenderingContext must be instance of "%s", but is instance of "%s"',
+                    RenderingContext::class,
+                    get_class($renderingContext)
+                ),
+                1663759200
+            );
+        }
+
         $categories = $arguments[self::ARGUMENT_CATEGORIES];
         $settings = $arguments[self::ARGUMENT_SETTINGS];
         $overwriteDemand = $arguments[self::ARGUMENT_OVERWRITE_DEMAND];

@@ -8,6 +8,7 @@ use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use ApacheSolrForTypo3\Solr\Util;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 
 class FormViewHelper extends AbstractViewHelper
 {
@@ -26,6 +27,17 @@ class FormViewHelper extends AbstractViewHelper
         RenderingContextInterface $renderingContext
         )
     {
+        if (!$renderingContext instanceof RenderingContext) {
+            throw new \RuntimeException(
+                sprintf(
+                    'RenderingContext must be instance of "%s", but is instance of "%s"',
+                    RenderingContext::class,
+                    get_class($renderingContext)
+                ),
+                1663759234
+            );
+        }
+
         $pluginNamespace = $arguments[self::ARGUMENT_PLUGIN_NAMESPACE];
         $settings = $arguments[self::ARGUMENT_SETTINGS];
 

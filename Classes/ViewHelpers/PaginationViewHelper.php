@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Remind\Typo3Headless\ViewHelpers;
 
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -30,6 +31,17 @@ class PaginationViewHelper extends AbstractViewHelper
         RenderingContextInterface $renderingContext
         )
     {
+        if (!$renderingContext instanceof RenderingContext) {
+            throw new \RuntimeException(
+                sprintf(
+                    'RenderingContext must be instance of "%s", but is instance of "%s"',
+                    RenderingContext::class,
+                    get_class($renderingContext)
+                ),
+                1663759103
+            );
+        }
+
         /** @var PaginationInterface $pagination */
         $pagination = $arguments[self::ARGUMENT_PAGINATION];
         /** @var int $currentPage */
@@ -54,14 +66,10 @@ class PaginationViewHelper extends AbstractViewHelper
             ->uriFor(null, [$queryParam => $lastPageNumber]);
 
         if ($previousPageNumber && $previousPageNumber >= $firstPageNumber) {
-            if ($previousPageNumber === $firstPageNumber) {
-                $prev = $first;
-            } else {
-                $prev = $uriBuilder
-                    ->reset()
-                    ->setAddQueryString(true)
-                    ->uriFor(null, [$queryParam => $previousPageNumber]);
-            }
+            $prev = $uriBuilder
+                ->reset()
+                ->setAddQueryString(true)
+                ->uriFor(null, [$queryParam => $previousPageNumber]);
         }
 
         if ($nextPageNumber && $nextPageNumber <= $lastPageNumber) {
@@ -73,23 +81,19 @@ class PaginationViewHelper extends AbstractViewHelper
 
         $pages = [];
 
-        foreach ($pagination->getAllPageNumbers() as $page) {
-            if ($page === $firstPageNumber) {
-                $link = $first;
-            } else {
-                $link = $uriBuilder
-                    ->reset()
-                    ->setAddQueryString(true)
-                    ->uriFor(null, [$queryParam => $page]);
-            }
-            
+        for ($page = $firstPageNumber; $page <= $lastPageNumber; $page++) { 
+            $link = $uriBuilder
+                ->reset()
+                ->setAddQueryString(true)
+                ->uriFor(null, [$queryParam => $page]);
+
             $pages[] = [
                 'pageNumber' => $page,
                 'link' => $link,
                 'current' => $page === $currentPage
             ];
         }
-
+        
         $result = [
             'first' => $first,
             'last' => $last,
