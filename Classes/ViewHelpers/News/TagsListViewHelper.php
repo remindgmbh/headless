@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace Remind\Typo3Headless\ViewHelpers\News;
 
 use GeorgRinger\News\Domain\Model\Tag;
-use GeorgRinger\News\ViewHelpers\Tag\CountViewHelper;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
@@ -50,7 +49,6 @@ class TagsListViewHelper extends AbstractViewHelper
 
         $overwriteDemandTags = $overwriteDemand ? (int)($overwriteDemand['tags'] ?? false) : false;
 
-        $viewHelperInvoker = $renderingContext->getViewHelperInvoker();
         $uriBuilder = $renderingContext->getUriBuilder();
 
         $result = [
@@ -67,14 +65,11 @@ class TagsListViewHelper extends AbstractViewHelper
             ->setTargetPageUid((int)$settings['listPid'])
             ->uriFor();
 
-        $allTags = [
+        $result['tags'][] = [
             'title' => LocalizationUtility::translate('news.tagsList.all', 'rmnd_headless'),
             'slug' => $uri,
             'active' => !$overwriteDemandTags,
-            'count' => 0,
         ];
-
-        $result['tags'][] = &$allTags;
 
         foreach ($tags as $tag) {
             /** @var Tag $tag */
@@ -83,14 +78,6 @@ class TagsListViewHelper extends AbstractViewHelper
                 ->reset()
                 ->setTargetPageUid((int)$settings['listPid'])
                 ->uriFor(null, ['overwriteDemand' => ['tags' => $tag->getUid()]]);
-
-            $count = $viewHelperInvoker->invoke(
-                CountViewHelper::class,
-                ['tagUid' => $tag->getUid()],
-                $renderingContext
-            );
-
-            $allTags['count'] += $count;
             
             $result['tags'][] = [
                 'uid' => $tag->getUid(),
@@ -98,7 +85,6 @@ class TagsListViewHelper extends AbstractViewHelper
                 'title' => $tag->getTitle(),
                 'slug' => $uri,
                 'active' => $overwriteDemandTags === $tag->getUid(),
-                'count' => $count,
                 'seo' => [
                     'title' => $tag->getSeoTitle(),
                     'description' => $tag->getSeoDescription(),

@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace Remind\Typo3Headless\ViewHelpers\News;
 
 use GeorgRinger\News\Domain\Model\Category;
-use GeorgRinger\News\ViewHelpers\Category\CountViewHelper;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
@@ -50,7 +49,6 @@ class CategoryMenuViewHelper extends AbstractViewHelper
 
         $overwriteDemandCategories = $overwriteDemand ? (int)($overwriteDemand['categories'] ?? false) : false;
 
-        $viewHelperInvoker = $renderingContext->getViewHelperInvoker();
         $uriBuilder = $renderingContext->getUriBuilder();
 
         $result = [
@@ -67,35 +65,21 @@ class CategoryMenuViewHelper extends AbstractViewHelper
             ->setTargetPageUid((int)$settings['listPid'])
             ->uriFor();
 
-        $allCategories = [
+        $result['categories'][] = [
             'title' => LocalizationUtility::translate('news.categoryMenu.all', 'rmnd_headless'),
             'slug' => $uri,
             'active' => !$overwriteDemandCategories,
-            'count' => 0,
         ];
-
-        $result['categories'][] = &$allCategories;
 
         foreach ($categories as $category) {
 
             /** @var Category $item */
             $item = $category['item'];
 
-            /** @var Category|null $parent */
-            $parent = $category['parent'];
-
             $uri = $uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$settings['listPid'])
                 ->uriFor(null, ['overwriteDemand' => ['categories' => $item->getUid()]]);
-
-            $count = $viewHelperInvoker->invoke(
-                CountViewHelper::class,
-                ['categoryUid' => $item->getUid()],
-                $renderingContext)
-            ;
-
-            $allCategories['count'] += $count;
             
             $result['categories'][] = [
                 'uid' => $item->getUid(),
@@ -103,7 +87,6 @@ class CategoryMenuViewHelper extends AbstractViewHelper
                 'title' => $item->getTitle(),
                 'slug' => $uri,
                 'active' => $overwriteDemandCategories === $item->getUid(),
-                'count' => $count,
                 'seo' => [
                     'title' => $item->getSeoTitle(),
                     'description' => $item->getSeoDescription(),
