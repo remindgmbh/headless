@@ -1,23 +1,22 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Remind\Typo3Headless\ViewHelpers\News;
 
-use GeorgRinger\News\Domain\Model\Tag;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 class TagsListViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
 
-    const ARGUMENT_TAGS = 'tags';
-    const ARGUMENT_SETTINGS = 'settings';
-    const ARGUMENT_OVERWRITE_DEMAND = 'overwriteDemand';
+    private const ARGUMENT_TAGS = 'tags';
+    private const ARGUMENT_SETTINGS = 'settings';
+    private const ARGUMENT_OVERWRITE_DEMAND = 'overwriteDemand';
 
     public function initializeArguments()
     {
@@ -30,8 +29,7 @@ class TagsListViewHelper extends AbstractViewHelper
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-        )
-    {
+    ) {
         if (!$renderingContext instanceof RenderingContext) {
             throw new \RuntimeException(
                 sprintf(
@@ -42,7 +40,7 @@ class TagsListViewHelper extends AbstractViewHelper
                 1663759243
             );
         }
-        
+
         $tags = $arguments[self::ARGUMENT_TAGS];
         $settings = $arguments[self::ARGUMENT_SETTINGS];
         $overwriteDemand = $arguments[self::ARGUMENT_OVERWRITE_DEMAND];
@@ -56,8 +54,8 @@ class TagsListViewHelper extends AbstractViewHelper
                 'orderBy' => $settings['orderBy'],
                 'orderDirection' => $settings['orderDirection'],
                 'templateLayout' => $settings['templateLayout'],
-                'action' => 'tagsList'
-            ]
+                'action' => 'tagsList',
+            ],
         ];
 
         $uri = $uriBuilder
@@ -72,13 +70,13 @@ class TagsListViewHelper extends AbstractViewHelper
         ];
 
         foreach ($tags as $tag) {
-            /** @var Tag $tag */
+            /** @var \GeorgRinger\News\Domain\Model\Tag $tag */
 
             $uri = $uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$settings['listPid'])
                 ->uriFor(null, ['overwriteDemand' => ['tags' => $tag->getUid()]]);
-            
+
             $result['tags'][] = [
                 'uid' => $tag->getUid(),
                 'pid' => $tag->getPid(),
@@ -89,8 +87,8 @@ class TagsListViewHelper extends AbstractViewHelper
                     'title' => $tag->getSeoTitle(),
                     'description' => $tag->getSeoDescription(),
                     'headline' => $tag->getSeoHeadline(),
-                    'text' => $tag->getSeoText()
-                ]
+                    'text' => $tag->getSeoText(),
+                ],
             ];
         }
 

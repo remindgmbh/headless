@@ -1,22 +1,21 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Remind\Typo3Headless\ViewHelpers;
 
-use TYPO3\CMS\Core\Pagination\PaginationInterface;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 class PaginationViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
 
-    const ARGUMENT_PAGINATION = 'pagination';
-    const ARGUMENT_CURRENT_PAGE = 'currentPage';
-    const ARGUMENT_QUERY_PARAM = 'queryParam';
+    private const ARGUMENT_PAGINATION = 'pagination';
+    private const ARGUMENT_CURRENT_PAGE = 'currentPage';
+    private const ARGUMENT_QUERY_PARAM = 'queryParam';
 
     public function initializeArguments()
     {
@@ -29,8 +28,7 @@ class PaginationViewHelper extends AbstractViewHelper
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-        )
-    {
+    ) {
         if (!$renderingContext instanceof RenderingContext) {
             throw new \RuntimeException(
                 sprintf(
@@ -42,7 +40,7 @@ class PaginationViewHelper extends AbstractViewHelper
             );
         }
 
-        /** @var PaginationInterface $pagination */
+        /** @var \TYPO3\CMS\Core\Pagination\PaginationInterface $pagination */
         $pagination = $arguments[self::ARGUMENT_PAGINATION];
         /** @var int $currentPage */
         $currentPage = $arguments[self::ARGUMENT_CURRENT_PAGE];
@@ -81,7 +79,7 @@ class PaginationViewHelper extends AbstractViewHelper
 
         $pages = [];
 
-        for ($page = $firstPageNumber; $page <= $lastPageNumber; $page++) { 
+        for ($page = $firstPageNumber; $page <= $lastPageNumber; $page++) {
             $link = $uriBuilder
                 ->reset()
                 ->setAddQueryString(true)
@@ -90,10 +88,10 @@ class PaginationViewHelper extends AbstractViewHelper
             $pages[] = [
                 'pageNumber' => $page,
                 'link' => $link,
-                'current' => $page === $currentPage
+                'current' => $page === $currentPage,
             ];
         }
-        
+
         $result = [
             'first' => $first,
             'last' => $last,

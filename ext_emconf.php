@@ -12,7 +12,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'd.mellen@remind.de',
     'constraints' => [
         'depends' => [
-            'rmnd_content' => 'dev-main'
-        ]
+            'rmnd_content' => 'dev-main',
+        ],
     ],
 ];

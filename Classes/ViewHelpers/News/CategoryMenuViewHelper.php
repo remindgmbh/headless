@@ -1,23 +1,22 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Remind\Typo3Headless\ViewHelpers\News;
 
-use GeorgRinger\News\Domain\Model\Category;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 class CategoryMenuViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
 
-    const ARGUMENT_CATEGORIES = 'categories';
-    const ARGUMENT_SETTINGS = 'settings';
-    const ARGUMENT_OVERWRITE_DEMAND = 'overwriteDemand';
+    private const ARGUMENT_CATEGORIES = 'categories';
+    private const ARGUMENT_SETTINGS = 'settings';
+    private const ARGUMENT_OVERWRITE_DEMAND = 'overwriteDemand';
 
     public function initializeArguments()
     {
@@ -30,8 +29,7 @@ class CategoryMenuViewHelper extends AbstractViewHelper
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-        )
-    {
+    ) {
         if (!$renderingContext instanceof RenderingContext) {
             throw new \RuntimeException(
                 sprintf(
@@ -56,8 +54,8 @@ class CategoryMenuViewHelper extends AbstractViewHelper
                 'orderBy' => $settings['orderBy'],
                 'orderDirection' => $settings['orderDirection'],
                 'templateLayout' => $settings['templateLayout'],
-                'action' => 'categoryMenu'
-            ]
+                'action' => 'categoryMenu',
+            ],
         ];
 
         $uri = $uriBuilder
@@ -73,14 +71,14 @@ class CategoryMenuViewHelper extends AbstractViewHelper
 
         foreach ($categories as $category) {
 
-            /** @var Category $item */
+            /** @var \GeorgRinger\News\Domain\Model\Category $item */
             $item = $category['item'];
 
             $uri = $uriBuilder
                 ->reset()
                 ->setTargetPageUid((int)$settings['listPid'])
                 ->uriFor(null, ['overwriteDemand' => ['categories' => $item->getUid()]]);
-            
+
             $result['categories'][] = [
                 'uid' => $item->getUid(),
                 'pid' => $item->getPid(),
@@ -91,8 +89,8 @@ class CategoryMenuViewHelper extends AbstractViewHelper
                     'title' => $item->getSeoTitle(),
                     'description' => $item->getSeoDescription(),
                     'headline' => $item->getSeoHeadline(),
-                    'text' => $item->getSeoText()
-                ]
+                    'text' => $item->getSeoText(),
+                ],
             ];
         }
 

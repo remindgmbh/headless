@@ -8,9 +8,9 @@ use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Form\Hooks\DataStructureIdentifierHook;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
-use TYPO3\CMS\Form\Hooks\DataStructureIdentifierHook;
 
 class FlexFormProcessor implements DataProcessorInterface
 {
@@ -56,7 +56,8 @@ class FlexFormProcessor implements DataProcessorInterface
 
         $table = $cObj->getCurrentTable();
 
-        // Workaround for https://forge.typo3.org/issues/97972 since local patches from packages don't work (see https://github.com/cweagans/composer-patches/issues/339)
+        // Workaround for https://forge.typo3.org/issues/97972 since local patches from packages don't work
+        // (see https://github.com/cweagans/composer-patches/issues/339)
         $hook = $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][FlexFormTools::class]['flexParsing'][DataStructureIdentifierHook::class];
 
         if ($hook) {

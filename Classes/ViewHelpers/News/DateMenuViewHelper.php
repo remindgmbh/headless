@@ -1,22 +1,22 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Remind\Typo3Headless\ViewHelpers\News;
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 class DateMenuViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
 
-    const ARGUMENT_DATA = 'data';
-    const ARGUMENT_SETTINGS = 'settings';
-    const ARGUMENT_OVERWRITE_DEMAND = 'overwriteDemand';
+    private const ARGUMENT_DATA = 'data';
+    private const ARGUMENT_SETTINGS = 'settings';
+    private const ARGUMENT_OVERWRITE_DEMAND = 'overwriteDemand';
 
     public function initializeArguments()
     {
@@ -29,8 +29,7 @@ class DateMenuViewHelper extends AbstractViewHelper
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-        )
-    {
+    ) {
         if (!$renderingContext instanceof RenderingContext) {
             throw new \RuntimeException(
                 sprintf(
@@ -56,8 +55,8 @@ class DateMenuViewHelper extends AbstractViewHelper
                 'orderBy' => $settings['orderBy'],
                 'orderDirection' => $settings['orderDirection'],
                 'templateLayout' => $settings['templateLayout'],
-                'action' => 'dateMenu'
-            ]
+                'action' => 'dateMenu',
+            ],
         ];
 
         $years = [];
@@ -71,7 +70,7 @@ class DateMenuViewHelper extends AbstractViewHelper
             'title' => LocalizationUtility::translate('news.dateMenu.all', 'rmnd_headless'),
             'slug' => $uri,
             'active' => !$overwriteDemandYear,
-            'count' => 0
+            'count' => 0,
         ];
 
         $years[] = &$allYears;
@@ -91,7 +90,7 @@ class DateMenuViewHelper extends AbstractViewHelper
                 'slug' => $yearUri,
                 'active' => $overwriteDemandYear === $yearTitle && !$overwriteDemandMonth,
                 'count' => $count,
-                'months' => []
+                'months' => [],
             ];
 
             foreach ($months as $month => $count) {
@@ -106,10 +105,10 @@ class DateMenuViewHelper extends AbstractViewHelper
                     'title' => $monthTitle,
                     'slug' => $monthUri,
                     'active' => $overwriteDemandYear === $yearTitle && $overwriteDemandMonth === $monthTitle,
-                    'count' => $count
+                    'count' => $count,
                 ];
             }
-            
+
             $years[] = $year;
         }
 

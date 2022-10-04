@@ -1,20 +1,22 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Remind\Typo3Headless\ViewHelpers\Solr;
 
-use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
-use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
-use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 use ApacheSolrForTypo3\Solr\Util;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\Traits\CompileWithRenderStatic;
 
 class FormViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
-    const ARGUMENT_PLUGIN_NAMESPACE = 'pluginNamespace';
-    const ARGUMENT_SETTINGS = 'settings';
+
+    private const ARGUMENT_PLUGIN_NAMESPACE = 'pluginNamespace';
+    private const ARGUMENT_SETTINGS = 'settings';
+
     public function initializeArguments()
     {
         $this->registerArgument(self::ARGUMENT_PLUGIN_NAMESPACE, 'string', 'plugin namespace', true);
@@ -25,8 +27,7 @@ class FormViewHelper extends AbstractViewHelper
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
-        )
-    {
+    ) {
         if (!$renderingContext instanceof RenderingContext) {
             throw new \RuntimeException(
                 sprintf(
