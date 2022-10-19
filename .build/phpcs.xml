@@ -28,6 +28,9 @@
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <type>error</type>
     </rule>
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
+        <type>error</type>
+    </rule>
     <rule ref="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
         <type>error</type>
         <properties>

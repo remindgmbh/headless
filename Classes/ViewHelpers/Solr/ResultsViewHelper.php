@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Remind\Typo3Headless\ViewHelpers\Solr;
 
 use ApacheSolrForTypo3\Solr\ViewHelpers\Document\HighlightResultViewHelper;
+use Closure;
 use Remind\Typo3Headless\ViewHelpers\PaginationViewHelper;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -27,7 +28,7 @@ class ResultsViewHelper extends AbstractViewHelper
 
     public static function renderStatic(
         array $arguments,
-        \Closure $renderChildrenClosure,
+        Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ) {
         /** @var \ApacheSolrForTypo3\Solr\Domain\Search\ResultSet\SearchResultSet $resultSet */

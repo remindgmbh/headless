@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Remind\Typo3Headless\ViewHelpers\News;
 
+use Closure;
+use RuntimeException;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
@@ -27,11 +29,11 @@ class TagsListViewHelper extends AbstractViewHelper
 
     public static function renderStatic(
         array $arguments,
-        \Closure $renderChildrenClosure,
+        Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ) {
         if (!$renderingContext instanceof RenderingContext) {
-            throw new \RuntimeException(
+            throw new RuntimeException(
                 sprintf(
                     'RenderingContext must be instance of "%s", but is instance of "%s"',
                     RenderingContext::class,
