@@ -1,0 +1,12 @@
+tt_content.list {
+    fields {
+        content {
+            fields {
+                data = CASE
+                data {
+                    key.field = list_type
+                }
+            }
+        }
+    }
+}
