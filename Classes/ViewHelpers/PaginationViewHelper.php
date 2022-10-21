@@ -15,9 +15,9 @@ class PaginationViewHelper extends AbstractViewHelper
 {
     use CompileWithRenderStatic;
 
-    private const ARGUMENT_PAGINATION = 'pagination';
-    private const ARGUMENT_CURRENT_PAGE = 'currentPage';
-    private const ARGUMENT_QUERY_PARAM = 'queryParam';
+    public const ARGUMENT_PAGINATION = 'pagination';
+    public const ARGUMENT_CURRENT_PAGE = 'currentPage';
+    public const ARGUMENT_QUERY_PARAM = 'queryParam';
 
     public function initializeArguments()
     {
