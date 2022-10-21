@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/de.locallang_ce.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="accordion.description">
+                <target>Enthält beliebige zusammenklappbare Text Elemente</target>
+            </trans-unit>
+            <trans-unit id="accordion.title">
+                <target>Akkordion</target>
+            </trans-unit>
+            <trans-unit id="accordion.columns.title">
+                <target>Akkordion Titel</target>
+            </trans-unit>
+            <trans-unit id="footer_content.description">
+                <target>Content Element zur Benutzung in Fußzeile</target>
+            </trans-unit>
+            <trans-unit id="footer_content.title">
+                <target>Fußzeile Inhalt</target>
+            </trans-unit>
+            <trans-unit id="header_slider.description">
+                <target>Enthält beliebige Slides bestehend aus Bild und Text</target>
+            </trans-unit>
+            <trans-unit id="header_slider.title">
+                <target>Header Slider</target>
+            </trans-unit>
+            <trans-unit id="header_slider.columns.autoplay">
+                <target>Autoplay</target>
+            </trans-unit>
+            <trans-unit id="header_slider.columns.autoplay.status">
+                <target>Aktiviere Autoplay</target>
+            </trans-unit>
+            <trans-unit id="header_slider.columns.autoplay.duration">
+                <target>Dauer in ms</target>
+            </trans-unit>
+            <trans-unit id="image.description">
+                <target>Einzelnes Bild</target>
+            </trans-unit>
+            <trans-unit id="image.title">
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="image_gallery.description">
+                <target>Galerie bestehend aus beliebig vielen Bildern</target>
+            </trans-unit>
+            <trans-unit id="image_gallery.title">
+                <target>Bildergalerie</target>
+            </trans-unit>
+            <trans-unit id="image_gallery.type">
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="image_gallery.type.scroll">
+                <target>Scroll</target>
+            </trans-unit>
+            <trans-unit id="image_gallery.type.slide">
+                <target>Slide</target>
+            </trans-unit>
+            <trans-unit id="tabs.description">
+                <target>Enthält beliebige Tabs bestehend aus Text</target>
+            </trans-unit>
+            <trans-unit id="tabs.title">
+                <target>Tabs</target>
+            </trans-unit>
+            <trans-unit id="tabs.columns.title">
+                <target>Tab Titel</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

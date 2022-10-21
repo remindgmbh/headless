@@ -1,0 +1,59 @@
+TCEFORM {
+    pages {
+        layout {
+            keepItems = 0
+        }
+    }
+    tt_content {
+        assets.types {
+            textmedia.config.maxitems = 1
+        }
+        cols.disabled = 1
+        CType {
+            altLabels.image = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.title
+        }
+        frame_class.disabled = 1
+        image.types {
+            image.config.maxitems = 1
+            textpic.config.maxitems = 1
+        }
+        imagecols.types {
+            textpic {
+                label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:text_image_ratio
+                keepItems = 1,2
+                altLabels {
+                    1 = 1:1
+                    2 = 2:1
+                }
+            }
+            textmedia {
+                label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:text_image_ratio
+                keepItems = 1,2
+                altLabels {
+                    1 = 1:1
+                    2 = 2:1
+                }
+            }
+            image.disabled = 1
+        }
+        imageorient.types {
+            textmedia.keepItems = 25,26
+            textpic.keepItems = 25,26
+            image.disabled = 1
+        }
+        imagewidth.disabled = 1
+        imageheight.disabled = 1
+        imageborder.disabled = 1
+        image_zoom.disabled = 1
+        layout.disabled = 1
+        linkToTop.disabled = 1
+        media.disabled = 1
+        sectionIndex.disabled = 1
+        table_class.disabled = 1
+        table_header_position {
+            addItems {
+                3 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:table_header_position.3
+            }
+        }
+    }
+}

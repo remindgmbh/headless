@@ -1,7 +1,8 @@
-pid {
-    login := getEnv(LOGIN_PID)
-}
-
-typeNum {
-    footer = 836
+plugin.tx_headless {
+    login {
+        pid := getEnv(LOGIN_PID)
+    }
+    footer {
+        typeNum = 836
+    }
 }

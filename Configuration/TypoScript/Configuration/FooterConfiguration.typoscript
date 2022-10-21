@@ -1,6 +1,6 @@
 footer = PAGE
 footer {
-    typeNum = {$typeNum.footer}
+    typeNum = {$plugin.tx_headless.footer.typeNum}
     config {
         no_cache = 0
         sendCacheHeaders = 1

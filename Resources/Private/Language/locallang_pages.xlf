@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="tx_headless_overview_label">
+                <source>Overview Label</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

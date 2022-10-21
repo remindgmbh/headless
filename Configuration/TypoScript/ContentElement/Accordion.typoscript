@@ -3,7 +3,7 @@ tt_content.accordion {
     fields {
         content {
             fields {
-                items =< lib.rmndContentItems 
+                items =< lib.items
             }
         }
     }

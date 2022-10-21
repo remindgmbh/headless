@@ -2,9 +2,40 @@
 
 declare(strict_types=1);
 
+use Remind\Headless\Routing\QueryExtbasePluginEnhancer;
+use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 defined('TYPO3') or die;
 
 (function () {
+    $versionInformation = GeneralUtility::makeInstance(Typo3Version::class);
+    // Only include page.tsconfig if TYPO3 version is below 12 so that it is not imported twice.
+    if ($versionInformation->getMajorVersion() < 12) {
+        ExtensionManagementUtility::addPageTSConfig('
+          @import "EXT:rmnd_headless/Configuration/page.tsconfig"
+       ');
+    }
+
+    /* @var $iconRegistry \TYPO3\CMS\Core\Imaging\IconRegistry */
+    $iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
+
+    $iconRegistry->registerIcon(
+        'content-footer',
+        SvgIconProvider::class,
+        ['source' => 'EXT:rmnd_headless/Resources/Public/Icons/content-footer.svg']
+    );
+
+    $GLOBALS
+        ['TYPO3_CONF_VARS']
+        ['SYS']
+        ['routing']
+        ['enhancers']
+        ['QueryExtbase'] = QueryExtbasePluginEnhancer::class;
+
     $GLOBALS
         ['TYPO3_CONF_VARS']
         ['SYS']['features']

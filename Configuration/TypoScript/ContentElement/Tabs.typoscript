@@ -3,7 +3,7 @@ tt_content.tabs {
     fields {
         content {
             fields {
-                items =< lib.rmndContentItems 
+                items =< lib.items 
             }
         }
     }

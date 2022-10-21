@@ -1,9 +1,9 @@
-lib.rmndContentItems = JSON
-lib.rmndContentItems {
+lib.items = JSON
+lib.items {
     dataProcessing {
         10 = FriendsOfTYPO3\Headless\DataProcessing\DatabaseQueryProcessor
         10 {
-            table = rmnd_content_items
+            table = tx_headless_item
             where.data = field:uid
             where.wrap = tt_content = |
             orderBy = sorting

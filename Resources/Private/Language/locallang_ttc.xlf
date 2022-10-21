@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="background_color">
+                <source>Background Color</source>
+            </trans-unit>
+            <trans-unit id="background_color.none">
+                <source>None</source>
+            </trans-unit>
+            <trans-unit id="background_color.primary">
+                <source>Primary Color</source>
+            </trans-unit>
+            <trans-unit id="background_color.secondary">
+                <source>Secondary Color</source>
+            </trans-unit>
+            <trans-unit id="background_color.accent">
+                <source>Accent Color</source>
+            </trans-unit>
+            <trans-unit id="background_color.white">
+                <source>White</source>
+            </trans-unit>
+            <trans-unit id="background_color.black">
+                <source>Black</source>
+            </trans-unit>
+            <trans-unit id="background_full_width">
+                <source>Full Width Background</source>
+            </trans-unit>
+            <trans-unit id="cookie.category">
+                <source>Cookie Category</source>
+            </trans-unit>
+            <trans-unit id="cookie.category.none">
+                <source>None</source>
+            </trans-unit>
+            <trans-unit id="cookie.category.necessary">
+                <source>Necessary</source>
+            </trans-unit>
+            <trans-unit id="cookie.category.preferences">
+                <source>Preferences</source>
+            </trans-unit>
+            <trans-unit id="cookie.category.statistics">
+                <source>Statistics</source>
+            </trans-unit>
+            <trans-unit id="cookie.category.marketing">
+                <source>Marketing</source>
+            </trans-unit>
+            <trans-unit id="cookie.message">
+                <source>Cookie Message</source>
+            </trans-unit>
+            <trans-unit id="header_layout.text">
+                <source>Text</source>
+            </trans-unit>
+            <trans-unit id="space_before_inside">
+                <source>Space Before (inside Background)</source>
+            </trans-unit>
+            <trans-unit id="space_after_inside">
+                <source>Space After (inside Background)</source>
+            </trans-unit>
+            <trans-unit id="table_header_position.3">
+                <source>Top and Left</source>
+            </trans-unit>
+            <trans-unit id="text_image_ratio">
+                <source>Text/Image Ratio</source>
+            </trans-unit>
+            <trans-unit id="tx_headless_item">
+                <source>Items</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

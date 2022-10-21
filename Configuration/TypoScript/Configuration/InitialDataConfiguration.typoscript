@@ -8,7 +8,7 @@ initialData {
                             stdWrap.cObject {
                                 100 = TEXT
                                 100 {
-                                    field = overview_label
+                                    field = tx_headless_overview_label
                                     wrap = ,"overviewLabel":"|"
                                 }
                             }
@@ -27,7 +27,7 @@ initialData {
                 logoutLink = TEXT
                 logoutLink {
                     typolink {
-                        parameter = {$pid.login}
+                        parameter = {$plugin.tx_headless.login.pid}
                         additionalParams = &logintype=logout
                         returnLast = url
                     }

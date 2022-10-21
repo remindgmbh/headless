@@ -1,0 +1,51 @@
+mod {
+  web_layout {
+    BackendLayouts {
+      default {
+        title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:default
+        config {
+          backend_layout {
+            colCount = 1
+            rowCount = 3
+            rows {
+              1 {
+                columns {
+                  1 {
+                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.above_breadcrumbs
+                    colPos = {$backendLayouts.colPos.aboveBreadcrumbs}
+                    disallowed {
+                        CType = footer_content
+                    }
+                  }
+                }
+              }
+              2 {
+                columns {
+                  1 {
+                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.main
+                    colPos = {$backendLayouts.colPos.main}
+                    disallowed {
+                        CType = footer_content
+                    }
+                  }
+                }
+              }
+              3 {
+                columns {
+                  1 {
+                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.footer
+                    colPos = {$backendLayouts.colPos.footer}
+                    allowed {
+                      CType = footer_content
+                    }
+                    maxitems = 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

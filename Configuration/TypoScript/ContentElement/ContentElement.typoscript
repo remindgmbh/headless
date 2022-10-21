@@ -4,7 +4,7 @@ lib.contentElement {
             fields {
                 category = CASE
                 category {
-                    key.field = cookie_category
+                    key.field = tx_headless_cookie_category
                     0 = TEXT
                     0 {
                         value = necessary
@@ -30,11 +30,11 @@ lib.contentElement {
                 message {
                     stdWrap {
                         if {
-                            isNull.field = cookie_category
+                            isNull.field = tx_headless_cookie_category
                             negate = 1
                         }
                     }
-                    field = cookie_message
+                    field = tx_headless_cookie_message
                     parseFunc =< lib.parseFunc_links
                 }
             }

@@ -1,0 +1,51 @@
+mod.wizards.newContentElement.wizardItems {
+   common {
+      elements {
+         accordion {
+            iconIdentifier = content-accordion
+            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:accordion.title
+            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:accordion.description
+            tt_content_defValues {
+               CType = accordion
+            }
+         }
+         footer_content {
+            iconIdentifier = content-footer
+            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:footer_content.title
+            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:footer_content.description
+            tt_content_defValues {
+               CType = footer_content
+            }
+         },
+         header_slider {
+            iconIdentifier = content-carousel-item-textandimage
+            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:header_slider.title
+            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:header_slider.description
+            tt_content_defValues {
+               CType = header_slider
+            }
+         },
+         image {
+            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.title
+            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.description
+         },
+         image_gallery {
+            iconIdentifier = content-gallery
+            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.title
+            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.description
+            tt_content_defValues {
+               CType = image_gallery
+            }
+         },
+         tabs {
+            iconIdentifier = content-tab
+            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:tabs.title
+            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:tabs.description
+            tt_content_defValues {
+               CType = tabs
+            }
+         }
+      }
+      show := addToList(accordion, footer_content, header_slider, image_gallery, tabs)
+   }
+}

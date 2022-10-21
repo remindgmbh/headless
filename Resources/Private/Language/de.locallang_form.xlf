@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/Form.xlf" product-name="rmnd_headless">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/de.locallang_form.xlf" product-name="rmnd_headless">
         <header/>
         <body>
             <trans-unit id="formEditor.elements.Form.editor.successText.label" resname="formEditor.elements.Form.editor.successText.label">
-                <source>Success Text</source>
+                <target>Erfolg Text</target>
             </trans-unit>
             <trans-unit id="formEditor.elements.Form.editor.loadingText.label" resname="formEditor.elements.Form.editor.loadingText.label">
-                <source>Loading Text</source>
+                <target>Lade Text</target>
             </trans-unit>
             <trans-unit id="formEditor.elements.FormElement.editor.size.label" resname="formEditor.elements.FormElement.editor.size.label">
-                <source>Size</source>
+                <target>Größe</target>
             </trans-unit>
             <trans-unit id="formEditor.elements.FormElement.editor.size.default.label" resname="formEditor.elements.FormElement.editor.size.default.label">
-                <source>Full Width</source>
-            </trans-unit>
-            <trans-unit id="news.categoryMenu.all" resname="news.categoryMenu.all">
-                <source>All Categories</source>
-            </trans-unit>
-            <trans-unit id="news.dateMenu.all" resname="news.dateMenu.all">
-                <source>All</source>
-            </trans-unit>
-            <trans-unit id="news.tagsList.all" resname="news.tagsList.all">
-                <source>All Tags</source>
+                <target>Gesamte Breite</target>
             </trans-unit>
         </body>
     </file>

@@ -5,10 +5,10 @@ TYPO3:
         standard:
           formEditor:
             translationFiles:
-              20: "EXT:rmnd_headless/Resources/Private/Language/locallang.xlf"
+              20: "EXT:rmnd_headless/Resources/Private/Language/locallang_form.xlf"
           formEngine:
             translationFiles:
-              20: "EXT:rmnd_headless/Resources/Private/Language/locallang.xlf"
+              20: "EXT:rmnd_headless/Resources/Private/Language/locallang_form.xlf"
           formElementsDefinition:
             Form:
               formEditor:

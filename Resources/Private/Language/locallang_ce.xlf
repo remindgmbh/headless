@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="accordion.description">
+                <source>Containing multiple collapsible text elements</source>
+            </trans-unit>
+            <trans-unit id="accordion.title">
+                <source>Accordion</source>
+            </trans-unit>
+            <trans-unit id="accordion.columns.title">
+                <source>Accordion Title</source>
+            </trans-unit>
+            <trans-unit id="footer_content.description">
+                <source>Content Elemenet to be used in Footer</source>
+            </trans-unit>
+            <trans-unit id="footer_content.title">
+                <source>Footer Content</source>
+            </trans-unit>
+            <trans-unit id="header_slider.description">
+                <source>Containing multiple slides consisting of image and text</source>
+            </trans-unit>
+            <trans-unit id="header_slider.title">
+                <source>Header Slider</source>
+            </trans-unit>
+            <trans-unit id="header_slider.columns.autoplay">
+                <source>Autoplay</source>
+            </trans-unit>
+            <trans-unit id="header_slider.columns.autoplay.status">
+                <source>Enable Autoplay</source>
+            </trans-unit>
+            <trans-unit id="header_slider.columns.autoplay.duration">
+                <source>Duration in ms</source>
+            </trans-unit>
+            <trans-unit id="image.description">
+                <source>One Image only</source>
+            </trans-unit>
+            <trans-unit id="image.title">
+                <source>Image</source>
+            </trans-unit>
+            <trans-unit id="image_gallery.description">
+                <source>Gallery containing multiple images</source>
+            </trans-unit>
+            <trans-unit id="image_gallery.title">
+                <source>Image Gallery</source>
+            </trans-unit>
+            <trans-unit id="image_gallery.type">
+                <source>Type</source>
+            </trans-unit>
+            <trans-unit id="image_gallery.type.scroll">
+                <source>Scroll</source>
+            </trans-unit>
+            <trans-unit id="image_gallery.type.slide">
+                <source>Slide</source>
+            </trans-unit>
+            <trans-unit id="tabs.description">
+                <source>Containing multiple tabs consisting of text</source>
+            </trans-unit>
+            <trans-unit id="tabs.title">
+                <source>Tabs</source>
+            </trans-unit>
+            <trans-unit id="tabs.columns.title">
+                <source>Tab Title</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

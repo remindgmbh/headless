@@ -1,24 +1,24 @@
 lib.appearance.fields {
     backgroundColor = TEXT
     backgroundColor {
-        field = background_color
+        field = tx_headless_background_color
         if {
-            equals.field = background_color
+            equals.field = tx_headless_background_color
             value = none
             negate = 1
         }
     }
     backgroundFullWidth = TEXT
     backgroundFullWidth {
-        field = background_full_width
+        field = tx_headless_background_full_width
         intval = 1
     }
     spaceBeforeInside = TEXT
     spaceBeforeInside {
-        field = space_before_inside
+        field = tx_headless_space_before_inside
     }
     spaceAfterInside = TEXT
     spaceAfterInside {
-        field = space_after_inside
+        field = tx_headless_space_after_inside
     }
 }

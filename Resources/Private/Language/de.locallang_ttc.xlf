@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/de.locallang_ttc.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="background_color">
+                <target>Hintergrundfarbe</target>
+            </trans-unit>
+            <trans-unit id="background_color.none">
+                <target>Keine</target>
+            </trans-unit>
+            <trans-unit id="background_color.primary">
+                <target>Primärfarbe</target>
+            </trans-unit>
+            <trans-unit id="background_color.secondary">
+                <target>Sekundärfarbe</target>
+            </trans-unit>
+            <trans-unit id="background_color.accent">
+                <target>Akzentfarbe</target>
+            </trans-unit>
+            <trans-unit id="background_color.white">
+                <target>Weiß</target>
+            </trans-unit>
+            <trans-unit id="background_color.black">
+                <target>Schwarz</target>
+            </trans-unit>
+            <trans-unit id="background_full_width">
+                <target>Hintergrund über gesamte Breite</target>
+            </trans-unit>
+            <trans-unit id="cookie.category">
+                <target>Cookie Kategorie</target>
+            </trans-unit>
+            <trans-unit id="cookie.category.none">
+                <target>Keine</target>
+            </trans-unit>
+            <trans-unit id="cookie.category.necessary">
+                <target>Notwendig</target>
+            </trans-unit>
+            <trans-unit id="cookie.category.preferences">
+                <target>Präferenzen</target>
+            </trans-unit>
+            <trans-unit id="cookie.category.statistics">
+                <target>Statistiken</target>
+            </trans-unit>
+            <trans-unit id="cookie.category.marketing">
+                <target>Marketing</target>
+            </trans-unit>
+            <trans-unit id="cookie.message">
+                <target>Cookie Meldung</target>
+            </trans-unit>
+            <trans-unit id="header_layout.text">
+                <target>Text</target>
+            </trans-unit>
+            <trans-unit id="space_before_inside">
+                <target>Abstand davor (im Hintergrund)</target>
+            </trans-unit>
+            <trans-unit id="space_after_inside">
+                <target>Abstand danach (im Hintergrund)</target>
+            </trans-unit>
+            <trans-unit id="table_header_position.3">
+                <target>Oben und Links</target>
+            </trans-unit>
+            <trans-unit id="textpic.ratio">
+                <target>Text/Bild Verhältnis</target>
+            </trans-unit>
+            <trans-unit id="tx_headless_item">
+                <target>Items</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

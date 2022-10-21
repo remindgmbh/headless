@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="title">
+                <source>Item</source>
+            </trans-unit>
+            <trans-unit id="columns.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="columns.header_layout.text">
+                <source>Text</source>
+            </trans-unit>
+            <trans-unit id="columns.header_layout.h1">
+                <source>H1</source>
+            </trans-unit>
+            <trans-unit id="columns.header_layout.h2">
+                <source>H2</source>
+            </trans-unit>
+            <trans-unit id="columns.header_layout.h3">
+                <source>H3</source>
+            </trans-unit>
+            <trans-unit id="columns.header_layout.h4">
+                <source>H4</source>
+            </trans-unit>
+            <trans-unit id="columns.header_layout.h5">
+                <source>H5</source>
+            </trans-unit>
+            <trans-unit id="columns.header_layout.h6">
+                <source>H6</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
