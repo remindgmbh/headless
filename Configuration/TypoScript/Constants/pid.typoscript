@@ -1,3 +1,0 @@
-pid {
-    login := getEnv(LOGIN_PID)
-}
