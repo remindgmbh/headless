@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Remind\Typo3Headless\ViewHelpers;
+namespace Remind\Headless\ViewHelpers;
 
 use Closure;
 use RuntimeException;

@@ -1,9 +1,9 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Remind Headless',
+    'title' => 'REMIND - Headless Extension',
     'description' => 'This extension contains default content elements and layout definitions for TYPO3 Headless',
-    'category' => 'plugin',
+    'category' => 'fe',
     'version' => '1.0.0',
     'state' => 'stable',
     'clearCacheOnLoad' => true,
@@ -12,7 +12,10 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'd.mellen@remind.de',
     'constraints' => [
         'depends' => [
-            'rmnd_content' => 'dev-main',
+            'frontend' => '11.5.0-11.5.99',
+            'typo3' => '11.5.0-11.5.99',
         ],
+        'conflicts' => [],
+        'suggests' => [],
     ],
 ];

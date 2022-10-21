@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Remind\Typo3Headless\Middleware;
+namespace Remind\Headless\Middleware;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
