@@ -1,4 +1,4 @@
-# REMIND - Typo3 Headless Extension
+# REMIND - Headless Extension
 
 This extension provides:
 - base content elements
@@ -12,7 +12,7 @@ This extension provides:
 
 ## Installation
 
-Use comoser to install the extension using `composer install remind/typo3-headless`. Import typoscript in your provider extension.
+Use comoser to install the extension using `composer install remind/headless`. Import typoscript in your provider extension.
 
 Add the following to your site config for backend layouts to work:
 
