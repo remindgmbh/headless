@@ -37,8 +37,6 @@ TYPO3:
               <<: *size
             Date:
               <<: *size
-            DatePicker:
-              <<: *size
             Email:
               <<: *size
             Fieldset:

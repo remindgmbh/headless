@@ -1,4 +1,4 @@
-// Add header
+// Copy from EXT:headless/Configuration/TypoScript/ContentElement/Form.typoscript but with contentElementWithHeader
 tt_content.form_formframework =< lib.contentElementWithHeader
 tt_content.form_formframework {
     fields {

@@ -10,6 +10,7 @@ TYPO3:
             translationFiles:
               20: "EXT:rmnd_headless/Resources/Private/Language/locallang_form.xlf"
           formElementsDefinition:
+            DatePicker: null
             Form:
               formEditor:
                 predefinedDefaults:
@@ -32,5 +33,5 @@ TYPO3:
                   900:
                     selectOptions:
                       # Remove redirect (non JSON) and confirmation finisher
-                      40:
-                      60:
+                      40: null
+                      60: null
