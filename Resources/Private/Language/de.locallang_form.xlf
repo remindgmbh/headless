@@ -3,16 +3,19 @@
     <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/de.locallang_form.xlf" product-name="rmnd_headless">
         <header/>
         <body>
-            <trans-unit id="formEditor.elements.Form.editor.successText.label" resname="formEditor.elements.Form.editor.successText.label">
+            <trans-unit id="formEditor.elements.Form.editor.successText.label">
                 <target>Erfolg Text</target>
             </trans-unit>
-            <trans-unit id="formEditor.elements.Form.editor.loadingText.label" resname="formEditor.elements.Form.editor.loadingText.label">
+            <trans-unit id="formEditor.elements.Form.editor.loadingText.label">
                 <target>Lade Text</target>
             </trans-unit>
-            <trans-unit id="formEditor.elements.FormElement.editor.size.label" resname="formEditor.elements.FormElement.editor.size.label">
+            <trans-unit id="formEditor.elements.FormElement.editor.identifier.label">
+                <target>Identifier</target>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.size.label">
                 <target>Größe</target>
             </trans-unit>
-            <trans-unit id="formEditor.elements.FormElement.editor.size.default.label" resname="formEditor.elements.FormElement.editor.size.default.label">
+            <trans-unit id="formEditor.elements.FormElement.editor.size.default.label">
                 <target>Gesamte Breite</target>
             </trans-unit>
         </body>
