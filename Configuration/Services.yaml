@@ -3,6 +3,7 @@ services:
     autowire: true
     autoconfigure: true
     public: false
-
   Remind\Headless\:
     resource: '../Classes/*'
+  Remind\Headless\Service\JsonService:
+    shared: false

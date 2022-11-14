@@ -7,8 +7,8 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 $hasBackground = [
     'AND' => [
-        'FIELD:background_color:!=:none',
-        'FIELD:background_color:REQ:true',
+        'FIELD:tx_headless_background_color:!=:none',
+        'FIELD:tx_headless_background_color:REQ:true',
     ],
 ];
 
