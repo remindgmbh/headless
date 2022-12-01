@@ -1,7 +1,7 @@
 {
     "name": "remind/headless",
     "type": "typo3-cms-extension",
-    "description": "This extension contains default content elements and layout definitions for TYPO3 Headless",
+    "description": "REMIND - Headless",
     "license": [ "GPL-3.0-or-later" ],
     "authors": [
         {
