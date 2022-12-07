@@ -8,10 +8,8 @@ use JsonSerializable;
 use Psr\Log\LoggerInterface;
 use Remind\Extbase\FlexForms\ListSheets;
 use Remind\Extbase\Service\Dto\FilterableListResult;
-use Remind\Extbase\Service\Dto\FrontendFilter;
 use Remind\Extbase\Service\Dto\ListResult;
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
-use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Request;
@@ -123,30 +121,22 @@ class JsonService
         FilterableListResult $listResult,
         int $page,
         string $detailActionName,
-        string $detailUidArgument,
-        string $filterArgument
+        string $detailUidArgument
     ): array {
         $result = $this->serializeList($listResult, $page, $detailActionName, $detailUidArgument);
         $filters = $listResult->getFrontendFilters();
-        $filtersJson = $this->serializeFilters($filters, $filterArgument);
+        $filtersJson = $this->serializeFilters($filters);
         $result['filters'] = $filtersJson;
         return $result;
     }
 
     /**
-     * @param FrontendFilter[] $filters
+     * @param \Remind\Extbase\Service\Dto\FrontendFilter[] $filters
      * @return array
      */
-    private function serializeFilters(array $filters, string $filterArguments): array
+    private function serializeFilters(array $filters): array
     {
         $result = [];
-        $activeFilterValues = array_reduce($filters, function (array $result, FrontendFilter $filterData) {
-            $values = $filterData->getActiveArgumentValues();
-            if (!empty($values)) {
-                $result[$filterData->getFieldName()] = implode(',', $values);
-            }
-            return $result;
-        }, []);
         foreach ($filters as $filter) {
             $fieldName = $filter->getFieldName();
             $filterJson = [
@@ -156,24 +146,10 @@ class JsonService
             ];
 
             foreach ($filter->getValues() as $filterValue) {
-                $args = [];
-                // copy $activeFilterValues to $args array
-                ArrayUtility::mergeRecursiveWithOverrule($args, $activeFilterValues);
-
-                if (($args[$fieldName] ?? null) === $filterValue->getArgumentValue()) {
-                    // remove argument if it is already active so the link removes the filter
-                    unset($args[$fieldName]);
-                } else {
-                    $args[$fieldName] = $filterValue->getArgumentValue();
-                }
-
-                $url = $this->uriBuilder
-                    ->reset()
-                    ->uriFor(null, [$filterArguments => $args]);
-
                 $filterValueJson = [
                     'value' => $filterValue->getValue(),
-                    'link' => $url,
+                    'label' => $filterValue->getLabel(),
+                    'link' => $filterValue->getLink(),
                     'disabled' => $filterValue->isDisabled(),
                     'active' => $filterValue->isActive(),
                 ];
