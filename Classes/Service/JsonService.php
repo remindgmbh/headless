@@ -138,9 +138,8 @@ class JsonService
     {
         $result = [];
         foreach ($filters as $filter) {
-            $fieldName = $filter->getFieldName();
             $filterJson = [
-                'name' => $fieldName,
+                'name' => $filter->getFilterName(),
                 'label' => $filter->getLabel(),
                 'values' => [],
             ];
@@ -150,7 +149,7 @@ class JsonService
                     'value' => $filterValue->getValue(),
                     'label' => $filterValue->getLabel(),
                     'link' => $filterValue->getLink(),
-                    'disabled' => $filterValue->isDisabled(),
+                    'count' => $filterValue->getCount(),
                     'active' => $filterValue->isActive(),
                 ];
 
