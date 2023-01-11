@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Remind\Headless\Routing\QueryExtbasePluginEnhancer;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Information\Typo3Version;
@@ -28,13 +27,6 @@ defined('TYPO3') or die;
         SvgIconProvider::class,
         ['source' => 'EXT:rmnd_headless/Resources/Public/Icons/content-footer.svg']
     );
-
-    $GLOBALS
-        ['TYPO3_CONF_VARS']
-        ['SYS']
-        ['routing']
-        ['enhancers']
-        ['QueryExtbase'] = QueryExtbasePluginEnhancer::class;
 
     $GLOBALS
         ['TYPO3_CONF_VARS']
