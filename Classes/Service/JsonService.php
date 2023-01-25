@@ -112,6 +112,7 @@ class JsonService
 
         return [
             'count' => $listResult->getCount(),
+            'countWithoutLimit' => $listResult->getCountWithoutLimit(),
             'items' => $itemsJson,
             'pagination' => $paginationJson,
         ];
