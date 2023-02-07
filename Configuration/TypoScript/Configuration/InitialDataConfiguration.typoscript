@@ -21,17 +21,13 @@ initialData {
 }
 
 [frontend.user.isLoggedIn]
-    initialData {
-        10 {
-            fields {
-                logoutLink = TEXT
-                logoutLink {
-                    typolink {
-                        parameter = {$plugin.tx_headless.login.pid}
-                        additionalParams = &logintype=logout
-                        returnLast = url
-                    }
-                }
+    initialData.10.fields.user.fields {
+        logoutLink = TEXT
+        logoutLink {
+            typolink {
+                parameter = {$plugin.tx_headless.login.pid}
+                additionalParams = &logintype=logout
+                returnLast = url
             }
         }
     }
