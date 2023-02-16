@@ -6,8 +6,14 @@
             <trans-unit id="title">
                 <source>Item</source>
             </trans-unit>
-            <trans-unit id="columns.title">
-                <source>Title</source>
+            <trans-unit id="columns.flexform">
+                <source>Flexform</source>
+            </trans-unit>
+            <trans-unit id="columns.flexform.warning.label">
+                <source>Warning</source>
+            </trans-unit>
+            <trans-unit id="columns.flexform.warning.default">
+                <source>No FlexForm added for this type</source>
             </trans-unit>
             <trans-unit id="columns.header_layout.text">
                 <source>Text</source>
@@ -29,6 +35,9 @@
             </trans-unit>
             <trans-unit id="columns.header_layout.h6">
                 <source>H6</source>
+            </trans-unit>
+            <trans-unit id="columns.title">
+                <source>Title</source>
             </trans-unit>
         </body>
     </file>

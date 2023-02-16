@@ -31,6 +31,34 @@ return [
         'iconfile' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/actions/actions-folder.svg',
     ],
     'columns' => [
+        'flexform' => [
+            'l10n_display' => 'hideDiff',
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform',
+            'config' => [
+                'type' => 'flex',
+                'ds_pointerField' => 'tt_content',
+                'ds_tableField' => 'tt_content:CType',
+                'ds' => [
+                    'default' => '
+                        <T3DataStructure>
+                            <ROOT>
+                                <type>array</type>
+                                <el>
+                                    <warning>
+                                        <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.label</label>
+                                        <config>
+                                            <type>input</type>
+                                            <readOnly>true</readOnly>
+                                            <placeholder>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.default</placeholder>
+                                        </config>
+                                    </warning>
+                                </el>
+                            </ROOT>
+                        </T3DataStructure>
+                    ',
+                ],
+            ],
+        ],
         'sys_language_uid' => [
             'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [

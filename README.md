@@ -46,6 +46,50 @@ The [content defender](https://extensions.typo3.org/extension/content_defender) 
 
 Field of type inline. Basically `tx_headless_item` acts like tt_content without a `colPos`. Used for `accordion`, `header_slider` and `tabs`. See one of these definition on how to use items and override the showitem definition.
 
+To add a flexform to an item add the following configuration to `TCA/Overrides/tx_headless_item.php`:
+
+```$GLOBALS['TCA']['tx_headless_item']['columns']['flexform']['config']['ds']['<tt_content CType>'] = '<Path to flexform xml file>';```
+
+The `flexform` column has to be added to `showitem` of the respective tt_content type as well.
+For example, to add a flexform to the accordion type the following must contain the flexform column:
+
+```$GLOBALS['TCA']['tt_content']['types']['accordion']['columnsOverrides']['tx_headless_item']['config']['overrideChildTca']['types']['0']['showitem']```
+
+To ouput the flexform data in the frontend, the flexform field has to be added to the content elements typoscript.
+Example for modified `Accordion.typoscript`:
+
+```
+lib.accordionItems =< lib.items
+lib.accordionItems {
+    dataProcessing {
+        10 {
+            fields {
+                flexform {
+                    dataProcessing {
+                        10 = Remind\Headless\DataProcessing\FlexFormProcessor
+                        10 {
+                            fieldName = flexform
+                            as = flexform
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+tt_content.accordion =< lib.contentElementWithHeader
+tt_content.accordion {
+    fields {
+        content {
+            fields {
+                items =< lib.accordionItems
+            }
+        }
+    }
+}
+```
+
 #### header_layout
 
 Values for text, H1-H6 and hidden.

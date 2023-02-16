@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Remind\Headless\Hooks\FlexFormTools as FlexFormToolsHooks;
+use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Information\Typo3Version;
@@ -62,4 +64,11 @@ defined('TYPO3') or die;
         ['de']
         ['EXT:felogin/Resources/Private/Language/de.locallang.xlf']
         [] = 'EXT:rmnd_headless/Resources/Private/Language/Overrides/de.locallang_felogin.xlf';
+
+    $GLOBALS
+        ['TYPO3_CONF_VARS']
+        ['SC_OPTIONS']
+        [FlexFormTools::class]
+        ['flexParsing']
+        [FlexFormToolsHooks::class] = FlexFormToolsHooks::class;
 })();
