@@ -19,7 +19,11 @@ class FlexFormTools
         array &$row
     ): array {
         if ($tableName === 'tx_headless_item') {
-            [$foreignTable, $foreignField] = GeneralUtility::trimExplode(':', $fieldTca['config']['ds_tableField'], true);
+            [$foreignTable, $foreignField] = GeneralUtility::trimExplode(
+                ':',
+                $fieldTca['config']['ds_tableField'],
+                true
+            );
             $pointerField = $fieldTca['config']['ds_pointerField'];
             $request = $this->getRequest();
             $uid = $row['uid'] ?? null;
@@ -34,15 +38,19 @@ class FlexFormTools
                     parse_str($queryParams, $queryParams);
                     $type = $queryParams['defVals'][$foreignTable][$foreignField] ?? null;
                 } else {
-                    $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($foreignTable);
+                    $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
+                    $queryBuilder = $connectionPool->getQueryBuilderForTable($foreignTable);
                     $queryBuilder->getRestrictions()
                         ->removeAll()
                         ->add(GeneralUtility::makeInstance(DeletedRestriction::class));
                     $queryBuilder
                         ->select($foreignField)
                         ->from($foreignTable)
-                        ->where($queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($row[$pointerField], PDO::PARAM_INT)));
-    
+                        ->where($queryBuilder->expr()->eq(
+                            'uid',
+                            $queryBuilder->createNamedParameter($row[$pointerField], PDO::PARAM_INT)
+                        ));
+
                     $type = $queryBuilder->execute()->fetchOne();
                 }
             } else {
