@@ -8,7 +8,6 @@ use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Form\Hooks\DataStructureIdentifierHook;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
@@ -56,14 +55,6 @@ class FlexFormProcessor implements DataProcessorInterface
 
         $table = $cObj->getCurrentTable();
 
-        // Workaround for https://forge.typo3.org/issues/97972 since local patches from packages don't work
-        // (see https://github.com/cweagans/composer-patches/issues/339)
-        $hook = $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][FlexFormTools::class]['flexParsing'][DataStructureIdentifierHook::class];
-
-        if ($hook) {
-            unset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][FlexFormTools::class]['flexParsing'][DataStructureIdentifierHook::class]);
-        }
-
         $this->flexFormTools->cleanFlexFormXML($table, $fieldName, $processedData['data']);
 
         $this->flexFormTools->traverseFlexFormXMLData(
@@ -73,10 +64,6 @@ class FlexFormProcessor implements DataProcessorInterface
             $this,
             'parseElement'
         );
-
-        if ($hook) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS'][FlexFormTools::class]['flexParsing'][DataStructureIdentifierHook::class] = $hook;
-        }
 
         $flexformData = $this->convertFlexFormContentToArray($this->flexFormTools->cleanFlexFormXML);
 
@@ -101,23 +88,39 @@ class FlexFormProcessor implements DataProcessorInterface
     ): void {
         if (($element['TCEforms']['config']['renderType'] ?? null) === 'inputLink') {
             $link = $this->cObj->getTypoLink_URL($value);
-            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, $link);
+            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
+                $flexFormTools->cleanFlexFormXML,
+                $path,
+                $link,
+            );
             return;
         }
 
         if (($element['TCEforms']['config']['type'] ?? null) === 'check') {
-            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, (bool)$value);
+            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
+                $flexFormTools->cleanFlexFormXML,
+                $path,
+                (bool)$value,
+            );
             return;
         }
 
         if (($element['TCEforms']['config']['eval'] ?? null) === 'int') {
-            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, (int)$value);
+            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
+                $flexFormTools->cleanFlexFormXML,
+                $path,
+                (int)$value,
+            );
             return;
         }
 
         if (($element['TCEforms']['config']['type'] ?? null) === 'text' && $this->processorConf['parseFunc']) {
             $content = $this->cObj->parseFunc($value, [], $this->processorConf['parseFunc']);
-            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath($flexFormTools->cleanFlexFormXML, $path, $content);
+            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
+                $flexFormTools->cleanFlexFormXML,
+                $path,
+                $content,
+            );
             return;
         }
     }

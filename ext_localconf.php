@@ -3,12 +3,14 @@
 declare(strict_types=1);
 
 use Remind\Headless\Hooks\FlexFormTools as FlexFormToolsHooks;
+use Remind\Headless\XClass\DataStructureIdentifierHook;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Form\Hooks\DataStructureIdentifierHook as BaseDataStructureIdentifierHook;
 
 defined('TYPO3') or die;
 
@@ -71,4 +73,8 @@ defined('TYPO3') or die;
         [FlexFormTools::class]
         ['flexParsing']
         [FlexFormToolsHooks::class] = FlexFormToolsHooks::class;
+
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][BaseDataStructureIdentifierHook::class] = [
+        'className' => DataStructureIdentifierHook::class,
+    ];
 })();
