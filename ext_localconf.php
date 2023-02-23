@@ -11,6 +11,8 @@ use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Form\Hooks\DataStructureIdentifierHook as BaseDataStructureIdentifierHook;
+use FriendsOfTYPO3\Headless\Utility\FileUtility as BaseFileUtility;
+use Remind\Headless\XClass\FileUtility;
 
 defined('TYPO3') or die;
 
@@ -76,5 +78,10 @@ defined('TYPO3') or die;
 
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][BaseDataStructureIdentifierHook::class] = [
         'className' => DataStructureIdentifierHook::class,
+    ];
+
+    // TODO: remove once implemended in EXT:headless
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][BaseFileUtility::class] = [
+        'className' => FileUtility::class,
     ];
 })();

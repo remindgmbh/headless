@@ -7,3 +7,7 @@ services:
     resource: '../Classes/*'
   Remind\Headless\Service\JsonService:
     shared: false
+  Remind\Headless\Event\Listener\ModifyFileProperties:
+    tags:
+      -
+        name: event.listener

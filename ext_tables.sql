@@ -34,3 +34,7 @@ CREATE TABLE tt_content (
 CREATE TABLE pages (
     tx_headless_overview_label VARCHAR(60) DEFAULT '' NOT NULL,
 );
+
+CREATE TABLE sys_file_reference (
+    tx_headless_lazy_loading TINYINT(1) DEFAULT '0' NOT NULL,
+);

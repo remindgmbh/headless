@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/de.locallang_file.xlf" product-name="rmnd_headless">
+        <header/>
+        <body>
+            <trans-unit id="lazy_loading">
+                <target>Lazy loading</target>
+            </trans-unit>
+            <trans-unit id="lazy_loading.description">
+                <target>Lädt Bilder erst wenn diese sich im Viewport befinden. Sollte für Bilder im oberen Seitenbereich deaktiviert werden.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
