@@ -43,6 +43,7 @@ class ImageProcessingMiddleware implements MiddlewareInterface
                 'height' => $queryParams['height'] ?? null,
                 'maxWidth' => $queryParams['maxWidth'] ?? null,
                 'maxHeight' => $queryParams['maxHeight'] ?? null,
+                'fileExtension' => $queryParams['fileExtension'] ?? null,
             ];
 
             $processedImage = $this->imageService->applyProcessingInstructions($image, $processingInstructions);
