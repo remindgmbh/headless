@@ -38,6 +38,13 @@ class ImageProcessingMiddleware implements MiddlewareInterface
         if ($path === '/image' && $uid) {
             $image = $this->imageService->getImage($uid, null, true);
 
+            $lastModified = gmdate('D, d M Y H:i:s', $image->getProperty('tstamp')) . ' GMT';
+            $ifModifiedSince = $request->getHeader('if-modified-since')[0] ?? null;
+
+            if ($lastModified === $ifModifiedSince) {
+                return $this->responseFactory->createResponse(304);
+            }
+
             $processingInstructions = [
                 'width' => $queryParams['width'] ?? null,
                 'height' => $queryParams['height'] ?? null,
@@ -53,7 +60,9 @@ class ImageProcessingMiddleware implements MiddlewareInterface
 
             $response = $this->responseFactory
                 ->createResponse()
-                ->withHeader('Content-Type', $mimeType);
+                ->withHeader('Content-Type', $mimeType)
+                ->withHeader('Cache-Control', 'no-cache')
+                ->withHeader('Last-Modified', $lastModified);
 
             $response->getBody()->write($contents);
             return $response;
