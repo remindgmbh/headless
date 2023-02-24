@@ -9,6 +9,8 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use TYPO3\CMS\Core\Imaging\ImageManipulation\Area;
+use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Service\ImageService;
 
@@ -45,12 +47,24 @@ class ImageProcessingMiddleware implements MiddlewareInterface
                 return $this->responseFactory->createResponse(304);
             }
 
+            $cropVariant = $queryParams['breakpoint'] ?? 'default';
+
+            $crop = $image->getProperty('crop');
+            $cropVariantCollection = CropVariantCollection::create($crop);
+            $cropArea = $cropVariantCollection->getCropArea($cropVariant);
+
+            // Use default cropVariant if breakpoint cropVariant does not exist
+            if ($cropArea == Area::createEmpty()) {
+                $cropArea = $cropVariantCollection->getCropArea();
+            }
+
             $processingInstructions = [
                 'width' => $queryParams['width'] ?? null,
                 'height' => $queryParams['height'] ?? null,
                 'maxWidth' => $queryParams['maxWidth'] ?? null,
                 'maxHeight' => $queryParams['maxHeight'] ?? null,
                 'fileExtension' => $queryParams['fileExtension'] ?? null,
+                'crop' => $cropArea->makeAbsoluteBasedOnFile($image),
             ];
 
             $processedImage = $this->imageService->applyProcessingInstructions($image, $processingInstructions);

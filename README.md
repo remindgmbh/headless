@@ -15,7 +15,7 @@ Use comoser to install the extension using `composer install remind/headless`. I
 
 Add the following to your site config for backend layouts to work:
 
-```
+```yaml
 imports:
   - { resource: "EXT:rmnd_headless/Configuration/Site/settings.yaml" }
 ```
@@ -116,13 +116,52 @@ Similar to `space_before_inside`.
 
 An `tx_headless_overview_label` field is added to the page TCA. The field should be used to customize the label for the overview pages.
 
+### Crop Variants
+
+`ImageProcessingMiddleware` accepts a breakpoint as a query parameter and uses a crop variant by that name if available. Appropriate crop variants have to be created for content elements.
+
+Example for crop variants for breakpoints sm, md and lg for `textpic`:
+
+```php
+$GLOBALS['TCA']['tt_content']['types']['textpic']['columnsOverrides']['image']['config']['overrideChildTca']['columns']['crop']['config'] = [
+	'cropVariants' => [
+		'sm' => [
+			// configuration
+		],
+		'md' => [
+			// configuration
+		],
+		'lg' => [
+			// configuration
+		],
+	],
+];
+```
+
+Example for crop variants for breakpoints sm, md and lg for `header_slider` items:
+
+```php
+$GLOBALS['TCA']['tt_content']['types']['header_slider']['columnsOverrides']['tx_headless_item']['config']['overrideChildTca']['columns']['image']['config']['overrideChildTca']['columns']['crop']['config'] = [
+	'cropVariants' => [
+		'sm' => [
+			// configuration
+		],
+		'md' => [
+			// configuration
+		],
+		'lg' => [
+			// configuration
+		],
+	],
+];
+```
 
 
 ## Content Elements
 
 ### accordion
 
-Uses `tx_headless_item`, items consist of text (header, subheader, bodytext) only.
+Uses `tx_headless_item`, items consist of text (header, subheader, bodytext, title), a flexform field and images.
 
 ### footer_content
 

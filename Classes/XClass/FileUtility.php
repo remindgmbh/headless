@@ -19,7 +19,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 class FileUtility extends BaseFileUtility
 {
     private ?EventDispatcherInterface $eventDispatcher = null;
-    
+
     public function __construct(
         ?ContentObjectRenderer $contentObjectRenderer = null,
         ?RendererRegistry $rendererRegistry = null,
