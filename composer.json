@@ -39,7 +39,7 @@
         "remind/extbase": "^1.0 | dev-develop",
         "php": "^8.1",
         "typo3/cms-core": "^11.5.14",
-        "friendsoftypo3/headless": "^3.1.2"
+        "friendsoftypo3/headless": ">3.2.2 <4.0.0"
     },
     "require-dev": {
         "apache-solr-for-typo3/solr": "^11.5.0",
