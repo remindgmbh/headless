@@ -37,7 +37,7 @@ lib.items {
                         parameter {
                             field = header_link
                         }
-                        returnLast = url
+                        returnLast = result
                     }
                 }
                 headerPosition = TEXT
