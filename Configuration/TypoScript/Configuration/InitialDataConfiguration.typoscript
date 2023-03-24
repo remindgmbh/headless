@@ -20,7 +20,7 @@ initialData {
     }
 }
 
-[frontend.user.isLoggedIn && {$plugin.tx_headless.login.pid}]
+[frontend.user.isLoggedIn && {$plugin.tx_headless.login.pid} !== 0]
     initialData.10.fields.user.fields {
         logoutLink = TEXT
         logoutLink {

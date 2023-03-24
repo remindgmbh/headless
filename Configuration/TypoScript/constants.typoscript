@@ -1,5 +1,6 @@
 plugin.tx_headless {
     login {
+        pid = 0
         pid := getEnv(LOGIN_PID)
     }
     footer {
