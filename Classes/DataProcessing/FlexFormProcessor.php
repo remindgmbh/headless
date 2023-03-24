@@ -87,7 +87,7 @@ class FlexFormProcessor implements DataProcessorInterface
         FlexFormTools $flexFormTools
     ): void {
         if (($element['TCEforms']['config']['renderType'] ?? null) === 'inputLink') {
-            $link = $this->cObj->getTypoLink_URL($value);
+            $link = $this->cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
             $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
                 $flexFormTools->cleanFlexFormXML,
                 $path,
