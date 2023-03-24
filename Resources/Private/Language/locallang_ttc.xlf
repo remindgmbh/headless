@@ -51,11 +51,14 @@
             <trans-unit id="header_layout.text">
                 <source>Text</source>
             </trans-unit>
+            <trans-unit id="space_after_inside">
+                <source>Space After (inside Background)</source>
+            </trans-unit>
             <trans-unit id="space_before_inside">
                 <source>Space Before (inside Background)</source>
             </trans-unit>
-            <trans-unit id="space_after_inside">
-                <source>Space After (inside Background)</source>
+            <trans-unit id='space_none'>
+                <source>None</source>
             </trans-unit>
             <trans-unit id="table_header_position.3">
                 <source>Top and Left</source>

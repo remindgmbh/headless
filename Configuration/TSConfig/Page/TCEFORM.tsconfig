@@ -49,6 +49,16 @@ TCEFORM {
         linkToTop.disabled = 1
         media.disabled = 1
         sectionIndex.disabled = 1
+        space_after_class {
+            altLabels {
+                . = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none
+            }
+        }
+        space_before_class {
+            altLabels {
+                . = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none
+            }
+        }
         table_class.disabled = 1
         table_header_position {
             addItems {

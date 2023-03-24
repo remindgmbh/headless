@@ -110,7 +110,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', ''],
+                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none', ''],
                     ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small', 'extra-small'],
                     ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small', 'small'],
                     ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium', 'medium'],
@@ -128,7 +128,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', ''],
+                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none', ''],
                     ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small', 'extra-small'],
                     ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small', 'small'],
                     ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium', 'medium'],
@@ -165,5 +165,8 @@ ExtensionManagementUtility::addFieldsToPalette(
 
 ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'tx_headless_cookie_category');
 ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'tx_headless_cookie_message');
+
+$GLOBALS['TCA']['tt_content']['columns']['space_before_class']['config']['default'] = 'medium';
+$GLOBALS['TCA']['tt_content']['columns']['space_after_class']['config']['default'] = 'medium';
 
 $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] = ContentWithItemsPreviewRenderer::class;
