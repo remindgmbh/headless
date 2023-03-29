@@ -77,4 +77,6 @@ defined('TYPO3') or die;
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][BaseDataStructureIdentifierHook::class] = [
         'className' => DataStructureIdentifierHook::class,
     ];
+
+    $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default'] = 'EXT:rmnd_headless/Configuration/RTE/Default.yaml';
 })();
