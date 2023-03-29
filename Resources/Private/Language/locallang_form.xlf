@@ -9,6 +9,9 @@
             <trans-unit id="formEditor.elements.Form.editor.loadingText.label">
                 <source>Loading Text</source>
             </trans-unit>
+            <trans-unit id="formEditor.elements.Form.editor.requiredHint.label">
+                <source>Required field hint</source>
+            </trans-unit>
             <trans-unit id="formEditor.elements.FormElement.editor.identifier.label">
                 <source>Identifier</source>
             </trans-unit>
