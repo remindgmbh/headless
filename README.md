@@ -13,11 +13,11 @@ This extension provides:
 
 Use comoser to install the extension using `composer install remind/headless`. Import typoscript in your provider extension.
 
-Add the following to your site config for backend layouts to work:
+Add the following to your site config:
 
 ```yaml
 imports:
-  - { resource: "EXT:rmnd_headless/Configuration/Site/settings.yaml" }
+  - { resource: "EXT:rmnd_headless/Configuration/Site/config.yaml" }
 ```
 
 

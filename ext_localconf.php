@@ -39,6 +39,11 @@ defined('TYPO3') or die;
 
     $GLOBALS
         ['TYPO3_CONF_VARS']
+        ['SYS']['features']
+        ['headless.frontendUrls'] = true;
+
+    $GLOBALS
+        ['TYPO3_CONF_VARS']
         ['SYS']
         ['locallangXMLOverride']
         ['EXT:headless/Resources/Private/Language/locallang.xlf']
