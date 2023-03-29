@@ -166,7 +166,4 @@ ExtensionManagementUtility::addFieldsToPalette(
 ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'tx_headless_cookie_category');
 ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'tx_headless_cookie_message');
 
-$GLOBALS['TCA']['tt_content']['columns']['space_before_class']['config']['default'] = 'medium';
-$GLOBALS['TCA']['tt_content']['columns']['space_after_class']['config']['default'] = 'medium';
-
 $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] = ContentWithItemsPreviewRenderer::class;

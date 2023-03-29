@@ -1,0 +1,6 @@
+TCAdefaults {
+    tt_content {
+        space_before_class = medium
+        space_after_class = medium
+    }
+}
