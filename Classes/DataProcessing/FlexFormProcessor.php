@@ -15,18 +15,6 @@ class FlexFormProcessor implements DataProcessorInterface
 {
     protected ContentObjectRenderer $cObj;
 
-    protected array $processorConf;
-
-    protected FlexFormService $flexFormService;
-
-    protected FlexFormTools $flexFormTools;
-
-    public function __construct()
-    {
-        $this->flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
-        $this->flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
-    }
-
     /**
      * @param ContentObjectRenderer $cObj The data of the content element or page
      * @param array $contentObjectConf The configuration of Content Object
@@ -41,7 +29,11 @@ class FlexFormProcessor implements DataProcessorInterface
         array $processedData
     ): array {
         $this->cObj = $cObj;
-        $this->processorConf = $processorConf;
+
+        $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
+        $flexFormTools->reNumberIndexesOfSectionData = true;
+        $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
+
         $fieldName = $cObj->stdWrapValue('fieldName', $processorConf);
 
         // default flexform field name
@@ -55,9 +47,9 @@ class FlexFormProcessor implements DataProcessorInterface
 
         $table = $cObj->getCurrentTable();
 
-        $this->flexFormTools->cleanFlexFormXML($table, $fieldName, $processedData['data']);
+        $flexFormTools->cleanFlexFormXML($table, $fieldName, $processedData['data']);
 
-        $this->flexFormTools->traverseFlexFormXMLData(
+        $flexFormTools->traverseFlexFormXMLData(
             $table,
             $fieldName,
             $processedData['data'],
@@ -65,7 +57,20 @@ class FlexFormProcessor implements DataProcessorInterface
             'parseElement'
         );
 
-        $flexformData = $this->convertFlexFormContentToArray($this->flexFormTools->cleanFlexFormXML);
+        $flexformData = $flexFormService->convertFlexFormContentToArray(
+            GeneralUtility::array2xml($flexFormTools->cleanFlexFormXML)
+        );
+
+        // remove unnecessary nesting in section structure
+        $flexformData = array_map(function ($value) {
+            if (is_array($value)) {
+                return array_reduce($value, function (array $result, array $value) {
+                    $result[] = array_pop($value);
+                    return $result;
+                }, []);
+            }
+            return $value;
+        }, $flexformData);
 
         // save result in "data" (default) or given variable name
         $targetVariableName = $cObj->stdWrapValue('as', $processorConf);
@@ -73,7 +78,11 @@ class FlexFormProcessor implements DataProcessorInterface
         if (!empty($targetVariableName)) {
             $processedData[$targetVariableName] = $flexformData;
         } else {
-            $processedData['data'][$fieldName] = $flexformData;
+            if ($processedData['data'][$fieldName]) {
+                $processedData['data'][$fieldName] = $flexformData;
+            } else {
+                $processedData[$fieldName] = $flexformData;
+            }
         }
 
         return $processedData;
@@ -86,78 +95,28 @@ class FlexFormProcessor implements DataProcessorInterface
         string $path,
         FlexFormTools $flexFormTools
     ): void {
+        $newValue = $value;
+
         if (($element['TCEforms']['config']['renderType'] ?? null) === 'inputLink') {
-            $link = $this->cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
-            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
-                $flexFormTools->cleanFlexFormXML,
-                $path,
-                $link,
-            );
-            return;
+            $newValue = $this->cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
         }
 
         if (($element['TCEforms']['config']['type'] ?? null) === 'check') {
-            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
-                $flexFormTools->cleanFlexFormXML,
-                $path,
-                (bool)$value,
-            );
-            return;
+            $newValue = (bool) $value;
         }
 
         if (($element['TCEforms']['config']['eval'] ?? null) === 'int') {
-            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
-                $flexFormTools->cleanFlexFormXML,
-                $path,
-                (int)$value,
-            );
-            return;
+            $newValue = (int) $value;
         }
 
-        if (($element['TCEforms']['config']['type'] ?? null) === 'text' && $this->processorConf['parseFunc']) {
-            $content = $this->cObj->parseFunc($value, [], $this->processorConf['parseFunc']);
-            $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
-                $flexFormTools->cleanFlexFormXML,
-                $path,
-                $content,
-            );
-            return;
+        if (($element['TCEforms']['config']['type'] ?? null) === 'text') {
+            $newValue = $this->cObj->parseFunc($value, [], '< lib.parseFunc_links');
         }
-    }
 
-    // taken from TYPO3\CMS\Core\Service\FlexFormService but without converting from string to array first
-    protected function convertFlexFormContentToArray(
-        $flexFormArray,
-        $languagePointer = 'lDEF',
-        $valuePointer = 'vDEF'
-    ): array {
-        $settings = [];
-        $flexFormArray = $flexFormArray['data'] ?? [];
-        foreach (array_values($flexFormArray) as $languages) {
-            if (!is_array($languages[$languagePointer])) {
-                continue;
-            }
-            foreach ($languages[$languagePointer] as $valueKey => $valueDefinition) {
-                if (strpos($valueKey, '.') === false) {
-                    $settings[$valueKey] = $this->flexFormService->walkFlexFormNode($valueDefinition, $valuePointer);
-                } else {
-                    $valueKeyParts = explode('.', $valueKey);
-                    $currentNode = &$settings;
-                    foreach ($valueKeyParts as $valueKeyPart) {
-                        $currentNode = &$currentNode[$valueKeyPart];
-                    }
-                    if (is_array($valueDefinition)) {
-                        if (array_key_exists($valuePointer, $valueDefinition)) {
-                            $currentNode = $valueDefinition[$valuePointer];
-                        } else {
-                            $currentNode = $this->flexFormService->walkFlexFormNode($valueDefinition, $valuePointer);
-                        }
-                    } else {
-                        $currentNode = $valueDefinition;
-                    }
-                }
-            }
-        }
-        return $settings;
+        $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
+            $flexFormTools->cleanFlexFormXML,
+            $path,
+            $newValue,
+        );
     }
 }
