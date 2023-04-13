@@ -1,39 +1,13 @@
+tt_content.textpic =< tt_content.textmedia
 tt_content.textpic {
     fields {
         content {
             fields {
-                ratio = TEXT
-                ratio {
-                    field = imagecols
-                    intval = 1
-                }
-                imagePosition = COA
-                imagePosition {
-                    10 = TEXT
-                    10 {
-                        if {
-                            value = 25
-                            equals.field = imageorient
-                        }
-                        value = right
-                    }
-                    20 = TEXT
-                    20 {
-                        if {
-                            value = 26
-                            equals.field = imageorient
-                        }
-                        value = left
-                    }
-                }
                 gallery >
-                images = TEXT
-                images {
+                assets {
                     dataProcessing {
-                        10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
                         10 {
                             references.fieldName = image
-                            as = files
                         }
                     }
                 }
