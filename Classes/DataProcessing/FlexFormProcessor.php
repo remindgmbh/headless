@@ -58,14 +58,22 @@ class FlexFormProcessor implements DataProcessorInterface
         );
 
         $flexformData = $flexFormService->convertFlexFormContentToArray(
-            GeneralUtility::array2xml($flexFormTools->cleanFlexFormXML)
+            GeneralUtility::array2xml(
+                $flexFormTools->cleanFlexFormXML,
+                '',
+                0,
+                'T3FlexForms',
+                0,
+                $flexFormTools->flexArray2Xml_options
+            )
         );
 
         // remove unnecessary nesting in section structure
         $flexformData = array_map(function ($value) {
-            if (is_array($value)) {
-                return array_reduce($value, function (array $result, array $value) {
-                    $result[] = array_pop($value);
+            // check if $value is an array and contains only numeric keys
+            if (is_array($value) && empty(array_filter(array_keys($value), 'is_string'))) {
+                return array_reduce($value, function (array $result, mixed $value) {
+                    $result[] = is_array($value) && count($value) === 1 ? array_pop($value) : $value;
                     return $result;
                 }, []);
             }
