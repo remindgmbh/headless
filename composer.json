@@ -37,12 +37,12 @@
     },
     "require": {
         "ichhabrecht/content-defender":"^3.3",
-        "php": "^8.1",
-        "typo3/cms-core": "^11.5.14",
-        "friendsoftypo3/headless": "^3.3"
+        "php": "^8.2",
+        "typo3/cms-core": "^12.4",
+        "friendsoftypo3/headless": "^4.0"
     },
     "require-dev": {
-        "apache-solr-for-typo3/solr": "^11.5.0",
+        "apache-solr-for-typo3/solr": "^12.0",
         "phpmd/phpmd": "^2.10.2",
         "remind/confluence-changelog": "^0.3.0",
         "sebastian/phpcpd": "^6.0.3",
