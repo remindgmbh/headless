@@ -3,7 +3,7 @@
 use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-defined('TYPO3_MODE') || die;
+defined('TYPO3') || die;
 
 ExtensionManagementUtility::addTCAcolumns('sys_file_reference', [
     'tx_headless_lazy_loading' => [
