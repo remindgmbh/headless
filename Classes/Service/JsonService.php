@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Remind\Headless\Service;
 
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3\CMS\Extbase\Mvc\Web\RequestBuilder;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 
@@ -18,11 +18,10 @@ class JsonService
     public function __construct(
         private readonly UriBuilder $uriBuilder,
         private readonly LoggerInterface $logger,
-        Request $request,
         RequestBuilder $requestBuilder,
         ConfigurationManagerInterface $configurationManager
     ) {
-        $extbaseRequest = $requestBuilder->build($request);
+        $extbaseRequest = $requestBuilder->build($this->getRequest());
         $this->uriBuilder->setRequest($extbaseRequest);
         $this->settings = $configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS
@@ -84,5 +83,10 @@ class JsonService
         ];
 
         return $result;
+    }
+
+    private function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }
