@@ -7,22 +7,12 @@ use Remind\Headless\XClass\DataStructureIdentifierHook;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
-use TYPO3\CMS\Core\Information\Typo3Version;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Form\Hooks\DataStructureIdentifierHook as BaseDataStructureIdentifierHook;
 
 defined('TYPO3') or die;
 
 (function () {
-    $versionInformation = GeneralUtility::makeInstance(Typo3Version::class);
-    // Only include page.tsconfig if TYPO3 version is below 12 so that it is not imported twice.
-    if ($versionInformation->getMajorVersion() < 12) {
-        ExtensionManagementUtility::addPageTSConfig('
-          @import "EXT:rmnd_headless/Configuration/page.tsconfig"
-       ');
-    }
-
     /* @var $iconRegistry \TYPO3\CMS\Core\Imaging\IconRegistry */
     $iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
 
