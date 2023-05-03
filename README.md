@@ -20,7 +20,12 @@ imports:
   - { resource: "EXT:rmnd_headless/Configuration/Site/config.yaml" }
 ```
 
+Add the following to your site settings:
 
+```yaml
+imports:
+  - { resource: "EXT:rmnd_headless/Configuration/Site/settings.yaml" }
+```
 
 ## Dependencies
 
