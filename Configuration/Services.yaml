@@ -7,7 +7,11 @@ services:
     resource: '../Classes/*'
   Remind\Headless\Service\JsonService:
     shared: false
-  Remind\Headless\Event\Listener\EnrichFileData:
+  Remind\Headless\Event\Listener\EnrichFileDataEventListener:
+    tags:
+      -
+        name: event.listener
+  Remind\Headless\Event\Listener\AfterFlexFormDataStructureIdentifierInitializedEventListener:
     tags:
       -
         name: event.listener

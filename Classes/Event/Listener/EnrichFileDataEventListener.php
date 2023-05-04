@@ -6,7 +6,7 @@ namespace Remind\Headless\Event\Listener;
 
 use FriendsOfTYPO3\Headless\Event\EnrichFileDataEvent;
 
-class EnrichFileData
+class EnrichFileDataEventListener
 {
     public function __invoke(EnrichFileDataEvent $event): void
     {

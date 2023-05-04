@@ -1,35 +1,35 @@
 <?php
 
-declare(strict_types=1);
-
-namespace Remind\Headless\Hooks;
+namespace Remind\Headless\Event\Listener;
 
 use PDO;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureIdentifierInitializedEvent;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class FlexFormTools
+class AfterFlexFormDataStructureIdentifierInitializedEventListener
 {
-    public function getDataStructureIdentifierPreProcess(
-        array $fieldTca,
-        string $tableName,
-        string $fieldName,
-        array &$row
-    ): array {
-        if ($tableName === 'tx_headless_item') {
-            [$foreignTable, $foreignField] = GeneralUtility::trimExplode(
-                ':',
-                $fieldTca['config']['ds_tableField'],
-                true
-            );
-            $pointerField = $fieldTca['config']['ds_pointerField'];
+    private function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
+    }
+
+    public function __invoke(AfterFlexFormDataStructureIdentifierInitializedEvent $event): void
+    {
+        if ($event->getTableName() === 'tx_headless_item') {
+            $row = $event->getRow();
+
+            $foreignUidField = 'tt_content';
+            $foreignTable = 'tt_content';
+            $foreignField = 'CType';
+
             $request = $this->getRequest();
-            $uid = $row['uid'] ?? null;
+            $foreignUid = $row[$foreignUidField] ?? null;
             $type = null;
-            if ($uid) {
-                $isNew = !is_int($uid) && str_starts_with($uid, 'NEW');
+            if ($foreignUid) {
+                $isNew = !is_int($foreignUid) && str_starts_with($foreignUid, 'NEW');
                 if ($isNew) {
                     $body = $request->getParsedBody();
                     $context = json_decode($body['ajax']['context'] ?? null, true);
@@ -48,23 +48,22 @@ class FlexFormTools
                         ->from($foreignTable)
                         ->where($queryBuilder->expr()->eq(
                             'uid',
-                            $queryBuilder->createNamedParameter($row[$pointerField], PDO::PARAM_INT)
+                            $queryBuilder->createNamedParameter($foreignUid, PDO::PARAM_INT)
                         ));
 
-                    $type = $queryBuilder->execute()->fetchOne();
+                    $type = $queryBuilder->executeQuery()->fetchOne();
                 }
             } else {
                 $body = $request->getParsedBody();
                 $foreignRow = current($body['data'][$foreignTable]);
                 $type = $foreignRow[$foreignField];
             }
-            $row[$pointerField] = $type;
-        }
-        return [];
-    }
 
-    private function getRequest(): ServerRequestInterface
-    {
-        return $GLOBALS['TYPO3_REQUEST'];
+            if (isset($GLOBALS['TCA']['tx_headless_item']['columns']['flexform']['config']['ds'][$type])) {
+                $identifier = $event->getIdentifier();
+                $identifier['dataStructureKey'] = $type;
+                $event->setIdentifier($identifier);
+            }
+        }
     }
 }

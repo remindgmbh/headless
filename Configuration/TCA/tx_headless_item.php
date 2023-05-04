@@ -2,9 +2,6 @@
 
 defined('TYPO3') || die;
 
-use TYPO3\CMS\Core\Resource\File;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:title',
@@ -29,15 +26,17 @@ return [
         ],
         'searchFields' => 'header,subheader,bodytext',
         'iconfile' => 'EXT:core/Resources/Public/Icons/T3Icons/svgs/actions/actions-folder.svg',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'columns' => [
         'flexform' => [
             'l10n_display' => 'hideDiff',
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform',
             'config' => [
+                // FlexForm according to tt_content:CType is selected in Remind\Headless\Event\Listener\AfterFlexFormDataStructureIdentifierInitializedEventListener
                 'type' => 'flex',
-                'ds_pointerField' => 'tt_content',
-                'ds_tableField' => 'tt_content:CType',
                 'ds' => [
                     'default' => '
                         <T3DataStructure>
@@ -46,10 +45,10 @@ return [
                                 <el>
                                     <warning>
                                         <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.label</label>
+                                        <description>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.default</description>
                                         <config>
-                                            <type>input</type>
-                                            <readOnly>true</readOnly>
-                                            <placeholder>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.default</placeholder>
+                                            <type>none</type>
+                                            <size>0</size>
                                         </config>
                                     </warning>
                                 </el>
@@ -264,51 +263,10 @@ return [
         ],
         'image' => [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.images',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'image',
-                [
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference',
-                    ],
-                    // custom configuration for displaying fields in the overlay/reference table
-                    // to use the imageoverlayPalette instead of the basicoverlayPalette
-                    'overrideChildTca' => [
-                        'types' => [
-                            '0' => [
-                                'showitem' => '
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_TEXT => [
-                                'showitem' => '
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_IMAGE => [
-                                'showitem' => '
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_AUDIO => [
-                                'showitem' => '
-                                    --palette--;;audioOverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_VIDEO => [
-                                'showitem' => '
-                                    --palette--;;videoOverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_APPLICATION => [
-                                'showitem' => '
-                                    --palette--;;imageoverlayPalette,
-                                    --palette--;;filePalette',
-                            ],
-                        ],
-                    ],
-                ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            ),
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'common-image-types',
+            ],
         ],
     ],
     'palettes' => [
