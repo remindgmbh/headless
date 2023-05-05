@@ -48,6 +48,9 @@
             <trans-unit id="cookie.message">
                 <target>Cookie Meldung</target>
             </trans-unit>
+            <trans-unit id="header.label.backendOnly">
+                <target>Header (nur im Backend sichtbar)</target>
+            </trans-unit>
             <trans-unit id="header_layout.text">
                 <target>Text</target>
             </trans-unit>

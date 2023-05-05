@@ -26,6 +26,7 @@ $GLOBALS['TCA']['tt_content']['types']['header_slider'] = [
     'showitem' => '
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
             --palette--;;general,
+            header,
             pi_flexform,
             tx_headless_item,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,

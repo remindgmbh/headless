@@ -13,6 +13,10 @@ TCEFORM {
             altLabels.image = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.title
         }
         frame_class.disabled = 1
+        header.types {
+            footer_content.label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:header.label.backendOnly
+            header_slider.label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:header.label.backendOnly
+        }
         image.types {
             image.config.maxitems = 1
             textpic.config.maxitems = 1
