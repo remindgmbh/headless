@@ -26,7 +26,7 @@ class FlexFormTools
             );
             $pointerField = $fieldTca['config']['ds_pointerField'];
             $request = $this->getRequest();
-            $uid = $row['uid'] ?? null;
+            $uid = $row[$pointerField] ?? null;
             $type = null;
             if ($uid) {
                 $isNew = !is_int($uid) && str_starts_with($uid, 'NEW');
@@ -48,7 +48,7 @@ class FlexFormTools
                         ->from($foreignTable)
                         ->where($queryBuilder->expr()->eq(
                             'uid',
-                            $queryBuilder->createNamedParameter($row[$pointerField], PDO::PARAM_INT)
+                            $queryBuilder->createNamedParameter($uid, PDO::PARAM_INT)
                         ));
 
                     $type = $queryBuilder->execute()->fetchOne();
