@@ -22,14 +22,38 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:header_layout.text', '0'],
-                    ['H1', '1'],
-                    ['H2', '2'],
-                    ['H3', '3'],
-                    ['H4', '4'],
-                    ['H5', '5'],
-                    ['H6', '6'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_layout.I.6', '100'],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:header_layout.text',
+                        'value' => '0',
+                    ],
+                    [
+                        'label' => 'H1',
+                        'value' => '1',
+                    ],
+                    [
+                        'label' => 'H2',
+                        'value' => '2',
+                    ],
+                    [
+                        'label' => 'H3',
+                        'value' => '3',
+                    ],
+                    [
+                        'label' => 'H4',
+                        'value' => '4',
+                    ],
+                    [
+                        'label' => 'H5',
+                        'value' => '5',
+                    ],
+                    [
+                        'label' => 'H6',
+                        'value' => '6',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_layout.I.6',
+                        'value' => '100',
+                    ],
                 ],
                 'default' => 0,
             ],
@@ -41,12 +65,30 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.none', 'none'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.primary', 'primary'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.secondary', 'secondary'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.accent', 'accent'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.white', 'white'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.black', 'black'],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.none',
+                        'value' => 'none',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.primary',
+                        'value' => 'primary',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.secondary',
+                        'value' => 'secondary',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.accent',
+                        'value' => 'accent',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.white',
+                        'value' => 'white',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.black',
+                        'value' => 'black',
+                    ],
                 ],
                 'default' => 'none',
             ],
@@ -60,8 +102,8 @@ ExtensionManagementUtility::addTCAcolumns(
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
-                        0 => '',
-                        1 => '',
+                        'label' => '',
+                        'value' => 0,
                     ],
                 ],
             ],
@@ -74,11 +116,26 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.none', null],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.necessary', 0],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.preferences', 1],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.statistics', 2],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.marketing', 3],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.none',
+                        'value' => null,
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.necessary',
+                        'value' => 0,
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.preferences',
+                        'value' => 1,
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.statistics',
+                        'value' => 2,
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.marketing',
+                        'value' => 3,
+                    ],
                 ],
                 'default' => null,
             ],
@@ -90,7 +147,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'text',
                 'cols' => 80,
                 'rows' => 10,
-                'softref' => 'typolink_tag,images,email[subst],url',
+                'softref' => 'typolink_tag,email[subst],url',
                 'enableRichtext' => true,
             ],
         ],
@@ -110,12 +167,30 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none', ''],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small', 'extra-small'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small', 'small'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium', 'medium'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large', 'large'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large', 'extra-large'],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none',
+                        'value' => '',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small',
+                        'value' => 'extra-small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small',
+                        'value' => 'small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium',
+                        'value' => 'medium',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large',
+                        'value' => 'large',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large',
+                        'value' => 'extra-large',
+                    ],
                 ],
                 'default' => '',
             ],
@@ -128,12 +203,30 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none', ''],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small', 'extra-small'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small', 'small'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium', 'medium'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large', 'large'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large', 'extra-large'],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none',
+                        'value' => '',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small',
+                        'value' => 'extra-small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small',
+                        'value' => 'small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium',
+                        'value' => 'medium',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large',
+                        'value' => 'large',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large',
+                        'value' => 'extra-large',
+                    ],
                 ],
                 'default' => '',
             ],

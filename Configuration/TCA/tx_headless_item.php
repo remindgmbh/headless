@@ -9,7 +9,6 @@ return [
         'label_alt' => 'subheader,bodytext',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'type' => 'tt_content:CType',
         'hideTable' => true,
         'sortby' => 'sorting',
@@ -72,7 +71,10 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
+                    [
+                        'label' => '',
+                        'value' => 0,
+                    ],
                 ],
                 'foreign_table' => 'tx_headless_item',
                 'foreign_table_where' => 'AND tx_headless_item.uid=###REC_FIELD_l10n_parent### AND tx_headless_item.sys_language_uid IN (-1,0)',
@@ -101,9 +103,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
                 'default' => 0,
             ],
             'l10n_mode' => 'exclude',
@@ -113,9 +113,7 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime',
+                'type' => 'datetime',
                 'default' => 0,
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038),
@@ -129,7 +127,6 @@ return [
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:title',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'tt_content',
                 'size' => 1,
                 'maxitems' => 1,
@@ -153,14 +150,38 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.text', '0'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h1', '1'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h2', '2'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h3', '3'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h4', '4'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h5', '5'],
-                    ['LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h6', '6'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_layout.I.6', '100'],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.text',
+                        'value' => '0',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h1',
+                        'value' => '1',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h2',
+                        'value' => '2',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h3',
+                        'value' => '3',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h4',
+                        'value' => '4',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h5',
+                        'value' => '5',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.header_layout.h6',
+                        'value' => '6',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_layout.I.6',
+                        'value' => '100',
+                    ],
                 ],
                 'default' => 0,
             ],
@@ -172,10 +193,22 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', ''],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_position.I.1', 'center'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_position.I.2', 'right'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_position.I.3', 'left'],
+                    [
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value',
+                        'value' => '',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_position.I.1',
+                        'value' => 'center',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_position.I.2',
+                        'value' => 'right',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_position.I.3',
+                        'value' => 'left',
+                    ],
                 ],
                 'default' => '',
             ],
@@ -184,19 +217,8 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputLink',
+                'type' => 'link',
                 'size' => 50,
-                'max' => 1024,
-                'eval' => 'trim',
-                'fieldControl' => [
-                    'linkPopup' => [
-                        'options' => [
-                            'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
-                        ],
-                    ],
-                ],
-                'softref' => 'typolink',
             ],
         ],
         'subheader' => [
@@ -234,12 +256,30 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', ''],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small', 'extra-small'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small', 'small'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium', 'medium'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large', 'large'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large', 'extra-large'],
+                    [
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value',
+                        'value' => '',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small',
+                        'value' => 'extra-small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small',
+                        'value' => 'small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium',
+                        'value' => 'medium',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large',
+                        'value' => 'large',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large',
+                        'value' => 'extra-large',
+                    ],
                 ],
                 'default' => '',
             ],
@@ -251,12 +291,30 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value', ''],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small', 'extra-small'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small', 'small'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium', 'medium'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large', 'large'],
-                    ['LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large', 'extra-large'],
+                    [
+                        'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.default_value',
+                        'value' => '',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small',
+                        'value' => 'extra-small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small',
+                        'value' => 'small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium',
+                        'value' => 'medium',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large',
+                        'value' => 'large',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large',
+                        'value' => 'extra-large',
+                    ],
                 ],
                 'default' => '',
             ],
