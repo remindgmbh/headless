@@ -22,7 +22,7 @@ class DisplayCond
             ->where(
                 $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($record['pid'], PDO::PARAM_INT))
             )
-            ->execute();
+            ->executeQuery();
 
         return (bool) $statement->fetchOne();
     }

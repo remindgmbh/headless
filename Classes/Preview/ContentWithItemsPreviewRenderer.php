@@ -26,7 +26,7 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
                 ->from('tx_headless_item')
                 ->where($queryBuilder->expr()->eq('tt_content', $record['uid']));
 
-            $result = $queryBuilder->execute();
+            $result = $queryBuilder->executeQuery();
             $rmndContentItems = $result->fetchAllAssociative();
 
             $itemContent = '<br />';
@@ -43,7 +43,8 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
                 }
 
                 if ($rmndContentItem['image']) {
-                    $itemContent .= $this->getThumbCodeUnlinked($rmndContentItem, 'tx_headless_item', 'image') . '<br />';
+                    $itemContent .= $this->getThumbCodeUnlinked($rmndContentItem, 'tx_headless_item', 'image');
+                    $itemContent .= '<br />';
                 }
 
                 if ($lastKey !== $key) {
