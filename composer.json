@@ -65,7 +65,7 @@
         "static-analysis": [
             "@pmd",
             "@pmd-xml",
-            "@phpcpd",
+            "@phpcbf",
             "@phpcs"
         ]
     }
