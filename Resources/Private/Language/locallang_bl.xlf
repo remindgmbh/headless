@@ -3,9 +3,6 @@
     <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf" product-name="rmnd_headless">
         <header/>
         <body>
-            <trans-unit id="default">
-                <source>Default</source>
-            </trans-unit>
             <trans-unit id="column.main">
                 <source>Main</source>
             </trans-unit>
@@ -14,6 +11,12 @@
             </trans-unit>
             <trans-unit id="column.footer">
                 <source>Footer</source>
+            </trans-unit>
+            <trans-unit id="default">
+                <source>Default</source>
+            </trans-unit>
+            <trans-unit id="root">
+                <source>Root</source>
             </trans-unit>
         </body>
     </file>
