@@ -23,19 +23,19 @@ TCEFORM {
         }
         imagecols.types {
             textpic {
-                label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:text_image_ratio
+                label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:image_size
                 keepItems = 1,2
                 altLabels {
-                    1 = 1:1
-                    2 = 2:1
+                    1 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:image_size.large
+                    2 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:image_size.small
                 }
             }
             textmedia {
-                label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:text_image_ratio
+                label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:image_size
                 keepItems = 1,2
                 altLabels {
-                    1 = 1:1
-                    2 = 2:1
+                    1 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:image_size.large
+                    2 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:image_size.small
                 }
             }
             image.disabled = 1

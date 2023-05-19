@@ -54,6 +54,15 @@
             <trans-unit id="header_layout.text">
                 <source>Text</source>
             </trans-unit>
+            <trans-unit id="image_size">
+                <source>Image Size</source>
+            </trans-unit>
+            <trans-unit id="image_size.small">
+                <source>small</source>
+            </trans-unit>
+            <trans-unit id="image_size.large">
+                <source>large</source>
+            </trans-unit>
             <trans-unit id="space_after_inside">
                 <source>Space After (inside Background)</source>
             </trans-unit>
@@ -65,9 +74,6 @@
             </trans-unit>
             <trans-unit id="table_header_position.3">
                 <source>Top and Left</source>
-            </trans-unit>
-            <trans-unit id="text_image_ratio">
-                <source>Text/Image Ratio</source>
             </trans-unit>
             <trans-unit id="tx_headless_item">
                 <source>Items</source>
