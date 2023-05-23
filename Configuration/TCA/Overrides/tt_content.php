@@ -69,26 +69,6 @@ ExtensionManagementUtility::addTCAcolumns(
                         'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.none',
                         'value' => 'none',
                     ],
-                    [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.primary',
-                        'value' => 'primary',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.secondary',
-                        'value' => 'secondary',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.accent',
-                        'value' => 'accent',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.white',
-                        'value' => 'white',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.black',
-                        'value' => 'black',
-                    ],
                 ],
                 'default' => 'none',
             ],

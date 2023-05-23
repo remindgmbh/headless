@@ -101,7 +101,24 @@ Values for text, H1-H6 and hidden.
 
 #### tx_headless_background_color
 
-A background color for all content elements. Choice between `none`, `primary`, `secondary`, `accent`, `white` and `black`.
+A background color for all content elements. Only option `none` exists per default. Add options per content element by using `columnOverrides`:
+
+```php
+    'columnsOverrides' => [
+        'tx_headless_background_color' => [
+            'config' => [
+                'items' => [
+                    1 => [
+                        'label' => 'Custom Color',
+                        'value' => 'custom',
+                    ],
+                ],
+            ],
+        ],
+    ],
+```
+
+
 
 #### tx_headless_background_full_width
 

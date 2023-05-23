@@ -9,21 +9,6 @@
             <trans-unit id="background_color.none">
                 <target>Keine</target>
             </trans-unit>
-            <trans-unit id="background_color.primary">
-                <target>Primärfarbe</target>
-            </trans-unit>
-            <trans-unit id="background_color.secondary">
-                <target>Sekundärfarbe</target>
-            </trans-unit>
-            <trans-unit id="background_color.accent">
-                <target>Akzentfarbe</target>
-            </trans-unit>
-            <trans-unit id="background_color.white">
-                <target>Weiß</target>
-            </trans-unit>
-            <trans-unit id="background_color.black">
-                <target>Schwarz</target>
-            </trans-unit>
             <trans-unit id="background_full_width">
                 <target>Hintergrund über gesamte Breite</target>
             </trans-unit>

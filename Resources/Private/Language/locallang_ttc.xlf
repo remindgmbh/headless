@@ -9,21 +9,6 @@
             <trans-unit id="background_color.none">
                 <source>None</source>
             </trans-unit>
-            <trans-unit id="background_color.primary">
-                <source>Primary Color</source>
-            </trans-unit>
-            <trans-unit id="background_color.secondary">
-                <source>Secondary Color</source>
-            </trans-unit>
-            <trans-unit id="background_color.accent">
-                <source>Accent Color</source>
-            </trans-unit>
-            <trans-unit id="background_color.white">
-                <source>White</source>
-            </trans-unit>
-            <trans-unit id="background_color.black">
-                <source>Black</source>
-            </trans-unit>
             <trans-unit id="background_full_width">
                 <source>Full Width Background</source>
             </trans-unit>
