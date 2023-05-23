@@ -4,23 +4,21 @@
         <type>array</type>
         <el>
             <type>
-                <TCEforms>
-                    <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.type</label>
-                    <config>
-                        <type>select</type>
-                        <renderType>selectSingle</renderType>
-                        <items type="array">
-                            <numIndex index="0">
-                                <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.type.scroll</label>
-                                <value>scroll</value>
-                            </numIndex>
-                            <numIndex index="1">
-                                <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.type.slide</label>
-                                <value>slide</value>
-                            </numIndex>
-                        </items>
-                    </config>
-                </TCEforms>
+                <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.type</label>
+                <config>
+                    <type>select</type>
+                    <renderType>selectSingle</renderType>
+                    <items type="array">
+                        <numIndex index="0">
+                            <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.type.scroll</label>
+                            <value>scroll</value>
+                        </numIndex>
+                        <numIndex index="1">
+                            <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.type.slide</label>
+                            <value>slide</value>
+                        </numIndex>
+                    </items>
+                </config>
             </type>
         </el>
     </ROOT>

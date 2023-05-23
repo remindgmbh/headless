@@ -105,19 +105,19 @@ class FlexFormProcessor implements DataProcessorInterface
     ): void {
         $newValue = $value;
 
-        if (($element['TCEforms']['config']['renderType'] ?? null) === 'inputLink') {
+        if (($element['config']['type'] ?? null) === 'link') {
             $newValue = $this->cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
         }
 
-        if (($element['TCEforms']['config']['type'] ?? null) === 'check') {
+        if (($element['config']['type'] ?? null) === 'check') {
             $newValue = (bool) $value;
         }
 
-        if (($element['TCEforms']['config']['eval'] ?? null) === 'int') {
+        if (($element['config']['eval'] ?? null) === 'int') {
             $newValue = (int) $value;
         }
 
-        if (($element['TCEforms']['config']['type'] ?? null) === 'text') {
+        if (($element['config']['type'] ?? null) === 'text') {
             $newValue = $this->cObj->parseFunc($value, [], '< lib.parseFunc_links');
         }
 
