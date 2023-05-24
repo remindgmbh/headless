@@ -15,49 +15,6 @@ $hasBackground = [
 ExtensionManagementUtility::addTCAcolumns(
     'tt_content',
     [
-        'header_layout' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.type',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:header_layout.text',
-                        'value' => '0',
-                    ],
-                    [
-                        'label' => 'H1',
-                        'value' => '1',
-                    ],
-                    [
-                        'label' => 'H2',
-                        'value' => '2',
-                    ],
-                    [
-                        'label' => 'H3',
-                        'value' => '3',
-                    ],
-                    [
-                        'label' => 'H4',
-                        'value' => '4',
-                    ],
-                    [
-                        'label' => 'H5',
-                        'value' => '5',
-                    ],
-                    [
-                        'label' => 'H6',
-                        'value' => '6',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_layout.I.6',
-                        'value' => '100',
-                    ],
-                ],
-                'default' => 0,
-            ],
-        ],
         'tx_headless_background_color' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color',
@@ -240,3 +197,38 @@ ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'tx_headless_cookie_c
 ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'tx_headless_cookie_message');
 
 $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] = ContentWithItemsPreviewRenderer::class;
+
+$GLOBALS['TCA']['tt_content']['columns']['header_layout']['config']['items'] = [
+    [
+        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:header_layout.text',
+        'value' => '0',
+    ],
+    [
+        'label' => 'H1',
+        'value' => '1',
+    ],
+    [
+        'label' => 'H2',
+        'value' => '2',
+    ],
+    [
+        'label' => 'H3',
+        'value' => '3',
+    ],
+    [
+        'label' => 'H4',
+        'value' => '4',
+    ],
+    [
+        'label' => 'H5',
+        'value' => '5',
+    ],
+    [
+        'label' => 'H6',
+        'value' => '6',
+    ],
+    [
+        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_layout.I.6',
+        'value' => '100',
+    ],
+];
