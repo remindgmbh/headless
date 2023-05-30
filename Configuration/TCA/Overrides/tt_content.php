@@ -232,3 +232,23 @@ $GLOBALS['TCA']['tt_content']['columns']['header_layout']['config']['items'] = [
         'value' => '100',
     ],
 ];
+
+// Workaround for TCEFORM (https://forge.typo3.org/issues/100775)
+    $GLOBALS
+        ['TCA']
+        ['tt_content']
+        ['columns']
+        ['space_after_class']
+        ['config']
+        ['items']
+        [0]
+        ['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';
+    $GLOBALS
+        ['TCA']
+        ['tt_content']
+        ['columns']
+        ['space_before_class']
+        ['config']
+        ['items']
+        [0]
+        ['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';

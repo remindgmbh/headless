@@ -54,6 +54,7 @@ TCEFORM {
         media.disabled = 1
         sectionIndex.disabled = 1
         // wait for this issue to be resolved: https://forge.typo3.org/issues/100775
+        // Workaround in tt_content.php
         // space_after_class {
         //     altLabels {
         //         . = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none
