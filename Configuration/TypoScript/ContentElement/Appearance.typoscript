@@ -2,11 +2,6 @@ lib.appearance.fields {
     backgroundColor = TEXT
     backgroundColor {
         field = tx_headless_background_color
-        if {
-            equals.field = tx_headless_background_color
-            value = none
-            negate = 1
-        }
     }
     backgroundFullWidth = TEXT
     backgroundFullWidth {

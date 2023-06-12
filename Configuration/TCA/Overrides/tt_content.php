@@ -5,13 +5,6 @@ defined('TYPO3') || die;
 use Remind\Headless\Preview\ContentWithItemsPreviewRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-$hasBackground = [
-    'AND' => [
-        'FIELD:tx_headless_background_color:!=:none',
-        'FIELD:tx_headless_background_color:REQ:true',
-    ],
-];
-
 ExtensionManagementUtility::addTCAcolumns(
     'tt_content',
     [
@@ -24,10 +17,10 @@ ExtensionManagementUtility::addTCAcolumns(
                 'items' => [
                     [
                         'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.none',
-                        'value' => 'none',
+                        'value' => null,
                     ],
                 ],
-                'default' => 'none',
+                'default' => null,
             ],
             'onChange' => 'reload',
         ],
@@ -44,7 +37,7 @@ ExtensionManagementUtility::addTCAcolumns(
                     ],
                 ],
             ],
-            'displayCond' => $hasBackground,
+            'displayCond' => 'FIELD:tx_headless_background_color:REQ:true',
         ],
         'tx_headless_cookie_category' => [
             'exclude' => 0,
@@ -131,7 +124,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 ],
                 'default' => '',
             ],
-            'displayCond' => $hasBackground,
+            'displayCond' => 'FIELD:tx_headless_background_color:REQ:true',
         ],
         'tx_headless_space_after_inside' => [
             'exclude' => 0,
@@ -167,7 +160,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 ],
                 'default' => '',
             ],
-            'displayCond' => $hasBackground,
+            'displayCond' => 'FIELD:tx_headless_background_color:REQ:true',
         ],
     ]
 );

@@ -22,7 +22,7 @@ CREATE TABLE tx_headless_item (
 # -----------------------------------------------------------------------------#
 
 CREATE TABLE tt_content (
-    tx_headless_background_color VARCHAR(60) DEFAULT '' NOT NULL,
+    tx_headless_background_color VARCHAR(60),
     tx_headless_background_full_width TINYINT(1) DEFAULT '0' NOT NULL,
     tx_headless_cookie_category TINYINT(1),
     tx_headless_cookie_message mediumtext,
