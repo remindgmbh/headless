@@ -3,7 +3,13 @@
     <file source-language="en" datatype="plaintext" original="EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf" product-name="rmnd_headless">
         <header/>
         <body>
-            <trans-unit id="tx_headless_overview_label">
+            <trans-unit id="breadcrumbs_background_color">
+                <source>Breadcrumbs Background Color</source>
+            </trans-unit>
+            <trans-unit id="breadcrumbs_background_color.none">
+                <source>None</source>
+            </trans-unit>
+            <trans-unit id="overview_label">
                 <source>Overview Label</source>
             </trans-unit>
         </body>

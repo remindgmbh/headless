@@ -1,0 +1,8 @@
+lib.pageAppearance {
+    fields {
+        breadcrumbsBackgroundColor = TEXT
+        breadcrumbsBackgroundColor {
+            field = tx_headless_breadcrumbs_background_color
+        }
+    }
+}

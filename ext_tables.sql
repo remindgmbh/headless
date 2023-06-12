@@ -32,6 +32,7 @@ CREATE TABLE tt_content (
 );
 
 CREATE TABLE pages (
+    tx_headless_breadcrumbs_background_color VARCHAR(60),
     tx_headless_overview_label VARCHAR(60) DEFAULT '' NOT NULL,
 );
 
