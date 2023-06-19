@@ -18,7 +18,7 @@ footer {
         table = tt_content
         select {
             orderBy = sorting
-            where = {#colPos} = {$backendLayouts.colPos.footer}
+            where = {#colPos} = 10
             max = 1
         }
         slide = -1

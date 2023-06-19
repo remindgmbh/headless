@@ -12,8 +12,6 @@ mod {
                 columns {
                   1 {
                     name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.above_breadcrumbs
-                    // Use hardcoded value until this issue is resolved: https://forge.typo3.org/issues/100810
-                    // colPos = {$backendLayouts.colPos.aboveBreadcrumbs}
                     colPos = 1
                     disallowed {
                         CType = footer_content
@@ -25,8 +23,6 @@ mod {
                 columns {
                   1 {
                     name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.main
-                    // Use hardcoded value until this issue is resolved: https://forge.typo3.org/issues/100810
-                    // colPos = {$backendLayouts.colPos.main}
                     colPos = 0
                     disallowed {
                         CType = footer_content
@@ -38,8 +34,6 @@ mod {
                 columns {
                   1 {
                     name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.footer
-                    // Use hardcoded value until this issue is resolved: https://forge.typo3.org/issues/100810
-                    // colPos = {$backendLayouts.colPos.footer}
                     colPos = 10
                     allowed {
                       CType = footer_content

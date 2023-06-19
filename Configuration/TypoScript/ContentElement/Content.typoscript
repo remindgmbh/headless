@@ -3,14 +3,14 @@ lib.content {
     table = tt_content
     select {
         orderBy = sorting
-        where = {#colPos} IN ({$backendLayouts.colPos.main}, {$backendLayouts.colPos.aboveBreadcrumbs})
+        where = {#colPos} IN (0, 1)
     }
     // To use slide on column use merge and remove colPos from select above
     // merge {
     //     table = tt_content
     //     select {
     //         orderBy = sorting
-    //         where = {#colPos} = {$backendLayouts.colPos.aboveBreadcrumbs}
+    //         where = {#colPos} = 1
     //     }
     //     slide = -1
     // }
