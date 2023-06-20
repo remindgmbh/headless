@@ -18,7 +18,7 @@ footer {
         table = tt_content
         select {
             orderBy = sorting
-            where = {#colPos} = 10
+            where = {#colPos} = 1687238527
             max = 1
         }
         slide = -1

@@ -3,7 +3,7 @@ lib.content {
     table = tt_content
     select {
         orderBy = sorting
-        where = {#colPos} IN (0, 1)
+        where = {#colPos} IN (0, 1687238554)
     }
     // To use slide on column use merge and remove colPos from select above
     // merge {

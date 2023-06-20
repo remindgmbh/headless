@@ -12,7 +12,7 @@ mod {
                 columns {
                   1 {
                     name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.above_breadcrumbs
-                    colPos = 1
+                    colPos = 1687238554
                     disallowed {
                         CType = footer_content
                     }
