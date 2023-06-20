@@ -17,14 +17,6 @@ mod.wizards.newContentElement.wizardItems {
                CType = footer_content
             }
          },
-         header_slider {
-            iconIdentifier = content-carousel-item-textandimage
-            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:header_slider.title
-            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:header_slider.description
-            tt_content_defValues {
-               CType = header_slider
-            }
-         },
          image {
             title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.title
             description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.description
@@ -46,6 +38,6 @@ mod.wizards.newContentElement.wizardItems {
             }
          }
       }
-      show := addToList(accordion, footer_content, header_slider, image_gallery, tabs)
+      show := addToList(accordion, footer_content, image_gallery, tabs)
    }
 }

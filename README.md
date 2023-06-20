@@ -41,7 +41,7 @@ The [content defender](https://extensions.typo3.org/extension/content_defender) 
 
 #### tx_headless_item
 
-Field of type inline. Basically `tx_headless_item` acts like tt_content without a `colPos`. Used for `accordion`, `header_slider` and `tabs`. See one of these definition on how to use items and override the showitem definition.
+Field of type inline. Basically `tx_headless_item` acts like tt_content without a `colPos`. Used for `accordion` and `tabs`. See one of these definition on how to use items and override the showitem definition.
 
 To add a flexform to an item add the following configuration to `TCA/Overrides/tx_headless_item.php`:
 
@@ -152,10 +152,10 @@ $GLOBALS['TCA']['tt_content']['types']['textpic']['columnsOverrides']['image']['
 ];
 ```
 
-Example for crop variants for breakpoints sm, md and lg for `header_slider` items:
+Example for crop variants for breakpoints sm, md and lg for `accordion` items:
 
 ```php
-$GLOBALS['TCA']['tt_content']['types']['header_slider']['columnsOverrides']['tx_headless_item']['config']['overrideChildTca']['columns']['image']['config']['overrideChildTca']['columns']['crop']['config'] = [
+$GLOBALS['TCA']['tt_content']['types']['accordion']['columnsOverrides']['tx_headless_item']['config']['overrideChildTca']['columns']['image']['config']['overrideChildTca']['columns']['crop']['config'] = [
 	'cropVariants' => [
 		'sm' => [
 			// configuration
@@ -188,10 +188,6 @@ Basic definition without any actual content fields. Add a flexform in your provi
     'footer_content'
 );
 ```
-
-### header_slider
-
-Header Slider content element that uses `tx_headless_item`. Consists of multiple slides with text and image. Autoplay can be enabled with duration between 500ms and 10000ms.
 
 ### tabs
 

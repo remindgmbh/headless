@@ -18,21 +18,6 @@
             <trans-unit id="footer_content.title">
                 <source>Footer Content</source>
             </trans-unit>
-            <trans-unit id="header_slider.description">
-                <source>Containing multiple slides consisting of image and text</source>
-            </trans-unit>
-            <trans-unit id="header_slider.title">
-                <source>Header Slider</source>
-            </trans-unit>
-            <trans-unit id="header_slider.columns.autoplay">
-                <source>Autoplay</source>
-            </trans-unit>
-            <trans-unit id="header_slider.columns.autoplay.status">
-                <source>Enable Autoplay</source>
-            </trans-unit>
-            <trans-unit id="header_slider.columns.autoplay.duration">
-                <source>Duration in ms</source>
-            </trans-unit>
             <trans-unit id="image.description">
                 <source>One Image only</source>
             </trans-unit>

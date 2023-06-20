@@ -18,21 +18,6 @@
             <trans-unit id="footer_content.title">
                 <target>Fußzeile Inhalt</target>
             </trans-unit>
-            <trans-unit id="header_slider.description">
-                <target>Enthält beliebige Slides bestehend aus Bild und Text</target>
-            </trans-unit>
-            <trans-unit id="header_slider.title">
-                <target>Header Slider</target>
-            </trans-unit>
-            <trans-unit id="header_slider.columns.autoplay">
-                <target>Autoplay</target>
-            </trans-unit>
-            <trans-unit id="header_slider.columns.autoplay.status">
-                <target>Aktiviere Autoplay</target>
-            </trans-unit>
-            <trans-unit id="header_slider.columns.autoplay.duration">
-                <target>Dauer in ms</target>
-            </trans-unit>
             <trans-unit id="image.description">
                 <target>Einzelnes Bild</target>
             </trans-unit>
