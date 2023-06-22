@@ -37,25 +37,25 @@ class JsonService
 
         $first = $this->uriBuilder
             ->reset()
-            ->setAddQueryString(true)
+            ->setAddQueryString('untrusted')
             ->uriFor(null, [$queryParam => $firstPageNumber]);
 
         $last = $this->uriBuilder
             ->reset()
-            ->setAddQueryString(true)
+            ->setAddQueryString('untrusted')
             ->uriFor(null, [$queryParam => $lastPageNumber]);
 
         if ($previousPageNumber && $previousPageNumber >= $firstPageNumber) {
             $prev = $this->uriBuilder
                 ->reset()
-                ->setAddQueryString(true)
+                ->setAddQueryString('untrusted')
                 ->uriFor(null, [$queryParam => $previousPageNumber]);
         }
 
         if ($nextPageNumber && $nextPageNumber <= $lastPageNumber) {
             $next = $this->uriBuilder
                 ->reset()
-                ->setAddQueryString(true)
+                ->setAddQueryString('untrusted')
                 ->uriFor(null, [$queryParam => $nextPageNumber]);
         }
 
@@ -64,13 +64,13 @@ class JsonService
         for ($page = $firstPageNumber; $page <= $lastPageNumber; $page++) {
             $link = $this->uriBuilder
                 ->reset()
-                ->setAddQueryString(true)
+                ->setAddQueryString('untrusted')
                 ->uriFor(null, [$queryParam => $page]);
 
             $pages[] = [
                 'pageNumber' => $page,
                 'link' => $link,
-                'current' => $page === $currentPage,
+                'active' => $page === $currentPage,
             ];
         }
 
