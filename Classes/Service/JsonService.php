@@ -75,6 +75,8 @@ class JsonService
         }
 
         $result = [
+            'startRecordNumber' => $pagination->getStartRecordNumber(),
+            'endRecordNumber' => $pagination->getEndRecordNumber(),
             'first' => $first,
             'last' => $last,
             'prev' => $prev ?? null,
