@@ -8,6 +8,9 @@ TCEFORM {
         assets.types {
             textmedia.config.maxitems = 1
         }
+        bullets_type {
+            keepItems = 0,1
+        }
         cols.disabled = 1
         CType {
             altLabels.image = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.title
