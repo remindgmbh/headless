@@ -13,7 +13,7 @@
                 <source>Accordion Title</source>
             </trans-unit>
             <trans-unit id="footer_content.description">
-                <source>Content Elemenet to be used in Footer</source>
+                <source>Content Element to be used in Footer</source>
             </trans-unit>
             <trans-unit id="footer_content.title">
                 <source>Footer Content</source>
@@ -47,6 +47,21 @@
             </trans-unit>
             <trans-unit id="tabs.columns.title">
                 <source>Tab Title</source>
+            </trans-unit>
+            <trans-unit id="call_to_action.title">
+                <source>Call-to-action element</source>
+            </trans-unit>
+            <trans-unit id="call_to_action.description">
+                <source>Containing text and link</source>
+            </trans-unit>
+            <trans-unit id="call_to_action.text">
+                <source>Text</source>
+            </trans-unit>
+            <trans-unit id="call_to_action.link">
+                <source>Link</source>
+            </trans-unit>
+            <trans-unit id="call_to_action.link_label">
+                <source>Link label</source>
             </trans-unit>
         </body>
     </file>

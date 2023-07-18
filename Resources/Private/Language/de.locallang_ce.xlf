@@ -48,6 +48,21 @@
             <trans-unit id="tabs.columns.title">
                 <target>Tab Titel</target>
             </trans-unit>
+            <trans-unit id="call_to_action.title">
+                <target>Call-to-action Element</target>
+            </trans-unit>
+            <trans-unit id="call_to_action.description">
+                <target>Enthält Text und Verlinkung</target>
+            </trans-unit>
+            <trans-unit id="call_to_action.text">
+                <target>Text</target>
+            </trans-unit>
+            <trans-unit id="call_to_action.link">
+                <target>Link</target>
+            </trans-unit>
+            <trans-unit id="call_to_action.link_label">
+                <target>Link Titel</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

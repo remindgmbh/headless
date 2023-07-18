@@ -1,0 +1,18 @@
+tt_content.call_to_action =< lib.contentElement
+tt_content.call_to_action {
+    fields {
+        content {
+            fields {
+                settings {
+                    dataProcessing {
+                        10 = Remind\Headless\DataProcessing\FlexFormProcessor
+                        10 {
+                            fieldName = pi_flexform
+                            as = flexform
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
