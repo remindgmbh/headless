@@ -80,6 +80,13 @@ class FlexFormProcessor implements DataProcessorInterface
             return $value;
         }, $flexformData);
 
+        // ignore fields determined in typoscript configuration
+        $ignoredFields = GeneralUtility::trimExplode(',', $processorConf['ignoreFields'] ?? '', true);
+
+        foreach ($ignoredFields as $ignoredField) {
+            $flexformData = ArrayUtility::removeByPath($flexformData, $ignoredField, '.');
+        }
+
         // save result in "data" (default) or given variable name
         $targetVariableName = $cObj->stdWrapValue('as', $processorConf);
 
