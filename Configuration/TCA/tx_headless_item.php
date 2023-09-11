@@ -9,7 +9,6 @@ return [
         'label_alt' => 'subheader,bodytext',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'type' => 'tt_content:CType',
         'hideTable' => true,
         'sortby' => 'sorting',
         'delete' => 'deleted',
@@ -122,15 +121,23 @@ return [
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
         ],
-        'tt_content' => [
+        'foreign_uid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:title',
             'config' => [
                 'type' => 'group',
-                'allowed' => 'tt_content',
                 'size' => 1,
                 'maxitems' => 1,
                 'minitems' => 0,
+            ],
+        ],
+        'tx_headless_item' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:tx_headless_item',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_headless_item',
+                'foreign_field' => 'foreign_uid',
             ],
         ],
         'header' => [

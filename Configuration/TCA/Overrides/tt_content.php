@@ -87,7 +87,7 @@ ExtensionManagementUtility::addTCAcolumns(
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_headless_item',
-                'foreign_field' => 'tt_content',
+                'foreign_field' => 'foreign_uid',
             ],
         ],
         'tx_headless_space_before_inside' => [

@@ -24,7 +24,7 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
             $queryBuilder
                 ->select('*')
                 ->from('tx_headless_item')
-                ->where($queryBuilder->expr()->eq('tt_content', $record['uid']));
+                ->where($queryBuilder->expr()->eq('foreign_uid', $record['uid']));
 
             $result = $queryBuilder->executeQuery();
             $rmndContentItems = $result->fetchAllAssociative();

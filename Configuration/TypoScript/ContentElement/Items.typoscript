@@ -5,7 +5,7 @@ lib.items {
         10 {
             table = tx_headless_item
             where.data = field:uid
-            where.wrap = tt_content = |
+            where.wrap = foreign_uid = |
             orderBy = sorting
             pidInList.field = pid
             as = items
@@ -57,6 +57,7 @@ lib.items {
                     field = bodytext
                     parseFunc =< lib.parseFunc_links
                 }
+                items =< lib.items 
                 images = TEXT
                 images {
                     dataProcessing {

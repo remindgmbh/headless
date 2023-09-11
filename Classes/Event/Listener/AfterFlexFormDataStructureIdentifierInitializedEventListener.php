@@ -21,7 +21,7 @@ class AfterFlexFormDataStructureIdentifierInitializedEventListener
         if ($event->getTableName() === 'tx_headless_item') {
             $row = $event->getRow();
 
-            $foreignUidField = 'tt_content';
+            $foreignUidField = 'foreign_uid';
             $foreignTable = 'tt_content';
             $foreignField = 'CType';
 

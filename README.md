@@ -41,7 +41,7 @@ The [content defender](https://extensions.typo3.org/extension/content_defender) 
 
 #### tx_headless_item
 
-Field of type inline. Basically `tx_headless_item` acts like tt_content without a `colPos`. Used for `accordion` and `tabs`. See one of these definition on how to use items and override the showitem definition.
+Field of type inline. Basically `tx_headless_item` acts like tt_content without a `colPos`. Used for `accordion` and `tabs`. See one of these definition on how to use items and override the showitem definition. Nested items are possible as well, however flexform only work for top level items for now.
 
 To add a flexform to an item add the following configuration to `TCA/Overrides/tx_headless_item.php`:
 
