@@ -4,6 +4,7 @@
 
 CREATE TABLE tx_headless_item (
     foreign_uid int(11) unsigned DEFAULT '0' NOT NULL,
+    foreign_table varchar(255) DEFAULT '' NOT NULL,
     header varchar(255) DEFAULT '' NOT NULL,
     header_layout varchar(30) DEFAULT '0' NOT NULL,
     header_link varchar(1024) DEFAULT '' NOT NULL,

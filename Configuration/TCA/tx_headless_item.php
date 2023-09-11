@@ -123,12 +123,19 @@ return [
         ],
         'foreign_uid' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:title',
             'config' => [
                 'type' => 'group',
                 'size' => 1,
                 'maxitems' => 1,
                 'minitems' => 0,
+            ],
+        ],
+        'foreign_table' => [
+            'l10n_mode' => 'exclude',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
             ],
         ],
         'tx_headless_item' => [
@@ -138,6 +145,7 @@ return [
                 'type' => 'inline',
                 'foreign_table' => 'tx_headless_item',
                 'foreign_field' => 'foreign_uid',
+                'foreign_table_field' => 'foreign_table',
             ],
         ],
         'header' => [
