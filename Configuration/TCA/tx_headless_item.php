@@ -124,6 +124,7 @@ return [
         'foreign_uid' => [
             'exclude' => true,
             'config' => [
+                'allowed' => '',
                 'type' => 'group',
                 'size' => 1,
                 'maxitems' => 1,

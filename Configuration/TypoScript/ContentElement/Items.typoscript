@@ -54,6 +54,7 @@ lib.items {
                 }
                 bodytext = TEXT
                 bodytext {
+                    required = 1
                     field = bodytext
                     parseFunc =< lib.parseFunc_links
                 }
