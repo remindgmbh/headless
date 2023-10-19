@@ -48,27 +48,34 @@ class ImageProcessingMiddleware implements MiddlewareInterface
                 return $this->responseFactory->createResponse(304);
             }
 
-            $cropVariant = $queryParams['breakpoint'] ?? 'default';
+            $targetFileExtension = $queryParams['fileExtension'] ?? null;
 
-            $crop = $image->getProperty('crop');
-            $cropVariantCollection = CropVariantCollection::create($crop);
-            $cropArea = $cropVariantCollection->getCropArea($cropVariant);
+            // Skip processing for SVGs without changing image type
+            if ($image->getExtension() === 'svg' && (!$targetFileExtension || $targetFileExtension === 'svg')) {
+                $processedImage = $image;
+            } else {
+                $cropVariant = $queryParams['breakpoint'] ?? 'default';
 
-            // Use default cropVariant if breakpoint cropVariant does not exist
-            if ($cropArea == Area::createEmpty()) {
-                $cropArea = $cropVariantCollection->getCropArea();
+                $crop = $image->getProperty('crop');
+                $cropVariantCollection = CropVariantCollection::create($crop);
+                $cropArea = $cropVariantCollection->getCropArea($cropVariant);
+
+                // Use default cropVariant if breakpoint cropVariant does not exist
+                if ($cropArea == Area::createEmpty()) {
+                    $cropArea = $cropVariantCollection->getCropArea();
+                }
+
+                $processingInstructions = [
+                    'width' => $queryParams['width'] ?? null,
+                    'height' => $queryParams['height'] ?? null,
+                    'maxWidth' => $queryParams['maxWidth'] ?? null,
+                    'maxHeight' => $queryParams['maxHeight'] ?? null,
+                    'fileExtension' => $queryParams['fileExtension'] ?? null,
+                    'crop' => $cropArea->makeAbsoluteBasedOnFile($image),
+                ];
+
+                $processedImage = $this->imageService->applyProcessingInstructions($image, $processingInstructions);
             }
-
-            $processingInstructions = [
-                'width' => $queryParams['width'] ?? null,
-                'height' => $queryParams['height'] ?? null,
-                'maxWidth' => $queryParams['maxWidth'] ?? null,
-                'maxHeight' => $queryParams['maxHeight'] ?? null,
-                'fileExtension' => $queryParams['fileExtension'] ?? null,
-                'crop' => $cropArea->makeAbsoluteBasedOnFile($image),
-            ];
-
-            $processedImage = $this->imageService->applyProcessingInstructions($image, $processingInstructions);
 
             $mimeType = $processedImage->getMimeType();
             $contents = $processedImage->getContents();
