@@ -1,6 +1,6 @@
 tt_content.image_gallery =< lib.contentElementWithHeader
 tt_content.image_gallery {
-    fields {        
+    fields {
         content {
             fields {
                 settings {
