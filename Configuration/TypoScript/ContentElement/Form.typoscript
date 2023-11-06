@@ -6,6 +6,7 @@ tt_content.form_formframework {
                 bodytext = TEXT
                 bodytext {
                     field = bodytext
+                    ifEmpty =
                     parseFunc =< lib.parseFunc_links
                 }
                 link {
