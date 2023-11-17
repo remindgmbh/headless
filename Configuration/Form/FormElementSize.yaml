@@ -9,7 +9,7 @@ TYPO3:
                 editors:
                   # Remove default Grid viewport configuration
                   700: null
-                  1662984119:
+                  701:
                     identifier: size
                     templateName: Inspector-SingleSelectEditor
                     label: formEditor.elements.FormElement.editor.size.label
