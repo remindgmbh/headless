@@ -2,5 +2,7 @@ TCAdefaults {
     tt_content {
         space_before_class = medium
         space_after_class = medium
+        tx_headless_space_before_inside = medium
+        tx_headless_space_after_inside = medium
     }
 }
