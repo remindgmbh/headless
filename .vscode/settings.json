@@ -1,0 +1,4 @@
+{
+    "phpcs.standard": ".build/phpcs.xml",
+    "phpcs.executablePath": ".build/bin/phpcs",
+}
