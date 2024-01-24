@@ -17,6 +17,7 @@ mod.wizards.newContentElement.wizardItems {
                CType = footer_content
             }
          },
+         // Element already exsists, only modify title and description
          image {
             title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.title
             description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.description
@@ -36,16 +37,11 @@ mod.wizards.newContentElement.wizardItems {
             tt_content_defValues {
                CType = tabs
             }
-         },
-         call_to_action {
-            iconIdentifier = actions-exclamation
-            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:call_to_action.title
-            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:call_to_action.description
-            tt_content_defValues {
-               CType = call_to_action
-            }
          }
       }
-      show := addToList(accordion, footer_content, image_gallery, tabs, call_to_action)
+      show := addToList(accordion)
+      show := addToList(footer_content)
+      show := addToList(image_gallery)
+      show := addToList(tabs)
    }
 }
