@@ -68,17 +68,8 @@ class FlexFormProcessor implements DataProcessorInterface
             )
         );
 
-        // remove unnecessary nesting in section structure
-        $flexformData = array_map(function ($value) {
-            // check if $value is an array and contains only numeric keys
-            if (is_array($value) && empty(array_filter(array_keys($value), 'is_string'))) {
-                return array_reduce($value, function (array $result, mixed $value) {
-                    $result[] = is_array($value) && count($value) === 1 ? array_pop($value) : $value;
-                    return $result;
-                }, []);
-            }
-            return $value;
-        }, $flexformData);
+        // section keys start at 1 instead of 0
+        $flexformData = $this->reNumberIndexes($flexformData);
 
         // ignore fields determined in typoscript configuration
         $ignoredFields = GeneralUtility::trimExplode(',', $processorConf['ignoreFields'] ?? '', true);
@@ -133,5 +124,18 @@ class FlexFormProcessor implements DataProcessorInterface
             $path,
             $newValue,
         );
+    }
+
+    private function reNumberIndexes(mixed $value): mixed
+    {
+        if (is_array($value)) {
+            if (empty(array_filter(array_keys($value), 'is_string'))) {
+                $value = array_values($value);
+            }
+            $value = array_map(function ($value) {
+                return $this->reNumberIndexes($value);
+            }, $value);
+        }
+        return $value;
     }
 }
