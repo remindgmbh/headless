@@ -1,39 +1,39 @@
 mod {
-  web_layout {
-    BackendLayouts {
-      default {
-        title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:default
-        config {
-          backend_layout {
-            colCount = 1
-            rowCount = 2
-            rows {
-              1 {
-                columns {
-                  1 {
-                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.above_breadcrumbs
-                    colPos = 1687238554
-                    disallowed {
-                        CType = footer_content
+    web_layout {
+        BackendLayouts {
+            default {
+                title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:default
+                config {
+                    backend_layout {
+                        colCount = 1
+                        rowCount = 2
+                        rows {
+                            1 {
+                                columns {
+                                    1 {
+                                        name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.above_breadcrumbs
+                                        colPos = 1687238554
+                                        disallowed {
+                                            CType = footer_content
+                                        }
+                                    }
+                                }
+                            }
+                            2 {
+                                columns {
+                                    1 {
+                                        name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.main
+                                        colPos = 0
+                                        disallowed {
+                                            CType = footer_content
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                  }
                 }
-              }
-              2 {
-                columns {
-                  1 {
-                    name = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_bl.xlf:column.main
-                    colPos = 0
-                    disallowed {
-                        CType = footer_content
-                    }
-                  }
-                }
-              }
             }
-          }
         }
-      }
     }
-  }
 }
