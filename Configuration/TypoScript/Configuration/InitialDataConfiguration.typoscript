@@ -16,6 +16,17 @@ initialData {
                     }
                 }
             }
+            footer = CONTENT
+            footer {
+                table = tt_content
+                select {
+                    orderBy = sorting
+                    where = {#colPos} = 1687238527
+                    max = 1
+                }
+                slide = -1
+                stdWrap.ifEmpty.cObject = JSON
+            }
         }
     }
 }

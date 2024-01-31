@@ -5,7 +5,4 @@ plugin.tx_headless {
         pid = 0
         pid := getEnv(LOGIN_PID)
     }
-    footer {
-        typeNum = 836
-    }
 }
