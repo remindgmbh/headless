@@ -25,7 +25,6 @@ initialData {
                     max = 1
                 }
                 slide = -1
-                stdWrap.ifEmpty.cObject = JSON
             }
         }
     }
