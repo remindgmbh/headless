@@ -68,6 +68,10 @@ class FlexFormProcessor implements DataProcessorInterface
             )
         );
 
+        if (isset($processorConf['path'])) {
+            $flexformData = ArrayUtility::getValueByPath($flexformData, $processorConf['path'], '.');
+        }
+
         // section keys start at 1 instead of 0
         $flexformData = $this->reNumberIndexes($flexformData);
 
