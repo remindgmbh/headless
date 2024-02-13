@@ -9,6 +9,9 @@
             <trans-unit id="breadcrumbs_background_color.none">
                 <target>Keine</target>
             </trans-unit>
+            <trans-unit id="page_config">
+                <target>Page Config</target>
+            </trans-unit>
             <trans-unit id="overview_label">
                 <target>Übersicht Beschriftung</target>
             </trans-unit>

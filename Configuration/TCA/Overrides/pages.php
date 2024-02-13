@@ -22,6 +22,16 @@ ExtensionManagementUtility::addTCAcolumns(
                 'default' => null,
             ],
         ],
+        'tx_headless_config' => [
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:page_config',
+            'config' => [
+                'type' => 'flex',
+                'ds' => [
+                    'default' => 'FILE:EXT:rmnd_headless/Configuration/FlexForms/Empty.xml',
+                ],
+            ],
+            'displayCond' => 'FIELD:is_siteroot:REQ:true',
+        ],
         'tx_headless_overview_label' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:overview_label',
@@ -42,4 +52,9 @@ ExtensionManagementUtility::addFieldsToPalette(
     'pages',
     'title',
     '--linebreak--,tx_headless_overview_label',
+);
+
+ExtensionManagementUtility::addToAllTCAtypes(
+    'pages',
+    'tx_headless_config',
 );
