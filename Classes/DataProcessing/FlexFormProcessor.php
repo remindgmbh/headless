@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Remind\Headless\DataProcessing;
 
+use FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
@@ -107,11 +108,13 @@ class FlexFormProcessor implements DataProcessorInterface
     ): void {
         $newValue = $value;
 
-        if (($element['config']['type'] ?? null) === 'link') {
+        $type = $element['config']['type'] ?? null;
+
+        if ($type === 'link') {
             $newValue = $this->cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
         }
 
-        if (($element['config']['type'] ?? null) === 'check') {
+        if ($type === 'check') {
             $newValue = (bool) $value;
         }
 
@@ -119,8 +122,36 @@ class FlexFormProcessor implements DataProcessorInterface
             $newValue = (int) $value;
         }
 
-        if (($element['config']['type'] ?? null) === 'text') {
+        if ($type === 'text') {
             $newValue = $this->cObj->parseFunc($value, [], '< lib.parseFunc_links');
+        }
+
+        if ($type === 'file') {
+            $fieldName = $element['config']['foreign_match_fields']['fieldname'];
+            $filesProcessor = GeneralUtility::makeInstance(FilesProcessor::class);
+            $as = 'file';
+            $processorConfiguration = [
+                'as' => $as,
+                'references.' => [
+                    'fieldName' => $fieldName,
+                ],
+            ];
+            $processedData = [
+                'data' => $this->cObj->data,
+                'current' => null,
+            ];
+            $processedData = $filesProcessor->process(
+                $this->cObj,
+                [
+                    'dataProcessing.' => [
+                        '10' => FilesProcessor::class,
+                        '10.' => $processorConfiguration,
+                    ],
+                ],
+                $processorConfiguration,
+                $processedData,
+            );
+            $newValue = $processedData[$as];
         }
 
         $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
