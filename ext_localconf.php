@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor as BaseFilesProcessor;
+use Remind\Headless\DataProcessing\FilesProcessor;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -59,4 +61,8 @@ defined('TYPO3') or die;
         [] = 'EXT:rmnd_headless/Resources/Private/Language/Overrides/de.locallang_felogin.xlf';
 
     $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default'] = 'EXT:rmnd_headless/Configuration/RTE/Default.yaml';
+
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][BaseFilesProcessor::class] = [
+        'className' => FilesProcessor::class,
+    ];
 })();
