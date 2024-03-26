@@ -30,15 +30,6 @@
             <trans-unit id="image_gallery.title">
                 <source>Image Gallery</source>
             </trans-unit>
-            <trans-unit id="image_gallery.type">
-                <source>Type</source>
-            </trans-unit>
-            <trans-unit id="image_gallery.type.scroll">
-                <source>Scroll</source>
-            </trans-unit>
-            <trans-unit id="image_gallery.type.slide">
-                <source>Slide</source>
-            </trans-unit>
             <trans-unit id="tabs.description">
                 <source>Containing multiple tabs consisting of text</source>
             </trans-unit>

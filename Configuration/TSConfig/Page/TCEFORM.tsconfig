@@ -51,7 +51,19 @@ TCEFORM {
         imageheight.disabled = 1
         imageborder.disabled = 1
         image_zoom.disabled = 1
-        layout.disabled = 1
+        layout {
+            disabled = 1
+            types {
+                image_gallery {
+                    altLabels {
+                        0 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:layout.types.image_gallery.items.0
+                        1 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:layout.types.image_gallery.items.1
+                    }
+                    disabled = 0
+                    keepItems = 0, 1
+                }
+            }
+        }
         linkToTop.disabled = 1
         media.disabled = 1
         sectionIndex.disabled = 1
@@ -70,7 +82,7 @@ TCEFORM {
         table_class.disabled = 1
         table_header_position {
             addItems {
-                3 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:table_header_position.3
+                3 = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:table_header_position.items.3
             }
         }
     }

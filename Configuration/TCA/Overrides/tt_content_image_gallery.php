@@ -16,18 +16,11 @@ ExtensionManagementUtility::addTcaSelectItem(
     'after'
 );
 
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:rmnd_headless/Configuration/FlexForms/ImageGallery.xml',
-    'image_gallery'
-);
-
 $GLOBALS['TCA']['tt_content']['types']['image_gallery'] = [
     'showitem' => '
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
             --palette--;;general,
             --palette--;;headers,
-            pi_flexform,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.images,
             image,
         --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,

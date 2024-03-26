@@ -48,6 +48,12 @@
             <trans-unit id="image_size.large">
                 <source>large</source>
             </trans-unit>
+            <trans-unit id="layout.types.image_gallery.items.0">
+                <source>Scroll</source>
+            </trans-unit>
+            <trans-unit id="layout.types.image_gallery.items.1">
+                <source>Slide</source>
+            </trans-unit>
             <trans-unit id="space_after_inside">
                 <source>Space After (inside Background)</source>
             </trans-unit>
@@ -57,7 +63,7 @@
             <trans-unit id='space_none'>
                 <source>None</source>
             </trans-unit>
-            <trans-unit id="table_header_position.3">
+            <trans-unit id="table_header_position.items.3">
                 <source>Top and Left</source>
             </trans-unit>
             <trans-unit id="tx_headless_item">

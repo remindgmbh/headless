@@ -30,15 +30,6 @@
             <trans-unit id="image_gallery.title">
                 <target>Bildergalerie</target>
             </trans-unit>
-            <trans-unit id="image_gallery.type">
-                <target>Typ</target>
-            </trans-unit>
-            <trans-unit id="image_gallery.type.scroll">
-                <target>Scroll</target>
-            </trans-unit>
-            <trans-unit id="image_gallery.type.slide">
-                <target>Slide</target>
-            </trans-unit>
             <trans-unit id="tabs.description">
                 <target>Enthält beliebige Tabs bestehend aus Text</target>
             </trans-unit>
