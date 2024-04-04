@@ -80,9 +80,13 @@ class ImageProcessingMiddleware implements MiddlewareInterface
             $mimeType = $processedImage->getMimeType();
             $contents = $processedImage->getContents();
 
+            $title = $image->getProperty('title') ?? $image->getNameWithoutExtension();
+            $filename = str_replace(' ', '-', strtolower($title)) . '.' . $targetFileExtension;
+
             $response = $this->responseFactory
                 ->createResponse()
                 ->withHeader('Content-Type', $mimeType)
+                ->withHeader('Content-Disposition', 'inline;filename="' . $filename . '"')
                 ->withHeader('Cache-Control', 'no-cache')
                 ->withHeader('Last-Modified', $lastModified);
 
