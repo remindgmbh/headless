@@ -1,6 +1,6 @@
 <?php
 
-use TYPO3\CMS\Core\Resource\File;
+use TYPO3\CMS\Core\Resource\AbstractFile;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die;
@@ -21,7 +21,7 @@ $GLOBALS
     ['TCA']
     ['sys_file_reference']
     ['types']
-    [File::FILETYPE_IMAGE]
+    [AbstractFile::FILETYPE_IMAGE]
     ['columnsOverrides']
     ['tx_headless_lazy_loading']
     ['config']
@@ -44,3 +44,6 @@ ExtensionManagementUtility::addFieldsToPalette(
     'videoOverlayPalette',
     'tx_headless_lazy_loading'
 );
+
+// required to use language synchronization for image cropping: https://forge.typo3.org/issues/88024#note-3
+$GLOBALS['TCA']['sys_file_reference']['columns']['crop']['config']['behaviour']['allowLanguageSynchronization'] = true;
