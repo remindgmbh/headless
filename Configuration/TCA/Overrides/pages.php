@@ -26,6 +26,9 @@ ExtensionManagementUtility::addTCAcolumns(
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:page_config',
             'config' => [
                 'type' => 'flex',
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
                 'ds' => [
                     'default' => 'FILE:EXT:rmnd_headless/Configuration/FlexForms/Empty.xml',
                 ],

@@ -14,9 +14,14 @@ class ConfigUtility
 {
     public static function getRootPageConfig(): array
     {
+        $request = self::getRequest();
+
         /** @var \TYPO3\CMS\Core\Site\Entity\Site $site */
-        $site = self::getRequest()->getAttribute('site');
+        $site = $request->getAttribute('site');
         $rootPageId = $site->getRootPageId();
+
+        /** @var \TYPO3\CMS\Core\Site\Entity\SiteLanguage $siteLanguage */
+        $siteLanguage = $request->getAttribute('language');
 
         $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $queryBuilder = $connectionPool->getQueryBuilderForTable('pages');
@@ -24,9 +29,21 @@ class ConfigUtility
             ->select('tx_headless_config')
             ->from('pages')
             ->where(
-                $queryBuilder->expr()->eq(
-                    'uid',
-                    $queryBuilder->createNamedParameter($rootPageId, Connection::PARAM_INT)
+                $queryBuilder->expr()->and(
+                    $queryBuilder->expr()->or(
+                        $queryBuilder->expr()->eq(
+                            'uid',
+                            $queryBuilder->createNamedParameter($rootPageId, Connection::PARAM_INT)
+                        ),
+                        $queryBuilder->expr()->eq(
+                            'l10n_parent',
+                            $queryBuilder->createNamedParameter($rootPageId, Connection::PARAM_INT)
+                        ),
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'sys_language_uid',
+                        $queryBuilder->createNamedParameter($siteLanguage->getLanguageId(), Connection::PARAM_INT)
+                    ),
                 )
             )
             ->executeQuery()
