@@ -12,9 +12,14 @@ class FilesProcessor extends BaseFilesProcessor
     {
         $data = parent::processFiles($properties);
         if ($data) {
-            foreach ($data as &$processedFile) {
-                unset($processedFile['properties']['crop']);
-                unset($processedFile['properties']['cropDimensions']);
+            if ((bool) ($properties['returnFlattenObject'] ?? false)) {
+                unset($data['properties']['crop']);
+                unset($data['properties']['cropDimensions']);
+            } else {
+                foreach ($data as &$processedFile) {
+                    unset($processedFile['properties']['crop']);
+                    unset($processedFile['properties']['cropDimensions']);
+                }
             }
         }
         return $data;
