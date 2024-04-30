@@ -1,0 +1,22 @@
+lib.meta {
+    fields {
+        ogTitle {
+            stdWrap.ifEmpty.cObject {
+                field = seo_title
+                stdWrap.ifEmpty.cObject = TEXT
+                stdWrap.ifEmpty.cObject {
+                    field = title
+                }
+            }
+        }
+        twitterTitle {
+            stdWrap.ifEmpty.cObject {
+                field = seo_title
+                stdWrap.ifEmpty.cObject = TEXT
+                stdWrap.ifEmpty.cObject {
+                    field = title
+                }
+            }
+        }
+    }
+}
