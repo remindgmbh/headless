@@ -46,6 +46,25 @@ class TcaUtility
         }, []);
     }
 
+    public static function getCropVariantsFree(array $breakpoints): array
+    {
+        return self::getCropVariants(
+            array_reduce(
+                $breakpoints,
+                function (array $result, string $breakpoint) {
+                    $result[$breakpoint] = [
+                        [
+                            'value' => 0.0,
+                            'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.free',
+                        ],
+                    ];
+                    return $result;
+                },
+                []
+            )
+        );
+    }
+
         /**
      * @param array|string $dataStructure either a xml flexform file path, a xml flexform string or a flexform array
      */
