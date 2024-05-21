@@ -1,11 +1,11 @@
 <?php
 
-use Remind\Headless\Middleware\ImageProcessingMiddleware;
+use Remind\Headless\Middleware\AssetMiddleware;
 
 return [
     'frontend' => [
-        'rmnd_headless/imageprocessing' => [
-            'target' => ImageProcessingMiddleware::class,
+        'rmnd_headless/asset' => [
+            'target' => AssetMiddleware::class,
             'after' => [
                 'typo3/cms-frontend/site',
             ],
