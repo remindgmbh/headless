@@ -1,0 +1,11 @@
+editor:
+  config:
+    fontSize:
+      options:
+        - "default"
+        - "tiny"
+        - "small"
+        - "big"
+        - "huge"
+    importModules:
+      - { "module": "@ckeditor/ckeditor5-font", "exports": ["Font"] }

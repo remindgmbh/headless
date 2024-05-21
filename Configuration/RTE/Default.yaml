@@ -3,6 +3,7 @@ imports:
     - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml' }
     - { resource: 'EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml' }
     - { resource: 'EXT:rmnd_headless/Configuration/RTE/Editor/Alignment.yaml' }
+    - { resource: 'EXT:rmnd_headless/Configuration/RTE/Editor/FontSize.yaml' }
     - { resource: 'EXT:rmnd_headless/Configuration/RTE/Editor/Heading.yaml' }
     - { resource: 'EXT:rmnd_headless/Configuration/RTE/Editor/Table.yaml' }
 
@@ -12,6 +13,7 @@ editor:
       items:
         - heading
         - '|'
+        - fontSize
         - bold
         - italic
         - subscript
