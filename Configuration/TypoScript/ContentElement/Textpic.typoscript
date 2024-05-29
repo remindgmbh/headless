@@ -1,13 +1,23 @@
-tt_content.textpic =< tt_content.textmedia
 tt_content.textpic {
     fields {
+        test < lib.assetProperties
         content {
             fields {
                 gallery >
-                assets {
+                ratio = TEXT
+                ratio {
+                    field = imagecols
+                    intval = 1
+                }
+                imagePosition =< lib.imageOrient
+                image = TEXT
+                image {
                     dataProcessing {
+                        10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
                         10 {
                             references.fieldName = image
+                            as = files
+                            processingConfiguration < lib.assetProcessingConfiguration
                         }
                     }
                 }

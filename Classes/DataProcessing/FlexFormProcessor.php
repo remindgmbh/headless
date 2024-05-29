@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace Remind\Headless\DataProcessing;
 
 use FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\Exception\MissingArrayPathException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
@@ -15,6 +17,7 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 class FlexFormProcessor implements DataProcessorInterface
 {
     protected ContentObjectRenderer $cObj;
+    protected array $processorConf;
 
     /**
      * @param ContentObjectRenderer $cObj The data of the content element or page
@@ -30,6 +33,7 @@ class FlexFormProcessor implements DataProcessorInterface
         array $processedData
     ): array {
         $this->cObj = $cObj;
+        $this->processorConf = $processorConf;
 
         $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
         $flexFormTools->reNumberIndexesOfSectionData = true;
@@ -127,7 +131,22 @@ class FlexFormProcessor implements DataProcessorInterface
         }
 
         if ($type === 'file') {
+            $request = $this->getRequest();
+            /** @var \TYPO3\CMS\Core\TypoScript\FrontendTypoScript $frontendTypoScript */
+            $frontendTypoScript = $request->getAttribute('frontend.typoscript');
+            $fullTypoScript = $frontendTypoScript->getSetupArray();
+            $assetProcessingConfiguration = $fullTypoScript['lib.']['assetProcessingConfiguration.'];
+
             $fieldName = $element['config']['foreign_match_fields']['fieldname'];
+
+            try {
+                $overrule = ArrayUtility::getValueByPath($this->processorConf, ['filesConfiguration.', ...array_map(function ($value) {
+                    return $value . '.';
+                }, explode('.', $fieldName))]);
+                ArrayUtility::mergeRecursiveWithOverrule($assetProcessingConfiguration, $overrule);
+            } catch (MissingArrayPathException $e) {
+            }
+
             $filesProcessor = GeneralUtility::makeInstance(FilesProcessor::class);
             $as = 'file';
             $processorConfiguration = [
@@ -135,6 +154,7 @@ class FlexFormProcessor implements DataProcessorInterface
                 'references.' => [
                     'fieldName' => $fieldName,
                 ],
+                'processingConfiguration.' => $assetProcessingConfiguration,
             ];
             $processedData = [
                 'data' => $this->cObj->data,
@@ -172,5 +192,10 @@ class FlexFormProcessor implements DataProcessorInterface
             }, $value);
         }
         return $value;
+    }
+
+    private function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

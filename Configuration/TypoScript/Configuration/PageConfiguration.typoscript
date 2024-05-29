@@ -1,0 +1,16 @@
+page {
+    10 {
+        fields {
+            media {
+                dataProcessing {
+                    10 {
+                        processingConfiguration < lib.assetProcessingConfiguration
+                        processingConfiguration {
+                            returnFlattenObject = 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

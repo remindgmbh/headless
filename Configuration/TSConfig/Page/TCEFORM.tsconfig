@@ -7,6 +7,7 @@ TCEFORM {
     tt_content {
         assets.types {
             textmedia.config.maxitems = 1
+            textmedia.config.minitems = 1
         }
         bullets_type {
             keepItems = 0,1
@@ -21,7 +22,9 @@ TCEFORM {
         }
         image.types {
             image.config.maxitems = 1
+            image.config.minitems = 1
             textpic.config.maxitems = 1
+            textpic.config.minitems = 1
         }
         imagecols.types {
             textpic {

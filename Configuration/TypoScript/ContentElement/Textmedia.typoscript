@@ -2,38 +2,21 @@ tt_content.textmedia {
     fields {
         content {
             fields {
+                gallery >
                 ratio = TEXT
                 ratio {
                     field = imagecols
                     intval = 1
                 }
-                assetPosition = COA
-                assetPosition {
-                    10 = TEXT
-                    10 {
-                        if {
-                            value = 25
-                            equals.field = imageorient
-                        }
-                        value = right
-                    }
-                    20 = TEXT
-                    20 {
-                        if {
-                            value = 26
-                            equals.field = imageorient
-                        }
-                        value = left
-                    }
-                }
-                gallery >
-                assets = TEXT
-                assets {
+                mediaPosition =< lib.imageOrient
+                media = TEXT
+                media {
                     dataProcessing {
                         10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
                         10 {
                             references.fieldName = assets
                             as = files
+                            processingConfiguration < lib.assetProcessingConfiguration
                         }
                     }
                 }

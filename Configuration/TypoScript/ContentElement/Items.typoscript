@@ -59,13 +59,17 @@ lib.items {
                     parseFunc =< lib.parseFunc_links
                 }
                 items =< lib.items 
-                images = TEXT
-                images {
+                image = TEXT
+                image {
                     dataProcessing {
                         10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
                         10 {
                             references.fieldName = image
                             as = files
+                            processingConfiguration < lib.assetProcessingConfiguration
+                            processingConfiguration {
+                                returnFlattenObject = 1
+                            }
                         }
                     }
                 }

@@ -1,11 +1,27 @@
 lib.meta {
     fields {
+        ogImage = TEXT
+        ogImage {
+            dataProcessing {
+                10 {
+                    processingConfiguration < lib.assetProcessingConfiguration
+                }
+            }
+        }
         ogTitle {
             stdWrap.ifEmpty.cObject {
                 field = seo_title
                 stdWrap.ifEmpty.cObject = TEXT
                 stdWrap.ifEmpty.cObject {
                     field = title
+                }
+            }
+        }
+        twitterImage = TEXT
+        twitterImage {
+            dataProcessing {
+                10 {
+                    processingConfiguration < lib.assetProcessingConfiguration
                 }
             }
         }

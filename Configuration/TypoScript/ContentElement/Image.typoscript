@@ -3,13 +3,14 @@ tt_content.image {
         content {
             fields {
                 gallery >
-                images = TEXT
-                images {
+                image = TEXT
+                image {
                     dataProcessing {
                         10 = FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor
                         10 {
                             references.fieldName = image
                             as = files
+                            processingConfiguration < lib.assetProcessingConfiguration
                         }
                     }
                 }

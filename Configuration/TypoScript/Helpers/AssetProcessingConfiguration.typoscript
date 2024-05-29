@@ -1,0 +1,11 @@
+lib.assetProcessingConfiguration {
+    returnFlattenObject = 1
+    legacyReturn = 0
+    linkResult = 1
+    properties {
+        byType = 1
+        defaultFieldsByType = fileReferenceUid,type,extension,title,description,lazyLoading
+        defaultImageFields  = alternative,link,dimensions
+        defaultVideoFields = autoplay
+    }
+}
