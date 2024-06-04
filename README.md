@@ -16,7 +16,7 @@ Use comoser to install the extension using `composer install remind/headless`. I
 Add the following to your site config:
 
 ```yaml
-headless: true
+headless: 1
 ```
 
 ## Dependencies
