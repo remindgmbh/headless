@@ -8,12 +8,11 @@ ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
-        'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.title',
-        'image_gallery',
-        'content-gallery',
+        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image_gallery.title',
+        'value' => 'image_gallery',
+        'icon' => 'content-gallery',
+        'group' => 'default',
     ],
-    'header',
-    'after'
 );
 
 $GLOBALS['TCA']['tt_content']['types']['image_gallery'] = [

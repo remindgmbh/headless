@@ -14,6 +14,7 @@ TCEFORM {
         }
         cols.disabled = 1
         CType {
+            keepItems = ""
             altLabels.image = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.title
         }
         frame_class.disabled = 1

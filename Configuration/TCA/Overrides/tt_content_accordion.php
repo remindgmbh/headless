@@ -8,12 +8,11 @@ ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
-        'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:accordion.title',
-        'accordion',
-        'content-accordion',
+        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:accordion.title',
+        'value' => 'accordion',
+        'icon' => 'content-accordion',
+        'group' => 'default',
     ],
-    'header',
-    'after'
 );
 
 $GLOBALS['TCA']['tt_content']['types']['accordion'] = [

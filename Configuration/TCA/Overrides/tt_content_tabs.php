@@ -8,12 +8,11 @@ ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
-        'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:tabs.title',
-        'tabs',
-        'content-tab',
+        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:tabs.title',
+        'value' => 'tabs',
+        'icon' => 'content-tab',
+        'group' => 'default',
     ],
-    'header',
-    'after'
 );
 
 $GLOBALS['TCA']['tt_content']['types']['tabs'] = [

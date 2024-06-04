@@ -8,12 +8,11 @@ ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
-        'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:footer_content.title',
-        'footer_content',
-        'content-footer',
+        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:footer_content.title',
+        'value' => 'footer_content',
+        'icon' => 'content-footer',
+        'group' => 'default',
     ],
-    'header',
-    'after'
 );
 
 $GLOBALS['TCA']['tt_content']['types']['footer_content'] = [
