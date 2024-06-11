@@ -1,6 +1,5 @@
 tt_content.textpic {
     fields {
-        test < lib.assetProperties
         content {
             fields {
                 gallery >
