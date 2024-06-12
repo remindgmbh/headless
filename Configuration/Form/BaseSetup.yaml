@@ -1,3 +1,24 @@
+imports:
+  - { resource: './FormElements/AdvancedPassword.yaml' }
+  - { resource: './FormElements/Checkbox.yaml' }
+  - { resource: './FormElements/Date.yaml' }
+  - { resource: './FormElements/Email.yaml' }
+  - { resource: './FormElements/GridRow.yaml' }
+  - { resource: './FormElements/Fieldset.yaml' }
+  - { resource: './FormElements/MultiCheckbox.yaml' }
+  - { resource: './FormElements/MultiSelect.yaml' }
+  - { resource: './FormElements/Number.yaml' }
+  - { resource: './FormElements/Password.yaml' }
+  - { resource: './FormElements/RadioButton.yaml' }
+  - { resource: './FormElements/SingleSelect.yaml' }
+  - { resource: './FormElements/StaticText.yaml' }
+  - { resource: './FormElements/Telephone.yaml' }
+  - { resource: './FormElements/Text.yaml' }
+  - { resource: './FormElements/Textarea.yaml' }
+  - { resource: './FormElements/Url.yaml' }
+
+  - { resource: './Finishers/JsonRedirectFinisher.yaml' }
+
 TYPO3:
   CMS:
     Form:
@@ -10,12 +31,16 @@ TYPO3:
             translationFiles:
               20: "EXT:rmnd_headless/Resources/Private/Language/locallang_form.xlf"
           formElementsDefinition:
-            DatePicker: null
+            DatePicker:
+              formEditor:
+                group: null
             Form:
               formEditor:
                 predefinedDefaults:
                   i18n:
                     identifier: i18n
+                  renderingOptions:
+                    formDecorator: Remind\Headless\Form\FormDefinitionDecorator
                 editors:
                   # Overwrite submitButtonLabel propertyPath to be included in json output
                   300:

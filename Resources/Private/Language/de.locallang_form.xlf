@@ -18,6 +18,21 @@
             <trans-unit id="formEditor.elements.FormElement.editor.size.default.label">
                 <target>Gesamte Breite</target>
             </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.size.xs.label">
+                <target>Sehr klein</target>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.size.sm.label">
+                <target>Klein</target>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.size.md.label">
+                <target>Mittel</target>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.size.lg.label">
+                <target>Groß</target>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.size.xl.label">
+                <target>Sehr groß</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

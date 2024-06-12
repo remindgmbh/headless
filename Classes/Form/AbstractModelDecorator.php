@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Remind\Headless\Form;
 
-use FriendsOfTYPO3\Headless\Form\Decorator\AbstractFormDefinitionDecorator;
 use Psr\Http\Message\ServerRequestInterface;
 
-abstract class AbstractModelDecorator extends AbstractFormDefinitionDecorator
+abstract class AbstractModelDecorator extends FormDefinitionDecorator
 {
     protected string $actionName = '';
     protected string $controllerName = '';
@@ -15,6 +14,8 @@ abstract class AbstractModelDecorator extends AbstractFormDefinitionDecorator
 
     protected function overrideDefinition(array $decorated, array $definition, int $currentPage): array
     {
+        $decorated = parent::overrideDefinition($decorated, $definition, $currentPage);
+
         $request = $this->getRequest();
 
         /** @var \TYPO3\CMS\Core\Routing\PageArguments $pageArguments */
