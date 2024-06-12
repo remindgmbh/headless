@@ -69,7 +69,6 @@ TCEFORM {
             }
         }
         linkToTop.disabled = 1
-        media.disabled = 1
         sectionIndex.disabled = 1
         // wait for this issue to be resolved: https://forge.typo3.org/issues/100775
         // Workaround in tt_content.php
