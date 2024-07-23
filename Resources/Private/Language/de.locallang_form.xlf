@@ -12,6 +12,15 @@
             <trans-unit id="formEditor.elements.Form.editor.requiredHint.label">
                 <target>Pflichtfeld Hinweis</target>
             </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.links.label">
+                <target>Links</target>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.links.linkText">
+                <target>Link Text</target>
+            </trans-unit>
+            <trans-unit id="formEditor.elements.FormElement.editor.links.pageUid">
+                <target>Seite</target>
+            </trans-unit>
             <trans-unit id="formEditor.elements.FormElement.editor.size.label">
                 <target>Größe</target>
             </trans-unit>

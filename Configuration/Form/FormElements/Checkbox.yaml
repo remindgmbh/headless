@@ -7,6 +7,20 @@ TYPO3:
             Checkbox:
               formEditor:
                 editors:
+                  300:
+                    identifier: links
+                    templateName: Inspector-PropertyGridEditor
+                    label: formEditor.elements.FormElement.editor.links.label
+                    propertyPath: properties.links
+                    isSortable: true
+                    enableAddRow: true
+                    enableDeleteRow: true
+                    useLabelAsFallbackValue: false
+                    gridColumns:
+                      - name: label
+                        title: formEditor.elements.FormElement.editor.links.linkText
+                      - name: value
+                        title: formEditor.elements.FormElement.editor.links.pageUid
                   # Remove default Grid viewport configuration
                   700: null
                   701:
