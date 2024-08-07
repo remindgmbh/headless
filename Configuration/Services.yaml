@@ -15,3 +15,7 @@ services:
     tags:
       -
         name: event.listener
+  Remind\Headless\Event\Listener\AfterCacheableContentIsGeneratedEventListener:
+    tags:
+      -
+        name: event.listener

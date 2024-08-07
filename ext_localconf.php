@@ -20,12 +20,14 @@ defined('TYPO3') or die;
 
     $GLOBALS
         ['TYPO3_CONF_VARS']
-        ['SYS']['features']
+        ['SYS']
+        ['features']
         ['headless.elementBodyResponse'] = true;
 
     $GLOBALS
         ['TYPO3_CONF_VARS']
-        ['SYS']['features']
+        ['SYS']
+        ['features']
         ['headless.frontendUrls'] = true;
 
     $GLOBALS
