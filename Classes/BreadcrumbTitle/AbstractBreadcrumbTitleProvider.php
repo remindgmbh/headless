@@ -8,7 +8,7 @@ use TYPO3\CMS\Core\SingletonInterface;
 
 class AbstractBreadcrumbTitleProvider implements BreadcrumbTitleProviderInterface, SingletonInterface
 {
-    protected $title = '';
+    protected string $title = '';
 
     public function getTitle(): string
     {

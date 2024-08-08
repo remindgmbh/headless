@@ -16,7 +16,10 @@ class BreadcrumbTitleProviderManager implements SingletonInterface, LoggerAwareI
 {
     use LoggerAwareTrait;
 
-    private $breadcrumbTitleCache = [];
+    /**
+     * @var string[]
+     */
+    private array $breadcrumbTitleCache = [];
 
     public function getTitle(): string
     {
@@ -28,7 +31,7 @@ class BreadcrumbTitleProviderManager implements SingletonInterface, LoggerAwareI
         $orderedTitleProviders = GeneralUtility::makeInstance(DependencyOrderingService::class)
             ->orderByDependencies($titleProviders);
 
-        $this->logger->debug('Breadcrumb title providers ordered', [
+        $this->logger?->debug('Breadcrumb title providers ordered', [
             'orderedTitleProviders' => $orderedTitleProviders,
         ]);
 
@@ -43,17 +46,17 @@ class BreadcrumbTitleProviderManager implements SingletonInterface, LoggerAwareI
                     ($breadcrumbTitle = $titleProviderObject->getTitle())
                     || ($breadcrumbTitle = $this->breadcrumbTitleCache[$configuration['provider']] ?? '') !== ''
                 ) {
-                    $this->logger->debug('Breadcrumb title provider {provider} used on page {title}', [
-                        'title' => $breadcrumbTitle,
+                    $this->logger?->debug('Breadcrumb title provider {provider} used on page {title}', [
                         'provider' => $configuration['provider'],
+                        'title' => $breadcrumbTitle,
                     ]);
                     $this->breadcrumbTitleCache[$configuration['provider']] = $breadcrumbTitle;
                     break;
                 }
-                $this->logger->debug('Breadcrumb title provider {provider} skipped on page {title}', [
-                    'title' => $breadcrumbTitle,
+                $this->logger?->debug('Breadcrumb title provider {provider} skipped on page {title}', [
                     'provider' => $configuration['provider'],
                     'providerUsed' => $configuration['provider'],
+                    'title' => $breadcrumbTitle,
                 ]);
             }
         }
@@ -61,6 +64,10 @@ class BreadcrumbTitleProviderManager implements SingletonInterface, LoggerAwareI
         return $breadcrumbTitle;
     }
 
+    /**
+     * @param mixed[] $orderInformation
+     * @return mixed[]
+     */
     protected function setProviderOrder(array $orderInformation): array
     {
         foreach ($orderInformation as $provider => &$configuration) {
@@ -88,6 +95,9 @@ class BreadcrumbTitleProviderManager implements SingletonInterface, LoggerAwareI
         return $orderInformation;
     }
 
+    /**
+     * @return mixed[]
+     */
     private function getBreadcrumbTitleProviderConfiguration(): array
     {
         $typoscriptService = GeneralUtility::makeInstance(TypoScriptService::class);

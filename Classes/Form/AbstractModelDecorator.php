@@ -9,9 +9,16 @@ use Psr\Http\Message\ServerRequestInterface;
 abstract class AbstractModelDecorator extends FormDefinitionDecorator
 {
     protected string $actionName = '';
+
     protected string $controllerName = '';
+
     protected string $valueName = '';
 
+    /**
+     * @param mixed[] $decorated
+     * @param mixed[] $definition
+     * @return mixed[]
+     */
     protected function overrideDefinition(array $decorated, array $definition, int $currentPage): array
     {
         $decorated = parent::overrideDefinition($decorated, $definition, $currentPage);
@@ -25,15 +32,18 @@ abstract class AbstractModelDecorator extends FormDefinitionDecorator
 
         $controllerArguments = $arguments[$this->controllerName] ?? null;
 
-        if ($controllerArguments) {
-            $uid = (int) $controllerArguments[$this->valueName] ?? null;
+        if (is_array($controllerArguments)) {
+            $uid = (int) $controllerArguments[$this->valueName];
             $action = $controllerArguments['action'] ?? null;
 
-            if ($action === $this->actionName && $uid) {
+            if (
+                $action === $this->actionName &&
+                $uid
+            ) {
                 $decorated['elements'][] = [
-                    'type' => 'Hidden',
                     'defaultValue' => $uid,
                     'name' => $this->controllerName . '[' . $this->valueName . ']',
+                    'type' => 'Hidden',
                 ];
             }
         }

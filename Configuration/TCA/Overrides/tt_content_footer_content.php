@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die;
@@ -8,10 +10,10 @@ ExtensionManagementUtility::addTcaSelectItem(
     'tt_content',
     'CType',
     [
+        'group' => 'default',
+        'icon' => 'content-footer',
         'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:footer_content.title',
         'value' => 'footer_content',
-        'icon' => 'content-footer',
-        'group' => 'default',
     ],
 );
 

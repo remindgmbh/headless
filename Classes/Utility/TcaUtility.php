@@ -12,7 +12,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class TcaUtility
 {
     /**
-     * @param array $variants array with breakpoint names as key and aspect-ratios as value
+     * @param mixed[] $variants array with breakpoint names as key and aspect-ratios as value
      * the value can contain multple aspect ratios consisting of value and title
      * e.g. [
      *          'lg' => [
@@ -23,16 +23,16 @@ class TcaUtility
      *              ['value' => 16 / 9, 'title' => '16:9']
      *          ]
      *      ]
+     * @return mixed[]
      */
     public static function getCropVariants(array $variants): array
     {
         return array_reduce(array_keys($variants), function (array $result, string $breakpoint) use ($variants) {
             $aspectRatios = $variants[$breakpoint];
             $result[$breakpoint] = [
-                'title' => $breakpoint,
                 'allowedAspectRatios' => array_reduce(array_keys($aspectRatios), function (
                     array $result,
-                    string $key
+                    string|int $key
                 ) use (
                     $aspectRatios,
                     $breakpoint,
@@ -41,11 +41,16 @@ class TcaUtility
                     $result[$breakpoint . '_' . $aspectRatio['value']] = $aspectRatio;
                     return $result;
                 }, []),
+                'title' => $breakpoint,
             ];
             return $result;
         }, []);
     }
 
+    /**
+     * @param mixed[] $breakpoints
+     * @return mixed[]
+     */
     public static function getCropVariantsFree(array $breakpoints): array
     {
         return self::getCropVariants(
@@ -54,8 +59,8 @@ class TcaUtility
                 function (array $result, string $breakpoint) {
                     $result[$breakpoint] = [
                         [
-                            'value' => 0.0,
                             'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.free',
+                            'value' => 0.0,
                         ],
                     ];
                     return $result;
@@ -65,8 +70,8 @@ class TcaUtility
         );
     }
 
-        /**
-     * @param array|string $dataStructure either a xml flexform file path, a xml flexform string or a flexform array
+    /**
+     * @param mixed[]|string $dataStructure either a xml flexform file path, a xml flexform string or a flexform array
      */
     public static function addPageConfigFlexForm(array|string $dataStructure): void
     {
@@ -86,6 +91,10 @@ class TcaUtility
         $GLOBALS['TCA']['pages']['columns']['tx_headless_config']['config']['ds']['default'] = $newFlexFormString;
     }
 
+    /**
+     * @param mixed[]|string $dataStructure either a xml flexform file path, a xml flexform string or a flexform array
+     * @return mixed[]
+     */
     private static function getFlexFormArray(array|string $dataStructure): array
     {
         if (is_array($dataStructure)) {
@@ -94,7 +103,10 @@ class TcaUtility
         // Taken from TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools
         if (strpos(trim($dataStructure), 'FILE:') === 0) {
             $file = GeneralUtility::getFileAbsFileName(substr(trim($dataStructure), 5));
-            if (empty($file) || !@is_file($file)) {
+            if (
+                empty($file) ||
+                !@is_file($file)
+            ) {
                 throw new RuntimeException(
                     'Data structure file ' . $file . ' could not be resolved to an existing file',
                     1478105826

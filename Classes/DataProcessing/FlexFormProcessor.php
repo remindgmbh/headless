@@ -17,29 +17,32 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 class FlexFormProcessor implements DataProcessorInterface
 {
     protected ContentObjectRenderer $cObj;
+
+    /**
+     * @var mixed[]
+     */
     protected array $processorConf;
 
     /**
-     * @param ContentObjectRenderer $cObj The data of the content element or page
-     * @param array $contentObjectConf The configuration of Content Object
-     * @param array $processorConf The configuration of this processor
-     * @param array $processedData Key/value store of processed data (e.g. to be passed to a Fluid View)
-     * @return array the processed data as key/value store
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter
+     * @param mixed[] $contentObjectConf
+     * @param mixed[] $processorConf
+     * @param mixed[] $processedData
+     * @return mixed[]
      */
     public function process(
         ContentObjectRenderer $cObj,
         array $contentObjectConf,
         array $processorConf,
         array $processedData
-    ): array {
-        $this->cObj = $cObj;
+    ): array { $this->cObj = $cObj;
         $this->processorConf = $processorConf;
 
         $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
         $flexFormTools->reNumberIndexesOfSectionData = true;
         $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
 
-        $fieldName = $cObj->stdWrapValue('fieldName', $processorConf);
+        $fieldName = (string) $cObj->stdWrapValue('fieldName', $processorConf);
 
         // default flexform field name
         if (empty($fieldName)) {
@@ -93,20 +96,20 @@ class FlexFormProcessor implements DataProcessorInterface
         if (!empty($targetVariableName)) {
             $processedData[$targetVariableName] = $flexformData;
         } else {
-            if ($processedData['data'][$fieldName]) {
-                $processedData['data'][$fieldName] = $flexformData;
-            } else {
-                $processedData[$fieldName] = $flexformData;
-            }
+            $processedData['data'][$fieldName] = $flexformData;
         }
 
         return $processedData;
     }
 
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter
+     * @param mixed[] $element
+     */
     public function parseElement(
         array $element,
         string $value,
-        $additionalParameters,
+        mixed $additionalParameters,
         string $path,
         FlexFormTools $flexFormTools
     ): void {
@@ -127,7 +130,7 @@ class FlexFormProcessor implements DataProcessorInterface
         }
 
         if ($type === 'text') {
-            $newValue = $this->cObj->parseFunc($value, [], '< lib.parseFunc_links');
+            $newValue = $this->cObj->parseFunc($value, null, '< lib.parseFunc_links');
         }
 
         if ($type === 'file') {
@@ -140,9 +143,13 @@ class FlexFormProcessor implements DataProcessorInterface
             $fieldName = $element['config']['foreign_match_fields']['fieldname'];
 
             try {
-                $overrule = ArrayUtility::getValueByPath($this->processorConf, ['filesConfiguration.', ...array_map(function ($value) {
-                    return $value . '.';
-                }, explode('.', $fieldName))]);
+                $overrule = ArrayUtility::getValueByPath(
+                    $this->processorConf,
+                    ['filesConfiguration.', ...array_map(function ($value) {
+                        return $value . '.';
+                    },
+                    explode('.', $fieldName))]
+                );
                 ArrayUtility::mergeRecursiveWithOverrule($assetProcessingConfiguration, $overrule);
             } catch (MissingArrayPathException $e) {
             }
@@ -151,14 +158,14 @@ class FlexFormProcessor implements DataProcessorInterface
             $as = 'file';
             $processorConfiguration = [
                 'as' => $as,
+                'processingConfiguration.' => $assetProcessingConfiguration,
                 'references.' => [
                     'fieldName' => $fieldName,
                 ],
-                'processingConfiguration.' => $assetProcessingConfiguration,
             ];
             $processedData = [
-                'data' => $this->cObj->data,
                 'current' => null,
+                'data' => $this->cObj->data,
             ];
             $processedData = $filesProcessor->process(
                 $this->cObj,

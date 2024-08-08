@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use TYPO3\CMS\Core\Resource\AbstractFile;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
@@ -7,25 +9,17 @@ defined('TYPO3') || die;
 
 ExtensionManagementUtility::addTCAcolumns('sys_file_reference', [
     'tx_headless_lazy_loading' => [
-        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_file.xlf:lazy_loading',
-        'description' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_file.xlf:lazy_loading.description',
         'config' => [
-            'type' => 'check',
-            'renderType' => 'checkboxToggle',
             'default' => 0,
+            'renderType' => 'checkboxToggle',
+            'type' => 'check',
         ],
+        'description' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_file.xlf:lazy_loading.description',
+        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_file.xlf:lazy_loading',
     ],
 ]);
 
-$GLOBALS
-    ['TCA']
-    ['sys_file_reference']
-    ['types']
-    [AbstractFile::FILETYPE_IMAGE]
-    ['columnsOverrides']
-    ['tx_headless_lazy_loading']
-    ['config']
-    ['default'] = 1;
+$GLOBALS['TCA']['sys_file_reference']['types'][AbstractFile::FILETYPE_IMAGE]['columnsOverrides']['tx_headless_lazy_loading']['config']['default'] = 1;
 
 ExtensionManagementUtility::addFieldsToPalette(
     'sys_file_reference',

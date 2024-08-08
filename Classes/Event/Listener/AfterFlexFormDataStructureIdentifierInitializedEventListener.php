@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Remind\Headless\Event\Listener;
 
 use PDO;
@@ -31,11 +33,11 @@ class AfterFlexFormDataStructureIdentifierInitializedEventListener
             if ($foreignUid) {
                 $isNew = !is_int($foreignUid) && str_starts_with($foreignUid, 'NEW');
                 if ($isNew) {
-                    $body = $request->getParsedBody();
+                    $body = (array) $request->getParsedBody();
                     $context = json_decode($body['ajax']['context'] ?? null, true);
                     $config = json_decode($context['config'] ?? null, true);
                     $queryParams = parse_url($config['originalReturnUrl'], PHP_URL_QUERY);
-                    parse_str($queryParams, $queryParams);
+                    parse_str($queryParams ?: '', $queryParams);
                     $type = $queryParams['defVals'][$foreignTable][$foreignField] ?? null;
                 } else {
                     $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
@@ -54,7 +56,7 @@ class AfterFlexFormDataStructureIdentifierInitializedEventListener
                     $type = $queryBuilder->executeQuery()->fetchOne();
                 }
             } else {
-                $body = $request->getParsedBody();
+                $body = (array) $request->getParsedBody();
                 $foreignRow = current($body['data'][$foreignTable]);
                 $type = $foreignRow[$foreignField];
             }

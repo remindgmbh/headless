@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 defined('TYPO3') || die;
 
 use Remind\Headless\Preview\ContentWithItemsPreviewRenderer;
@@ -9,42 +11,39 @@ ExtensionManagementUtility::addTCAcolumns(
     'tt_content',
     [
         'tx_headless_background_color' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
+                'default' => null,
                 'items' => [
                     [
                         'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color.none',
                         'value' => null,
                     ],
                 ],
-                'default' => null,
+                'renderType' => 'selectSingle',
+                'type' => 'select',
             ],
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_color',
             'onChange' => 'reload',
         ],
         'tx_headless_background_full_width' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_full_width',
             'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
                 'items' => [
                     [
                         'label' => '',
                         'value' => 0,
                     ],
                 ],
+                'renderType' => 'checkboxToggle',
+                'type' => 'check',
             ],
             'displayCond' => 'FIELD:tx_headless_background_color:REQ:true',
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:background_full_width',
         ],
         'tx_headless_cookie_category' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
+                'default' => null,
                 'items' => [
                     [
                         'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.none',
@@ -67,72 +66,36 @@ ExtensionManagementUtility::addTCAcolumns(
                         'value' => 3,
                     ],
                 ],
-                'default' => null,
+                'renderType' => 'selectSingle',
+                'type' => 'select',
             ],
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category',
         ],
         'tx_headless_cookie_message' => [
-            'l10n_mode' => 'prefixLangTitle',
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.message',
             'config' => [
-                'type' => 'text',
                 'cols' => 80,
+                'enableRichtext' => true,
                 'rows' => 10,
                 'softref' => 'typolink_tag,email[subst],url',
-                'enableRichtext' => true,
+                'type' => 'text',
             ],
+            'l10n_mode' => 'prefixLangTitle',
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.message',
         ],
         'tx_headless_item' => [
+            'config' => [
+                'foreign_field' => 'foreign_uid',
+                'foreign_table' => 'tx_headless_item',
+                'foreign_table_field' => 'foreign_table',
+                'type' => 'inline',
+            ],
             'exclude' => 0,
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:tx_headless_item',
-            'config' => [
-                'type' => 'inline',
-                'foreign_table' => 'tx_headless_item',
-                'foreign_field' => 'foreign_uid',
-                'foreign_table_field' => 'foreign_table',
-            ],
-        ],
-        'tx_headless_space_before_inside' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_before_inside',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none',
-                        'value' => '',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small',
-                        'value' => 'extra-small',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small',
-                        'value' => 'small',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium',
-                        'value' => 'medium',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large',
-                        'value' => 'large',
-                    ],
-                    [
-                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large',
-                        'value' => 'extra-large',
-                    ],
-                ],
-                'default' => '',
-            ],
-            'displayCond' => 'FIELD:tx_headless_background_color:REQ:true',
         ],
         'tx_headless_space_after_inside' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_after_inside',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
+                'default' => '',
                 'items' => [
                     [
                         'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none',
@@ -159,9 +122,48 @@ ExtensionManagementUtility::addTCAcolumns(
                         'value' => 'extra-large',
                     ],
                 ],
-                'default' => '',
+                'renderType' => 'selectSingle',
+                'type' => 'select',
             ],
             'displayCond' => 'FIELD:tx_headless_background_color:REQ:true',
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_after_inside',
+        ],
+        'tx_headless_space_before_inside' => [
+            'config' => [
+                'default' => '',
+                'items' => [
+                    [
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none',
+                        'value' => '',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_small',
+                        'value' => 'extra-small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_small',
+                        'value' => 'small',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_medium',
+                        'value' => 'medium',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_large',
+                        'value' => 'large',
+                    ],
+                    [
+                        'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_class_extra_large',
+                        'value' => 'extra-large',
+                    ],
+                ],
+                'renderType' => 'selectSingle',
+                'type' => 'select',
+            ],
+            'displayCond' => 'FIELD:tx_headless_background_color:REQ:true',
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_before_inside',
         ],
     ]
 );
@@ -228,21 +230,5 @@ $GLOBALS['TCA']['tt_content']['columns']['header_layout']['config']['items'] = [
 ];
 
 // Workaround for TCEFORM (https://forge.typo3.org/issues/100775)
-    $GLOBALS
-        ['TCA']
-        ['tt_content']
-        ['columns']
-        ['space_after_class']
-        ['config']
-        ['items']
-        [0]
-        ['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';
-    $GLOBALS
-        ['TCA']
-        ['tt_content']
-        ['columns']
-        ['space_before_class']
-        ['config']
-        ['items']
-        [0]
-        ['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';
+    $GLOBALS['TCA']['tt_content']['columns']['space_after_class']['config']['items'][0]['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';
+    $GLOBALS['TCA']['tt_content']['columns']['space_before_class']['config']['items'][0]['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';

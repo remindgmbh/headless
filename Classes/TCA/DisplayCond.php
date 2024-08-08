@@ -10,6 +10,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class DisplayCond
 {
+    /**
+     * @param mixed[] $args
+     */
     public function parentIsRoot(array $args): bool
     {
         ['record' => $record] = $args;

@@ -12,6 +12,9 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ConfigUtility
 {
+    /**
+     * @return mixed[]
+     */
     public static function getRootPageConfig(): array
     {
         $request = self::getRequest();

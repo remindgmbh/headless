@@ -58,6 +58,9 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
         return $out;
     }
 
+    /**
+     * @param mixed[] $item
+     */
     private function renderItemHeader(array $item): string
     {
         $outHeader = '';
@@ -67,7 +70,7 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
             $hiddenHeaderNote = '';
 
             // If header layout is set to 'hidden', display an accordant note:
-            if ($item['header_layout'] == 100) {
+            if (((int) $item['header_layout']) === 100) {
                 $hiddenHeaderNote = ' <em>[' . htmlspecialchars($this->getLanguageService()->sL(
                     'LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.hidden'
                 )) . ']</em>';

@@ -17,7 +17,7 @@ class AfterCacheableContentIsGeneratedEventListener
     ) {
     }
 
-    public function __invoke(AfterCacheableContentIsGeneratedEvent $event)
+    public function __invoke(AfterCacheableContentIsGeneratedEvent $event): void
     {
         try {
             $content = json_decode($event->getController()->content, true, 512, JSON_THROW_ON_ERROR);

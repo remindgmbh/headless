@@ -9,7 +9,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use TYPO3\CMS\Core\Imaging\ImageManipulation\Area;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
 use TYPO3\CMS\Core\Resource\AbstractFile;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
@@ -18,20 +17,22 @@ use TYPO3\CMS\Extbase\Service\ImageService;
 class AssetMiddleware implements MiddlewareInterface
 {
     private ResponseFactoryInterface $responseFactory;
+
     private ImageService $imageService;
+
     private ResourceFactory $resourceFactory;
 
-    public function injectImageService(ImageService $imageService)
+    public function injectImageService(ImageService $imageService): void
     {
         $this->imageService = $imageService;
     }
 
-    public function injectResponseFactory(ResponseFactoryInterface $responseFactory)
+    public function injectResponseFactory(ResponseFactoryInterface $responseFactory): void
     {
         $this->responseFactory = $responseFactory;
     }
 
-    public function injectResourceFactory(ResourceFactory $resourceFactory)
+    public function injectResourceFactory(ResourceFactory $resourceFactory): void
     {
         $this->resourceFactory = $resourceFactory;
     }
@@ -43,7 +44,10 @@ class AssetMiddleware implements MiddlewareInterface
         $path = $routing->getUri()->getPath();
         $queryParams = $request->getQueryParams();
         $uid = $queryParams['uid'] ?? null;
-        if ($path === '/asset' && $uid) {
+        if (
+            $path === '/asset' &&
+            $uid
+        ) {
             $resource = $this->resourceFactory->getFileReferenceObject($uid);
 
             $tstamp = intval($resource->getProperty('tstamp'));
@@ -62,7 +66,13 @@ class AssetMiddleware implements MiddlewareInterface
                 $targetFileExtension = $queryParams['fileExtension'] ?? null;
 
                 // Skip processing for SVGs without changing image type
-                if ($resource->getExtension() !== 'svg' || (!$targetFileExtension || $targetFileExtension === 'svg')) {
+                if (
+                    $resource->getExtension() !== 'svg' ||
+                    (
+                        !$targetFileExtension ||
+                        $targetFileExtension === 'svg'
+                    )
+                ) {
                     $cropVariant = $queryParams['breakpoint'] ?? 'default';
 
                     $crop = $resource->getProperty('crop');
@@ -70,17 +80,17 @@ class AssetMiddleware implements MiddlewareInterface
                     $cropArea = $cropVariantCollection->getCropArea($cropVariant);
 
                     // Use default cropVariant if breakpoint cropVariant does not exist
-                    if ($cropArea == Area::createEmpty()) {
+                    if ($cropArea->isEmpty()) {
                         $cropArea = $cropVariantCollection->getCropArea();
                     }
 
                     $processingInstructions = [
-                        'width' => $queryParams['width'] ?? null,
-                        'height' => $queryParams['height'] ?? null,
-                        'maxWidth' => $queryParams['maxWidth'] ?? null,
-                        'maxHeight' => $queryParams['maxHeight'] ?? null,
-                        'fileExtension' => $queryParams['fileExtension'] ?? null,
                         'crop' => $cropArea->makeAbsoluteBasedOnFile($resource),
+                        'fileExtension' => $queryParams['fileExtension'] ?? null,
+                        'height' => $queryParams['height'] ?? null,
+                        'maxHeight' => $queryParams['maxHeight'] ?? null,
+                        'maxWidth' => $queryParams['maxWidth'] ?? null,
+                        'width' => $queryParams['width'] ?? null,
                     ];
 
                     $processedResource = $this->imageService->applyProcessingInstructions($resource, $processingInstructions);

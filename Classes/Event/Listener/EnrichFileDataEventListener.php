@@ -12,7 +12,7 @@ class EnrichFileDataEventListener
     {
         $originalFile = $event->getOriginal();
         $properties = $event->getProperties();
-        $properties['lazyLoading'] = (bool) $originalFile->getProperty('tx_headless_lazy_loading') ?? true;
+        $properties['lazyLoading'] = (bool) $originalFile->getProperty('tx_headless_lazy_loading');
         $event->setProperties($properties);
     }
 }

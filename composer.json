@@ -26,13 +26,12 @@
     "config": {
         "optimize-autoloader": true,
         "apcu-autoloader": true,
-        "vendor-dir": ".build/vendor",
-        "bin-dir": ".build/bin",
         "sort-packages": true,
         "allow-plugins": {
             "typo3/cms-composer-installers": true,
             "typo3/class-alias-loader": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
         }
     },
     "require": {
@@ -43,6 +42,11 @@
     },
     "require-dev": {
         "apache-solr-for-typo3/solr": "^12.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^1.11",
+        "remind/coding-standard": "^1.0",
+        "saschaegerer/phpstan-typo3": "^1.10",
         "slevomat/coding-standard": "^8.14",
         "squizlabs/php_codesniffer": "^3.7"
     },
@@ -50,13 +54,16 @@
     "prefer-stable": true,
     "extra": {
         "typo3/cms": {
-            "cms-package-dir": "{$vendor-dir}/typo3/cms",
-            "web-dir": ".build/web",
             "extension-key": "rmnd_headless"
         }
     },
     "scripts": {
-        "phpcs": "@php ./.build/vendor/squizlabs/php_codesniffer/bin/phpcs --standard=.build/phpcs.xml --extensions=php --ignore=.build --report=full -n .",
-        "phpcbf": "@php ./.build/vendor/squizlabs/php_codesniffer/bin/phpcbf --standard=.build/phpcs.xml --extensions=php --ignore=.build ."
+        "phpcs": "@php ./vendor/bin/phpcs --standard=phpcs.xml --extensions=php --report=full -n .",
+        "phpcbf": "@php ./vendor/bin/phpcbf --standard=phpcs.xml --extensions=php .",
+        "phpstan": "@php ./vendor/bin/phpstan analyse -c phpstan.neon",
+        "static-analysis": [
+            "@composer phpcs",
+            "@composer phpstan"
+        ]
     }
 }

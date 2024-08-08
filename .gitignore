@@ -1,18 +1,2 @@
-### IDE ###
-nbproject/
-.idea/
-
-### Composer ###
-composer.phar
-
-### General ###
-*.log
-cache.properties
-
-### CI ###
-.build/bin/
-.build/logs/
-.build/var/
-.build/vendor/
-.build/web/
-coverage.xml
+/vendor
+/public

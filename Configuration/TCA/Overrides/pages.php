@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die;
@@ -8,39 +10,39 @@ ExtensionManagementUtility::addTCAcolumns(
     'pages',
     [
         'tx_headless_breadcrumbs_background_color' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:breadcrumbs_background_color',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
+                'default' => null,
                 'items' => [
                     [
                         'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:breadcrumbs_background_color.none',
                         'value' => null,
                     ],
                 ],
-                'default' => null,
+                'renderType' => 'selectSingle',
+                'type' => 'select',
             ],
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:breadcrumbs_background_color',
         ],
         'tx_headless_config' => [
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:page_config',
             'config' => [
-                'type' => 'flex',
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
                 'ds' => [
                     'default' => 'FILE:EXT:rmnd_headless/Configuration/FlexForms/Empty.xml',
                 ],
+                'type' => 'flex',
             ],
             'displayCond' => 'FIELD:is_siteroot:REQ:true',
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:page_config',
         ],
         'tx_headless_overview_label' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:overview_label',
             'config' => [
                 'type' => 'input',
             ],
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:overview_label',
         ],
     ]
 );
