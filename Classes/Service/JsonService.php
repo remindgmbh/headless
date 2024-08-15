@@ -92,6 +92,7 @@ class JsonService
     }
 
     /**
+     * TODO: make output configurable, move to FilesService
      * @return mixed[]
      */
     public function processImage(int $uid): array

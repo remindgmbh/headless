@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Remind\Headless\DataProcessing;
 
-use FriendsOfTYPO3\Headless\DataProcessing\FilesProcessor;
-use Psr\Http\Message\ServerRequestInterface;
+use Remind\Headless\Service\FilesService;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
@@ -134,13 +133,9 @@ class FlexFormProcessor implements DataProcessorInterface
         }
 
         if ($type === 'file') {
-            $request = $this->getRequest();
-            /** @var \TYPO3\CMS\Core\TypoScript\FrontendTypoScript $frontendTypoScript */
-            $frontendTypoScript = $request->getAttribute('frontend.typoscript');
-            $fullTypoScript = $frontendTypoScript->getSetupArray();
-            $assetProcessingConfiguration = $fullTypoScript['lib.']['assetProcessingConfiguration.'];
-
             $fieldName = $element['config']['foreign_match_fields']['fieldname'];
+
+            $overrule = [];
 
             try {
                 $overrule = ArrayUtility::getValueByPath(
@@ -150,35 +145,17 @@ class FlexFormProcessor implements DataProcessorInterface
                     },
                     explode('.', $fieldName))]
                 );
-                ArrayUtility::mergeRecursiveWithOverrule($assetProcessingConfiguration, $overrule);
             } catch (MissingArrayPathException $e) {
             }
 
-            $filesProcessor = GeneralUtility::makeInstance(FilesProcessor::class);
-            $as = 'file';
-            $processorConfiguration = [
-                'as' => $as,
-                'processingConfiguration.' => $assetProcessingConfiguration,
-                'references.' => [
-                    'fieldName' => $fieldName,
-                ],
-            ];
-            $processedData = [
-                'current' => null,
-                'data' => $this->cObj->data,
-            ];
-            $processedData = $filesProcessor->process(
-                $this->cObj,
-                [
-                    'dataProcessing.' => [
-                        '10' => FilesProcessor::class,
-                        '10.' => $processorConfiguration,
-                    ],
-                ],
-                $processorConfiguration,
-                $processedData,
+            $filesService = GeneralUtility::makeInstance(FilesService::class);
+
+            $newValue = $filesService->processImages(
+                $this->cObj->getCurrentTable(),
+                $fieldName,
+                $this->cObj->data['uid'],
+                $overrule
             );
-            $newValue = $processedData[$as];
         }
 
         $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
@@ -199,10 +176,5 @@ class FlexFormProcessor implements DataProcessorInterface
             }, $value);
         }
         return $value;
-    }
-
-    private function getRequest(): ServerRequestInterface
-    {
-        return $GLOBALS['TYPO3_REQUEST'];
     }
 }
