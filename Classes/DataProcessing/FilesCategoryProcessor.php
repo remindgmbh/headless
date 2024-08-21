@@ -152,7 +152,7 @@ class FilesCategoryProcessor implements DataProcessorInterface
 
     private function fetchCategoryProperties(): void
     {
-        $fields = $this->processorConf['fields']
+        $fields = isset($this->processorConf['fields'])
             ? GeneralUtility::trimExplode(',', $this->processorConf['fields'])
             : ['title'];
 
