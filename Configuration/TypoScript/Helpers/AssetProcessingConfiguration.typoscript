@@ -4,8 +4,8 @@ lib.assetProcessingConfiguration {
     linkResult = 1
     properties {
         byType = 1
-        defaultFieldsByType = uidLocal,fileReferenceUid,type,extension,title,description,lazyLoading
-        defaultImageFields  = alternative,link,dimensions
+        defaultFieldsByType = uidLocal,fileReferenceUid,type,extension,title,description,tx_headless_lazy_loading as lazyLoading
+        defaultImageFields = alternative,link,dimensions
         defaultVideoFields = autoplay
     }
 }
