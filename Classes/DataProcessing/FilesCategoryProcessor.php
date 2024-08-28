@@ -77,7 +77,7 @@ class FilesCategoryProcessor implements DataProcessorInterface
                         $this->legacyReturn ? ['properties', $categoriesAs] : $categoriesAs,
                         array_map(function (int $categoryUid) {
                             return $this->categories[$categoryUid];
-                        }, $fileCategoryMap[$uid])
+                        }, $fileCategoryMap[$uid] ?? [])
                     );
                 }
             }
