@@ -44,11 +44,17 @@ class AssetMiddleware implements MiddlewareInterface
         $path = $routing->getUri()->getPath();
         $queryParams = $request->getQueryParams();
         $uid = $queryParams['uid'] ?? null;
+        $uidLocal = $queryParams['uidLocal'] ?? null;
         if (
             $path === '/asset' &&
-            $uid
+            (
+                $uid ||
+                $uidLocal
+            )
         ) {
-            $resource = $this->resourceFactory->getFileReferenceObject($uid);
+            $resource = $uid
+                ? $this->resourceFactory->getFileReferenceObject($uid)
+                : $this->resourceFactory->getFileObject($uidLocal);
 
             $tstamp = intval($resource->getProperty('tstamp'));
             $lastModified = gmdate('D, d M Y H:i:s', $tstamp) . ' GMT';
@@ -75,7 +81,7 @@ class AssetMiddleware implements MiddlewareInterface
                 ) {
                     $cropVariant = $queryParams['breakpoint'] ?? 'default';
 
-                    $crop = $resource->getProperty('crop');
+                    $crop = $resource->getProperty('crop') ?? '';
                     $cropVariantCollection = CropVariantCollection::create($crop);
                     $cropArea = $cropVariantCollection->getCropArea($cropVariant);
 
@@ -93,7 +99,10 @@ class AssetMiddleware implements MiddlewareInterface
                         'width' => $queryParams['width'] ?? null,
                     ];
 
-                    $processedResource = $this->imageService->applyProcessingInstructions($resource, $processingInstructions);
+                    $processedResource = $this->imageService->applyProcessingInstructions(
+                        $resource,
+                        $processingInstructions
+                    );
                 }
             }
 
