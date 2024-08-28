@@ -90,7 +90,11 @@ class FilesCategoryProcessor implements DataProcessorInterface
      */
     private function getFileUid(array $file): int
     {
-        return $this->legacyReturn ? $file['properties']['uidLocal'] : $file['uidLocal'];
+        // uidLocal may be null while fileReferenceUid contains the actual file uid
+        // see: https://github.com/TYPO3-Headless/headless/pull/761
+        return $this->legacyReturn
+            ? $file['properties']['uidLocal'] ?? $file['properties']['fileReferenceUid']
+            : $file['uidLocal'] ?? $file['fileReferenceUid'];
     }
 
     /**
