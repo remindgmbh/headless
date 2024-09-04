@@ -4,19 +4,15 @@ declare(strict_types=1);
 
 namespace Remind\Headless\Service;
 
-use FriendsOfTYPO3\Headless\Utility\FileUtility;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\RequestBuilder;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
-use TYPO3\CMS\Extbase\Service\ImageService;
 
 class JsonService
 {
     public function __construct(
         private readonly UriBuilder $uriBuilder,
-        private readonly ImageService $imageService,
-        private readonly FileUtility $fileUtility,
         RequestBuilder $requestBuilder,
     ) {
         $extbaseRequest = $requestBuilder->build($this->getRequest());
@@ -89,16 +85,6 @@ class JsonService
         ];
 
         return $result;
-    }
-
-    /**
-     * TODO: make output configurable, move to FilesService
-     * @return mixed[]
-     */
-    public function processImage(int $uid): array
-    {
-        $imageObj = $this->imageService->getImage(strval($uid), null, true);
-        return $this->fileUtility->processFile($imageObj);
     }
 
     private function getRequest(): ServerRequestInterface

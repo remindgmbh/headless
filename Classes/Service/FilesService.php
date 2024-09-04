@@ -10,12 +10,15 @@ use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Service\ImageService;
 
 class FilesService
 {
     private FileRepository $fileRepository;
 
     private FileUtility $fileUtility;
+
+    private ImageService $imageService;
 
     /** @var mixed[] $defaultConfiguration */
     private array $defaultConfiguration;
@@ -29,6 +32,18 @@ class FilesService
         $this->defaultConfiguration = $fullTypoScript ? $fullTypoScript['lib.']['assetProcessingConfiguration.'] : [];
         $this->fileUtility = GeneralUtility::makeInstance(FileUtility::class);
         $this->fileRepository = GeneralUtility::makeInstance(FileRepository::class);
+        $this->imageService = GeneralUtility::makeInstance(ImageService::class);
+    }
+
+    /**
+     * @param mixed[] $configuration
+     * @return mixed[]
+     */
+    public function processImage(int $uid, array $configuration = []): array
+    {
+        $processingConfiguration = $this->getProcessingConfiguration($configuration);
+        $imageObj = $this->imageService->getImage(strval($uid), null, true);
+        return $this->fileUtility->process($imageObj, $processingConfiguration);
     }
 
     /**
