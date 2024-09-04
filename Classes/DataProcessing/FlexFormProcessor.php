@@ -71,7 +71,10 @@ class FlexFormProcessor implements DataProcessorInterface
                 0,
                 'T3FlexForms',
                 0,
-                $flexFormTools->flexArray2Xml_options
+                [
+                    ...$flexFormTools->flexArray2Xml_options,
+                    'disableTypeAttrib' => 0,
+                ]
             )
         );
 
