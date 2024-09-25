@@ -1,38 +1,27 @@
-lib.meta {
-    fields {
-        ogImage = TEXT
-        ogImage {
-            dataProcessing {
-                10 {
-                    processingConfiguration < lib.assetProcessingConfiguration
-                }
-            }
+page {
+    // can be removed in future version of EXT:headless, see https://github.com/TYPO3-Headless/headless/releases/tag/v4.4.0
+    10 {
+        fields {
+            meta >
         }
-        ogTitle {
-            stdWrap.ifEmpty.cObject {
-                field = seo_title
+    }
+
+    meta {
+        og:title = TEXT
+        og:title {
+            field = seo_title
                 stdWrap.ifEmpty.cObject = TEXT
                 stdWrap.ifEmpty.cObject {
                     field = title
                 }
-            }
         }
-        twitterImage = TEXT
-        twitterImage {
-            dataProcessing {
-                10 {
-                    processingConfiguration < lib.assetProcessingConfiguration
-                }
-            }
-        }
-        twitterTitle {
-            stdWrap.ifEmpty.cObject {
-                field = seo_title
+        twitter:title = TEXT
+        twitter:title {
+            field = seo_title
                 stdWrap.ifEmpty.cObject = TEXT
                 stdWrap.ifEmpty.cObject {
                     field = title
                 }
-            }
         }
     }
 }
