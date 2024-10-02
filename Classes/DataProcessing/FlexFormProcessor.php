@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\Exception\MissingArrayPathException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentDataProcessor;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
@@ -21,6 +22,13 @@ class FlexFormProcessor implements DataProcessorInterface
      * @var mixed[]
      */
     protected array $processorConf;
+
+    protected ?ContentDataProcessor $contentDataProcessor = null;
+
+    public function __construct()
+    {
+        $this->contentDataProcessor = GeneralUtility::makeInstance(ContentDataProcessor::class);
+    }
 
     /**
      * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter
@@ -34,7 +42,8 @@ class FlexFormProcessor implements DataProcessorInterface
         array $contentObjectConf,
         array $processorConf,
         array $processedData
-    ): array { $this->cObj = $cObj;
+    ): array {
+        $this->cObj = $cObj;
         $this->processorConf = $processorConf;
 
         $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
@@ -90,6 +99,12 @@ class FlexFormProcessor implements DataProcessorInterface
 
         foreach ($ignoredFields as $ignoredField) {
             $flexformData = ArrayUtility::removeByPath($flexformData, $ignoredField, '.');
+        }
+
+        $overrideData = [];
+        $overrideData = $this->contentDataProcessor?->process($cObj, $processorConf, $overrideData) ?? [];
+        foreach ($overrideData as $key => &$value) {
+            $flexformData = empty($key) ? $value : ArrayUtility::setValueByPath($flexformData, $key, $value, '.');
         }
 
         // save result in "data" (default) or given variable name
