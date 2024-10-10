@@ -72,43 +72,59 @@ class AssetMiddleware implements MiddlewareInterface
             if ($type === AbstractFile::FILETYPE_IMAGE) {
                 $targetFileExtension = $queryParams['fileExtension'] ?? null;
 
-                // Skip processing for SVGs without changing image type
-                if (
-                    $resource->getExtension() !== 'svg' ||
-                    (
-                        !$targetFileExtension ||
-                        $targetFileExtension === 'svg'
-                    )
-                ) {
-                    $cropName = $queryParams['crop'] ?? null;
-                    $breakpoint = $queryParams['breakpoint'] ?? null;
+                $cropName = $queryParams['crop'] ?? null;
+                $breakpoint = $queryParams['breakpoint'] ?? null;
 
-                    $cropVariants = array_filter([
-                        implode('-', array_filter([$cropName, $breakpoint])),
-                        $cropName,
-                        $breakpoint,
-                    ]);
+                $cropVariants = array_filter([
+                    implode('-', array_filter([$cropName, $breakpoint])),
+                    $cropName,
+                    $breakpoint,
+                ]);
 
-                    $crop = $resource->getProperty('crop') ?? '';
-                    $cropVariantCollection = CropVariantCollection::create($crop);
+                $crop = $resource->getProperty('crop') ?? '';
+                $cropVariantCollection = CropVariantCollection::create($crop);
 
-                    $cropArea = Area::createEmpty();
+                $cropArea = Area::createEmpty();
 
-                    foreach ($cropVariants as $cropVariant) {
-                        $cropArea = $cropVariantCollection->getCropArea($cropVariant);
-                        if (!$cropArea->isEmpty()) {
-                            break;
-                        }
+                foreach ($cropVariants as $cropVariant) {
+                    $cropArea = $cropVariantCollection->getCropArea($cropVariant);
+                    if (!$cropArea->isEmpty()) {
+                        break;
                     }
+                }
+
+                $skipProcessing = false;
 
                     // Use default cropVariant if breakpoint cropVariant does not exist
-                    if ($cropArea->isEmpty()) {
-                        $cropArea = $cropVariantCollection->getCropArea();
-                    }
+                if ($cropArea->isEmpty()) {
+                    $cropArea = $cropVariantCollection->getCropArea();
 
+                    /**
+                     * Skip processing if cropArea is empty and
+                     *  - targetFileExtension is SVG because TYPO3 cannot process SVGs
+                     *  - source is SVG and targetFileExtension is not set
+                     *    (normally TYPO3 would convert SVGs to PNGs with targetFileExtension not set,
+                     *     but there is no need with an empty cropArea)
+                     */
+                    if (
+                        $targetFileExtension === 'svg' ||
+                        $resource->getExtension() === 'svg' &&
+                        !$targetFileExtension
+                    ) {
+                        $skipProcessing = true;
+                    }
+                } elseif (
+                    $resource->getExtension() === 'svg' &&
+                    $targetFileExtension === 'svg'
+                ) {
+                    // TYPO3 converts SVGs to PNGs if targetFileExtension is not set
+                    $targetFileExtension = null;
+                }
+
+                if (!$skipProcessing) {
                     $processingInstructions = [
                         'crop' => $cropArea->makeAbsoluteBasedOnFile($resource),
-                        'fileExtension' => $queryParams['fileExtension'] ?? null,
+                        'fileExtension' => $targetFileExtension ?? null,
                         'height' => $queryParams['height'] ?? null,
                         'maxHeight' => $queryParams['maxHeight'] ?? null,
                         'maxWidth' => $queryParams['maxWidth'] ?? null,
