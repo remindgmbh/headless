@@ -16,15 +16,15 @@ initialData {
                     }
                 }
             }
-            footer = CONTENT
+            footer = JSON
             footer {
-                table = tt_content
-                select {
-                    orderBy = sorting
-                    where = {#colPos} = 1687238527
-                    max = 1
+                dataProcessing {
+                    10 = Remind\Headless\DataProcessing\FlexFormProcessor
+                    10 {
+                        fieldName = tx_headless_footer
+                        as = flexform
+                    }
                 }
-                slide = -1
             }
         }
     }

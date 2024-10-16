@@ -12,12 +12,6 @@
             <trans-unit id="accordion.columns.title">
                 <target>Akkordion Titel</target>
             </trans-unit>
-            <trans-unit id="footer_content.description">
-                <target>Content Element zur Benutzung in Fußzeile</target>
-            </trans-unit>
-            <trans-unit id="footer_content.title">
-                <target>Fußzeile Inhalt</target>
-            </trans-unit>
             <trans-unit id="image.description">
                 <target>Einzelnes Bild</target>
             </trans-unit>

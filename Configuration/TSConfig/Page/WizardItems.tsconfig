@@ -9,14 +9,6 @@ mod.wizards.newContentElement.wizardItems {
                CType = accordion
             }
          }
-         footer_content {
-            iconIdentifier = content-footer
-            title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:footer_content.title
-            description = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:footer_content.description
-            tt_content_defValues {
-               CType = footer_content
-            }
-         },
          // Element already exsists, only modify title and description
          image {
             title = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ce.xlf:image.title
@@ -40,7 +32,6 @@ mod.wizards.newContentElement.wizardItems {
          }
       }
       show := addToList(accordion)
-      show := addToList(footer_content)
       show := addToList(image_gallery)
       show := addToList(tabs)
    }

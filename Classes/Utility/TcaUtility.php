@@ -93,6 +93,18 @@ class TcaUtility
 
     /**
      * @param mixed[]|string $dataStructure either a xml flexform file path, a xml flexform string or a flexform array
+     */
+    public static function setFooterFlexForm(array|string $dataStructure): void
+    {
+        $newFlexFormArray = self::getFlexFormArray($dataStructure);
+        $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
+        $newFlexFormString = $flexFormTools->flexArray2Xml($newFlexFormArray, true);
+
+        $GLOBALS['TCA']['pages']['columns']['tx_headless_footer']['config']['ds']['default'] = $newFlexFormString;
+    }
+
+    /**
+     * @param mixed[]|string $dataStructure either a xml flexform file path, a xml flexform string or a flexform array
      * @return mixed[]
      */
     private static function getFlexFormArray(array|string $dataStructure): array

@@ -9,6 +9,9 @@
             <trans-unit id="breadcrumbs_background_color.none">
                 <source>None</source>
             </trans-unit>
+            <trans-unit id="footer">
+                <source>Footer</source>
+            </trans-unit>
             <trans-unit id="page_config">
                 <source>Page Config</source>
             </trans-unit>

@@ -29,11 +29,7 @@ Required dependencies are [headless](https://github.com/TYPO3-Headless/headless)
 
 ### Default
 
-The default layout consists of 1 column with 3 rows. Besides the main content (colPos = 0) there is also one column for content above the breadcrumbs (colPos = 1) and the footer (colPos = 10).
-
-The [content defender](https://extensions.typo3.org/extension/content_defender) extension is used to only allow exactly one footer_content content element in the footer column. The footer_content content element can not be used in the other columns.
-
-
+The default layout consists of 1 column with 2 rows. Besides the main content (colPos = 0) there is also one column for content above the breadcrumbs (colPos = 1).
 
 ## TCA
 
@@ -126,6 +122,14 @@ Similar to `space_before_inside`.
 
 ### pages
 
+#### tx_headless_footer
+
+The `tx_headless_footer` flexform field contains the footer content. Use the following code to set a flexform:
+
+```php
+\Remind\Headless\Utility::setFooterFlexForm('FILE:EXT:provider_extension/Configuration/FlexForms/Footer.xml');
+```
+
 #### tx_headless_overview_label
 
 An `tx_headless_overview_label` field is added to the page TCA. The field should be used to customize the label for the overview pages.
@@ -176,18 +180,6 @@ $GLOBALS['TCA']['tt_content']['types']['accordion']['columnsOverrides']['tx_head
 ### accordion
 
 Uses `tx_headless_item`, items consist of text (header, subheader, bodytext, title), a flexform field and images.
-
-### footer_content
-
-Basic definition without any actual content fields. Add a flexform in your provider extension to use `footer_content`:
-
-```php
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:provider_extension/Configuration/FlexForms/FooterContent.xml',
-    'footer_content'
-);
-```
 
 ### tabs
 

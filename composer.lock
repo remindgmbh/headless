@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36f7c2c201f11b30596f114a57ac63d3",
+    "content-hash": "fe4e24ca0ae307db7ae9ed4e8d5c4984",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1325,83 +1325,6 @@
                 }
             ],
             "time": "2024-07-18T11:15:46+00:00"
-        },
-        {
-            "name": "ichhabrecht/content-defender",
-            "version": "3.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/IchHabRecht/content_defender.git",
-                "reference": "50b072c8477d779aac00ebc10d6b52d8edfd9099"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/IchHabRecht/content_defender/zipball/50b072c8477d779aac00ebc10d6b52d8edfd9099",
-                "reference": "50b072c8477d779aac00ebc10d6b52d8edfd9099",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.4 || ^8.0",
-                "typo3/cms-backend": "^10.4 || ^11.5 || ^12.4",
-                "typo3/cms-core": "^10.4 || ^11.5 || ^12.4"
-            },
-            "conflict": {
-                "psr/container": "<1.1",
-                "typo3/testing-framework": ">=7.0.0 <7.0.4"
-            },
-            "replace": {
-                "typo3-ter/content-defender": "self.version"
-            },
-            "require-dev": {
-                "doctrine/dbal": "^2.11 || ^3.8",
-                "php-parallel-lint/php-parallel-lint": "^1.4",
-                "phpspec/prophecy": "^1.12.1",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpunit/phpunit": "^8.4 || ^9.0",
-                "typo3/cms-fluid-styled-content": "^10.4 || ^11.5 || ^12.4",
-                "typo3/cms-indexed-search": "^10.4 || ^11.5 || ^12.4",
-                "typo3/cms-workspaces": "^10.4 || ^11.5 || ^12.4",
-                "typo3/minimal": "^10.4 || ^11.5 || ^12.0",
-                "typo3/testing-framework": "^6.16 || ^7.0.2"
-            },
-            "type": "typo3-cms-extension",
-            "extra": {
-                "typo3/cms": {
-                    "extension-key": "content_defender",
-                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
-                    "app-dir": ".Build",
-                    "web-dir": ".Build/public"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "IchHabRecht\\ContentDefender\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Nicole Cordes",
-                    "email": "typo3@cordes.co",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Define allowed or denied content element types in your backend layouts",
-            "homepage": "https://github.com/IchHabRecht/content_defender",
-            "keywords": [
-                "TYPO3 CMS",
-                "backend",
-                "content",
-                "restrict"
-            ],
-            "support": {
-                "issues": "https://github.com/IchHabRecht/content_defender/issues",
-                "source": "https://github.com/IchHabRecht/content_defender/tree/3.4.3"
-            },
-            "time": "2024-04-29T07:35:37+00:00"
         },
         {
             "name": "lolli42/finediff",
@@ -5161,85 +5084,6 @@
             "time": "2022-08-07T14:48:42+00:00"
         },
         {
-            "name": "typo3/cms-backend",
-            "version": "v12.4.20",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/backend.git",
-                "reference": "175402085bb835a9ea4f6ab670195f0e091a61be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/backend/zipball/175402085bb835a9ea4f6ab670195f0e091a61be",
-                "reference": "175402085bb835a9ea4f6ab670195f0e091a61be",
-                "shasum": ""
-            },
-            "require": {
-                "psr/event-dispatcher": "^1.0",
-                "typo3/cms-core": "12.4.20"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "replace": {
-                "typo3/cms-about": "self.version",
-                "typo3/cms-context-help": "self.version",
-                "typo3/cms-cshmanual": "self.version",
-                "typo3/cms-func-wizards": "self.version",
-                "typo3/cms-recordlist": "self.version",
-                "typo3/cms-wizard-crpages": "self.version",
-                "typo3/cms-wizard-sortpages": "self.version"
-            },
-            "suggest": {
-                "typo3/cms-install": "To generate url to install tool in environment toolbar"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "12.4.x-dev"
-                },
-                "typo3/cms": {
-                    "Package": {
-                        "serviceProvider": "TYPO3\\CMS\\Backend\\ServiceProvider",
-                        "protected": true,
-                        "partOfFactoryDefault": true,
-                        "partOfMinimalUsableSystem": true
-                    },
-                    "extension-key": "backend"
-                },
-                "typo3/class-alias-loader": {
-                    "class-alias-maps": [
-                        "Migrations/Code/ClassAliasMap.php"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Backend\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS backend",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2024-09-10T07:47:57+00:00"
-        },
-        {
             "name": "typo3/cms-cli",
             "version": "3.1.1",
             "source": {
@@ -6719,6 +6563,85 @@
                 "source": "https://github.com/sabbelasichon/typo3-debug-dump-pass/tree/v0.0.2"
             },
             "time": "2024-02-05T19:24:11+00:00"
+        },
+        {
+            "name": "typo3/cms-backend",
+            "version": "v12.4.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/backend.git",
+                "reference": "175402085bb835a9ea4f6ab670195f0e091a61be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/backend/zipball/175402085bb835a9ea4f6ab670195f0e091a61be",
+                "reference": "175402085bb835a9ea4f6ab670195f0e091a61be",
+                "shasum": ""
+            },
+            "require": {
+                "psr/event-dispatcher": "^1.0",
+                "typo3/cms-core": "12.4.20"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "replace": {
+                "typo3/cms-about": "self.version",
+                "typo3/cms-context-help": "self.version",
+                "typo3/cms-cshmanual": "self.version",
+                "typo3/cms-func-wizards": "self.version",
+                "typo3/cms-recordlist": "self.version",
+                "typo3/cms-wizard-crpages": "self.version",
+                "typo3/cms-wizard-sortpages": "self.version"
+            },
+            "suggest": {
+                "typo3/cms-install": "To generate url to install tool in environment toolbar"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "12.4.x-dev"
+                },
+                "typo3/cms": {
+                    "Package": {
+                        "serviceProvider": "TYPO3\\CMS\\Backend\\ServiceProvider",
+                        "protected": true,
+                        "partOfFactoryDefault": true,
+                        "partOfMinimalUsableSystem": true
+                    },
+                    "extension-key": "backend"
+                },
+                "typo3/class-alias-loader": {
+                    "class-alias-maps": [
+                        "Migrations/Code/ClassAliasMap.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Backend\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS backend",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2024-09-10T07:47:57+00:00"
         },
         {
             "name": "typo3/cms-frontend",

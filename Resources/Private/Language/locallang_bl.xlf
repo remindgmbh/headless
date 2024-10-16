@@ -9,9 +9,6 @@
             <trans-unit id="column.above_breadcrumbs">
                 <source>Above Breadcrumbs</source>
             </trans-unit>
-            <trans-unit id="column.footer">
-                <source>Footer</source>
-            </trans-unit>
             <trans-unit id="default">
                 <source>Default</source>
             </trans-unit>

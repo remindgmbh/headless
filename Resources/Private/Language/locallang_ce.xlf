@@ -12,12 +12,6 @@
             <trans-unit id="accordion.columns.title">
                 <source>Accordion Title</source>
             </trans-unit>
-            <trans-unit id="footer_content.description">
-                <source>Content Element to be used in Footer</source>
-            </trans-unit>
-            <trans-unit id="footer_content.title">
-                <source>Footer Content</source>
-            </trans-unit>
             <trans-unit id="image.description">
                 <source>One Image only</source>
             </trans-unit>

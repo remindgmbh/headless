@@ -37,6 +37,19 @@ ExtensionManagementUtility::addTCAcolumns(
             'displayCond' => 'FIELD:is_siteroot:REQ:true',
             'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:page_config',
         ],
+        'tx_headless_footer' => [
+            'config' => [
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+                'ds' => [
+                    'default' => 'FILE:EXT:rmnd_headless/Configuration/FlexForms/Empty.xml',
+                ],
+                'type' => 'flex',
+            ],
+            'displayCond' => 'FIELD:is_siteroot:REQ:true',
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:footer',
+        ],
         'tx_headless_overview_label' => [
             'config' => [
                 'type' => 'input',
@@ -61,5 +74,14 @@ ExtensionManagementUtility::addFieldsToPalette(
 
 ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
-    'tx_headless_config',
+    '--div--;LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:page_config,tx_headless_config',
+    '',
+    'after:rowDescription'
+);
+
+ExtensionManagementUtility::addToAllTCAtypes(
+    'pages',
+    '--div--;LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:footer,tx_headless_footer',
+    '',
+    'after:rowDescription'
 );
