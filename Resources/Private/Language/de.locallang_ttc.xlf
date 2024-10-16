@@ -12,25 +12,28 @@
             <trans-unit id="background_full_width">
                 <target>Hintergrund über gesamte Breite</target>
             </trans-unit>
-            <trans-unit id="cookie.category">
+            <trans-unit id="cookies">
+                <target>Cookies</target>
+            </trans-unit>
+            <trans-unit id="cookies.category">
                 <target>Cookie Kategorie</target>
             </trans-unit>
-            <trans-unit id="cookie.category.none">
+            <trans-unit id="cookies.category.none">
                 <target>Keine</target>
             </trans-unit>
-            <trans-unit id="cookie.category.necessary">
+            <trans-unit id="cookies.category.necessary">
                 <target>Notwendig</target>
             </trans-unit>
-            <trans-unit id="cookie.category.preferences">
+            <trans-unit id="cookies.category.preferences">
                 <target>Präferenzen</target>
             </trans-unit>
-            <trans-unit id="cookie.category.statistics">
+            <trans-unit id="cookies.category.statistics">
                 <target>Statistiken</target>
             </trans-unit>
-            <trans-unit id="cookie.category.marketing">
+            <trans-unit id="cookies.category.marketing">
                 <target>Marketing</target>
             </trans-unit>
-            <trans-unit id="cookie.message">
+            <trans-unit id="cookies.message">
                 <target>Cookie Meldung</target>
             </trans-unit>
             <trans-unit id="header.label.backendOnly">

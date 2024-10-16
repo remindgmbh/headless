@@ -19,3 +19,7 @@ services:
     tags:
       -
         name: event.listener
+  Remind\Headless\Event\Listener\AfterTcaCompilationEventListener:
+    tags:
+      -
+        name: event.listener

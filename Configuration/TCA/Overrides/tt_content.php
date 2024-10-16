@@ -46,23 +46,23 @@ ExtensionManagementUtility::addTCAcolumns(
                 'default' => null,
                 'items' => [
                     [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.none',
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookies.category.none',
                         'value' => null,
                     ],
                     [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.necessary',
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookies.category.necessary',
                         'value' => 0,
                     ],
                     [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.preferences',
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookies.category.preferences',
                         'value' => 1,
                     ],
                     [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.statistics',
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookies.category.statistics',
                         'value' => 2,
                     ],
                     [
-                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category.marketing',
+                        'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookies.category.marketing',
                         'value' => 3,
                     ],
                 ],
@@ -70,7 +70,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'select',
             ],
             'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.category',
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookies.category',
         ],
         'tx_headless_cookie_message' => [
             'config' => [
@@ -81,7 +81,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 'type' => 'text',
             ],
             'l10n_mode' => 'prefixLangTitle',
-            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookie.message',
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:cookies.message',
         ],
         'tx_headless_item' => [
             'config' => [
@@ -189,8 +189,15 @@ ExtensionManagementUtility::addFieldsToPalette(
     'after:space_after_class'
 );
 
-ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'tx_headless_cookie_category');
-ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'tx_headless_cookie_message');
+/**
+ * Palette will be added in AfterTcaCompilationEventListener so Content Elements
+ * added in Extensions after this one will also have the palette
+ */
+ExtensionManagementUtility::addFieldsToPalette(
+    'tt_content',
+    'cookies',
+    'tx_headless_cookie_category,--linebreak--,tx_headless_cookie_message',
+);
 
 $GLOBALS['TCA']['tt_content']['ctrl']['previewRenderer'] = ContentWithItemsPreviewRenderer::class;
 
@@ -230,5 +237,5 @@ $GLOBALS['TCA']['tt_content']['columns']['header_layout']['config']['items'] = [
 ];
 
 // Workaround for TCEFORM (https://forge.typo3.org/issues/100775)
-    $GLOBALS['TCA']['tt_content']['columns']['space_after_class']['config']['items'][0]['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';
-    $GLOBALS['TCA']['tt_content']['columns']['space_before_class']['config']['items'][0]['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';
+$GLOBALS['TCA']['tt_content']['columns']['space_after_class']['config']['items'][0]['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';
+$GLOBALS['TCA']['tt_content']['columns']['space_before_class']['config']['items'][0]['label'] = 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_ttc.xlf:space_none';
