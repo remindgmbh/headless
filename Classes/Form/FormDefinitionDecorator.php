@@ -77,12 +77,16 @@ class FormDefinitionDecorator extends AbstractFormDefinitionDecorator
             $element['type'] === 'Checkbox' &&
             isset($element['properties']['links'])
         ) {
-            foreach ($element['properties']['links'] as $pageUid => $label) {
+            $links = array_map(function ($pageUid, $label) {
                 $link = $this->cObj->createLink($label, ['parameter' => $pageUid]);
-                if ($link instanceof LinkResult) {
-                    $element['label'] = sprintf($element['label'], $link->getHtml());
-                }
+                return $link instanceof LinkResult ? $link->getHtml() : null;
+            }, array_keys($element['properties']['links']), $element['properties']['links']);
+
+            $element['label'] = sprintf($element['label'], ...$links);
+            if (isset($element['properties']['elementDescription'])) {
+                $element['properties']['elementDescription'] = sprintf($element['properties']['elementDescription'], ...$links);
             }
+
             unset($element['properties']['links']);
         }
     }
