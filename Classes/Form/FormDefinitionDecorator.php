@@ -41,6 +41,7 @@ class FormDefinitionDecorator extends AbstractFormDefinitionDecorator
             $this->setNotEmptyValidationErrorMessages($element);
             $this->setCheckboxLinks($element);
             $this->setFileSizeValidatorBytes($element);
+            $this->setMimeTypeValidator($element);
         }
         return $decorated;
     }
@@ -101,6 +102,25 @@ class FormDefinitionDecorator extends AbstractFormDefinitionDecorator
             if ($value['identifier'] === 'FileSize') {
                 $element['validators'][$key]['options']['minimum'] = GeneralUtility::getBytesFromSizeMeasurement($value['options']['minimum']);
                 $element['validators'][$key]['options']['maximum'] = GeneralUtility::getBytesFromSizeMeasurement($value['options']['maximum']);
+            }
+        }
+    }
+
+    /**
+     * @param mixed[] $element
+     */
+    private function setMimeTypeValidator(array &$element): void
+    {
+        if ($element['type'] === 'FileUpload') {
+            $mimeTypes = $element['properties']['allowedMimeTypes'] ?? [];
+
+            if (!empty($mimeTypes)) {
+                $element['validators'][] = [
+                    'identifier' => 'MimeType',
+                    'options' => [
+                        'allowed' => $mimeTypes,
+                    ],
+                ];
             }
         }
     }
