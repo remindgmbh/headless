@@ -1,97 +1,94 @@
-TYPO3:
-  CMS:
-    Form:
-      prototypes:
-        standard:
-          formElementsDefinition:
-            Date:
-              formEditor:
+prototypes:
+  standard:
+    formElementsDefinition:
+      Date:
+        formEditor:
+          editors:
+            550:
+              propertyPath: properties.step
+            # Remove default Grid viewport configuration
+            700: null
+            701:
+              identifier: size
+              templateName: Inspector-SingleSelectEditor
+              label: formEditor.elements.FormElement.editor.size.label
+              propertyPath: properties.size
+              selectOptions:
+                10:
+                  value: ""
+                  label: formEditor.elements.FormElement.editor.size.default.label
+                20:
+                  value: xs
+                  label: formEditor.elements.FormElement.editor.size.xs.label
+                30:
+                  value: sm
+                  label: formEditor.elements.FormElement.editor.size.sm.label
+                40:
+                  value: md
+                  label: formEditor.elements.FormElement.editor.size.md.label
+                50:
+                  value: lg
+                  label: formEditor.elements.FormElement.editor.size.lg.label
+                60:
+                  value: xl
+                  label: formEditor.elements.FormElement.editor.size.xl.label
+          predefinedDefaults:
+            properties: null
+          propertyCollections:
+            validators:
+              10:
                 editors:
-                  550:
-                    propertyPath: properties.step
-                  # Remove default Grid viewport configuration
-                  700: null
-                  701:
-                    identifier: size
-                    templateName: Inspector-SingleSelectEditor
-                    label: formEditor.elements.FormElement.editor.size.label
-                    propertyPath: properties.size
-                    selectOptions:
-                      10:
-                        value: ""
-                        label: formEditor.elements.FormElement.editor.size.default.label
-                      20:
-                        value: xs
-                        label: formEditor.elements.FormElement.editor.size.xs.label
-                      30:
-                        value: sm
-                        label: formEditor.elements.FormElement.editor.size.sm.label
-                      40:
-                        value: md
-                        label: formEditor.elements.FormElement.editor.size.md.label
-                      50:
-                        value: lg
-                        label: formEditor.elements.FormElement.editor.size.lg.label
-                      60:
-                        value: xl
-                        label: formEditor.elements.FormElement.editor.size.xl.label
-                predefinedDefaults:
-                  properties: null
-                propertyCollections:
-                  validators:
-                    10:
-                      editors:
-                        200:
-                          templateName: Inspector-TextEditor
-                          propertyPath: customErrorMessage
-                          doNotSetIfPropertyValueIsEmpty: true
-                        250:
-                          additionalElementPropertyPaths: null
-                    20:
-                      editors:
-                        200:
-                          templateName: Inspector-TextEditor
-                          propertyPath: customErrorMessage
-                          doNotSetIfPropertyValueIsEmpty: true
-                    30:
-                      editors:
-                        250:
-                          additionalElementPropertyPaths: null
-                        400:
-                          templateName: Inspector-TextEditor
-                          propertyPath: customErrorMessage
-                          doNotSetIfPropertyValueIsEmpty: true
-                    40:
-                      editors:
-                        200:
-                          templateName: Inspector-TextEditor
-                          propertyPath: customErrorMessage
-                          doNotSetIfPropertyValueIsEmpty: true
-                    50:
-                      editors:
-                        200:
-                          templateName: Inspector-TextEditor
-                          propertyPath: customErrorMessage
-                          doNotSetIfPropertyValueIsEmpty: true
-                    60:
-                      editors:
-                        200:
-                          templateName: Inspector-TextEditor
-                          propertyPath: customErrorMessage
-                          doNotSetIfPropertyValueIsEmpty: true
-                    70:
-                      editors:
-                        200:
-                          additionalElementPropertyPaths: null
-                        300:
-                          additionalElementPropertyPaths: null
-                        400:
-                          templateName: Inspector-TextEditor
-                          propertyPath: customErrorMessage
-                          doNotSetIfPropertyValueIsEmpty: true
-                    80:
-                      editors:
-                        300:
-                          templateName: Inspector-TextEditor
-                          propertyPath: customErrorMessage
-                          doNotSetIfPropertyValueIsEmpty: true
+                  200:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true
+                  250:
+                    additionalElementPropertyPaths: null
+              20:
+                editors:
+                  200:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true
+              30:
+                editors:
+                  250:
+                    additionalElementPropertyPaths: null
+                  400:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true
+              40:
+                editors:
+                  200:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true
+              50:
+                editors:
+                  200:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true
+              60:
+                editors:
+                  200:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true
+              70:
+                editors:
+                  200:
+                    additionalElementPropertyPaths: null
+                  300:
+                    additionalElementPropertyPaths: null
+                  400:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true
+              80:
+                editors:
+                  300:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true

@@ -20,49 +20,46 @@ imports:
 
   - { resource: './Finishers/JsonRedirectFinisher.yaml' }
 
-TYPO3:
-  CMS:
-    Form:
-      prototypes:
-        standard:
-          formEditor:
-            translationFiles:
-              20: "EXT:rmnd_headless/Resources/Private/Language/locallang_form.xlf"
-          formEngine:
-            translationFiles:
-              20: "EXT:rmnd_headless/Resources/Private/Language/locallang_form.xlf"
-          formElementsDefinition:
-            DatePicker:
-              formEditor:
-                group: null
-            Form:
-              formEditor:
-                predefinedDefaults:
-                  i18n:
-                    identifier: i18n
-                  renderingOptions:
-                    formDecorator: Remind\Headless\Form\FormDefinitionDecorator
-                editors:
-                  # Overwrite submitButtonLabel propertyPath to be included in json output
-                  300:
-                    propertyPath: i18n.properties.submit
-                  400:
-                    identifier: successText
-                    templateName: Inspector-TextEditor
-                    label: formEditor.elements.Form.editor.successText.label
-                    propertyPath: i18n.properties.success
-                  401:
-                    identifier: loadingText
-                    templateName: Inspector-TextEditor
-                    label: formEditor.elements.Form.editor.loadingText.label
-                    propertyPath: i18n.properties.loading
-                  402:
-                    identifier: requiredHint
-                    templateName: Inspector-TextEditor
-                    label: formEditor.elements.Form.editor.requiredHint.label
-                    propertyPath: i18n.properties.required
-                  900:
-                    selectOptions:
-                      # Remove redirect (non JSON) and confirmation finisher
-                      40: null
-                      60: null
+prototypes:
+  standard:
+    formEditor:
+      translationFiles:
+        20: "EXT:rmnd_headless/Resources/Private/Language/locallang_form.xlf"
+    formEngine:
+      translationFiles:
+        20: "EXT:rmnd_headless/Resources/Private/Language/locallang_form.xlf"
+    formElementsDefinition:
+      DatePicker:
+        formEditor:
+          group: null
+      Form:
+        formEditor:
+          predefinedDefaults:
+            i18n:
+              identifier: i18n
+            renderingOptions:
+              formDecorator: Remind\Headless\Form\FormDefinitionDecorator
+          editors:
+            # Overwrite submitButtonLabel propertyPath to be included in json output
+            300:
+              propertyPath: i18n.properties.submit
+            400:
+              identifier: successText
+              templateName: Inspector-TextEditor
+              label: formEditor.elements.Form.editor.successText.label
+              propertyPath: i18n.properties.success
+            401:
+              identifier: loadingText
+              templateName: Inspector-TextEditor
+              label: formEditor.elements.Form.editor.loadingText.label
+              propertyPath: i18n.properties.loading
+            402:
+              identifier: requiredHint
+              templateName: Inspector-TextEditor
+              label: formEditor.elements.Form.editor.requiredHint.label
+              propertyPath: i18n.properties.required
+            900:
+              selectOptions:
+                # Remove redirect (non JSON) and confirmation finisher
+                40: null
+                60: null
