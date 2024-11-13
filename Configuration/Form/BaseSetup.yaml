@@ -3,6 +3,7 @@ imports:
   - { resource: './FormElements/Checkbox.yaml' }
   - { resource: './FormElements/Date.yaml' }
   - { resource: './FormElements/Email.yaml' }
+  - { resource: './FormElements/FileUpload.yaml' }
   - { resource: './FormElements/GridRow.yaml' }
   - { resource: './FormElements/Fieldset.yaml' }
   - { resource: './FormElements/MultiCheckbox.yaml' }
