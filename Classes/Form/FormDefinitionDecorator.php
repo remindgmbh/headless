@@ -40,6 +40,7 @@ class FormDefinitionDecorator extends AbstractFormDefinitionDecorator
         foreach ($decorated['elements'] as &$element) {
             $this->setNotEmptyValidationErrorMessages($element);
             $this->setCheckboxLinks($element);
+            $this->setFileSizeValidatorBytes($element);
         }
         return $decorated;
     }
@@ -88,6 +89,19 @@ class FormDefinitionDecorator extends AbstractFormDefinitionDecorator
             }
 
             unset($element['properties']['links']);
+        }
+    }
+
+    /**
+     * @param mixed[] $element
+     */
+    private function setFileSizeValidatorBytes(array &$element): void
+    {
+        foreach ($element['validators'] ?? [] as $key => $value) {
+            if ($value['identifier'] === 'FileSize') {
+                $element['validators'][$key]['options']['minimum'] = GeneralUtility::getBytesFromSizeMeasurement($value['options']['minimum']);
+                $element['validators'][$key]['options']['maximum'] = GeneralUtility::getBytesFromSizeMeasurement($value['options']['maximum']);
+            }
         }
     }
 }
