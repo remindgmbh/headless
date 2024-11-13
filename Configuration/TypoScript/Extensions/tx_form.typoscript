@@ -1,7 +1,7 @@
 plugin.tx_form {
     settings {
         yamlConfigurations {
-            100 = EXT:rmnd_headless/Configuration/Form/BaseSetup.yaml
+            1731482571 = EXT:rmnd_headless/Configuration/Form/BaseSetup.yaml
         }
     }
 }
@@ -9,7 +9,7 @@ plugin.tx_form {
 module.tx_form {
     settings {
         yamlConfigurations {
-            100 = EXT:rmnd_headless/Configuration/Form/BaseSetup.yaml
+            1731482571 = EXT:rmnd_headless/Configuration/Form/BaseSetup.yaml
         }
     }
 }

@@ -30,3 +30,11 @@ prototypes:
                 60:
                   value: xl
                   label: formEditor.elements.FormElement.editor.size.xl.label
+          propertyCollections:
+            validators:
+              10:
+                editors:
+                  400:
+                    templateName: Inspector-TextEditor
+                    propertyPath: customErrorMessage
+                    doNotSetIfPropertyValueIsEmpty: true
