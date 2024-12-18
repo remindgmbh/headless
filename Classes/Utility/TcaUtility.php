@@ -86,7 +86,7 @@ class TcaUtility
 
         ArrayUtility::mergeRecursiveWithOverrule($currentFlexFormArray, $newFlexFormArray);
         $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
-        $newFlexFormString = $flexFormTools->flexArray2Xml($currentFlexFormArray, true);
+        $newFlexFormString = $flexFormTools->flexArray2Xml($currentFlexFormArray);
 
         $GLOBALS['TCA']['pages']['columns']['tx_headless_config']['config']['ds']['default'] = $newFlexFormString;
     }
@@ -98,7 +98,7 @@ class TcaUtility
     {
         $newFlexFormArray = self::getFlexFormArray($dataStructure);
         $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
-        $newFlexFormString = $flexFormTools->flexArray2Xml($newFlexFormArray, true);
+        $newFlexFormString = $flexFormTools->flexArray2Xml($newFlexFormArray);
 
         $GLOBALS['TCA']['pages']['columns']['tx_headless_footer']['config']['ds']['default'] = $newFlexFormString;
     }
