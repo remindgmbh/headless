@@ -1,0 +1,23 @@
+lib.cookieCategory = CASE
+lib.cookieCategory {
+    0 = TEXT
+    0 {
+        value = necessary
+    }
+    1 = TEXT
+    1 {
+        value = preferences
+    }
+    2 = TEXT
+    2 {
+        value = statistics
+    }
+    3 = TEXT
+    3 {
+        value = marketing
+    }
+    default = TEXT
+    default {
+        value = none
+    }
+}

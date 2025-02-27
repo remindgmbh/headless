@@ -1,0 +1,23 @@
+lib.contentElement {
+    fields {
+        cookie {
+            fields {
+                category =< lib.cookieCategory
+                category {
+                    key.field = tx_headless_cookie_category
+                }
+                message = TEXT
+                message {
+                    stdWrap {
+                        if {
+                            isNull.field = tx_headless_cookie_category
+                            negate = 1
+                        }
+                    }
+                    field = tx_headless_cookie_message
+                    parseFunc =< lib.parseFunc_links
+                }
+            }
+        }
+    }
+}
