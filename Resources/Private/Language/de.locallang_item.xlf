@@ -10,10 +10,10 @@
                 <target>Flexform</target>
             </trans-unit>
             <trans-unit id="columns.flexform.warning.label">
-                <source>Warnung</source>
+                <target>Warnung</target>
             </trans-unit>
             <trans-unit id="columns.flexform.warning.default">
-                <source>Keine FlexForm für diesen Typ hinzugefügt</source>
+                <target>Keine FlexForm für diesen Typ hinzugefügt</target>
             </trans-unit>
             <trans-unit id="columns.header_layout.text">
                 <target>Text</target>

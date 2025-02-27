@@ -13,7 +13,7 @@
                 <target>Standard</target>
             </trans-unit>
             <trans-unit id="root">
-                <source>Root</source>
+                <target>Root</target>
             </trans-unit>
         </body>
     </file>
