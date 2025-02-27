@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use Remind\Headless\LinkHandler\CookiesLinkBuilder;
+use Remind\Headless\LinkHandler\CookiesLinkHandling;
+
 defined('TYPO3') or die;
 
 (function (): void {
@@ -18,4 +21,8 @@ defined('TYPO3') or die;
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['locallangXMLOverride']['de']['EXT:felogin/Resources/Private/Language/de.locallang.xlf'][] = 'EXT:rmnd_headless/Resources/Private/Language/Overrides/de.locallang_felogin.xlf';
 
     $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['default'] = 'EXT:rmnd_headless/Configuration/RTE/Default.yaml';
+
+    $GLOBALS['TYPO3_CONF_VARS']['FE']['typolinkBuilder']['cookies'] = CookiesLinkBuilder::class;
+
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['linkHandler']['cookies'] = CookiesLinkHandling::class;
 })();

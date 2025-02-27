@@ -1,0 +1,5 @@
+templates {
+    typo3/cms-backend {
+        1740657118 = remind/headless:Resources/Private
+    }
+}

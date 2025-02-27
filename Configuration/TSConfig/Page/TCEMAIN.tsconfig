@@ -1,0 +1,12 @@
+TCEMAIN.linkHandler {
+   cookies {
+      handler = Remind\Headless\LinkHandler\CookiesLinkHandler
+      label = LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_lh.xlf:cookies.title
+      displayAfter = url
+      scanBefore = url
+      configuration {
+          project = TYPO3-Documentation/TYPO3CMS-Reference-CoreApi
+          action = issues
+      }
+   }
+}
