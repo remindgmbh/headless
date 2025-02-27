@@ -7,6 +7,7 @@ namespace Remind\Headless\Service;
 use FriendsOfTYPO3\Headless\Utility\File\ProcessingConfiguration;
 use FriendsOfTYPO3\Headless\Utility\FileUtility;
 use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -39,10 +40,12 @@ class FilesService
      * @param mixed[] $configuration
      * @return mixed[]
      */
-    public function processImage(int $uid, array $configuration = []): array
+    public function processImage(int|FileInterface $image, array $configuration = []): array
     {
         $processingConfiguration = $this->getProcessingConfiguration($configuration);
-        $imageObj = $this->imageService->getImage(strval($uid), null, true);
+        $imageObj = $image instanceof FileInterface
+            ? $image
+            : $this->imageService->getImage(strval($image), null, true);
         return $this->fileUtility->process($imageObj, $processingConfiguration);
     }
 
