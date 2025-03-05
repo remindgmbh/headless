@@ -4,37 +4,31 @@ declare(strict_types=1);
 
 namespace Remind\Headless\Service;
 
-use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Pagination\PaginationInterface;
-use TYPO3\CMS\Extbase\Mvc\Web\RequestBuilder;
 use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 
 class JsonService
 {
-    public function __construct(
-        private readonly UriBuilder $uriBuilder,
-        RequestBuilder $requestBuilder,
-    ) {
-        $extbaseRequest = $requestBuilder->build($this->getRequest());
-        $this->uriBuilder->setRequest($extbaseRequest);
-    }
-
     /**
      * @return mixed[]
      */
-    public function serializePagination(PaginationInterface $pagination, string $queryParam, int $currentPage): array
-    {
+    public function serializePagination(
+        UriBuilder $uriBuilder,
+        PaginationInterface $pagination,
+        string $queryParam,
+        int $currentPage
+    ): array {
         $firstPageNumber = $pagination->getFirstPageNumber();
         $lastPageNumber = $pagination->getLastPageNumber();
         $previousPageNumber = $pagination->getPreviousPageNumber();
         $nextPageNumber = $pagination->getNextPageNumber();
 
-        $first = $this->uriBuilder
+        $first = $uriBuilder
             ->reset()
             ->setAddQueryString('untrusted')
             ->uriFor(null, [$queryParam => $firstPageNumber]);
 
-        $last = $this->uriBuilder
+        $last = $uriBuilder
             ->reset()
             ->setAddQueryString('untrusted')
             ->uriFor(null, [$queryParam => $lastPageNumber]);
@@ -43,7 +37,7 @@ class JsonService
             $previousPageNumber &&
             $previousPageNumber >= $firstPageNumber
         ) {
-            $prev = $this->uriBuilder
+            $prev = $uriBuilder
                 ->reset()
                 ->setAddQueryString('untrusted')
                 ->uriFor(null, [$queryParam => $previousPageNumber]);
@@ -53,7 +47,7 @@ class JsonService
             $nextPageNumber &&
             $nextPageNumber <= $lastPageNumber
         ) {
-            $next = $this->uriBuilder
+            $next = $uriBuilder
                 ->reset()
                 ->setAddQueryString('untrusted')
                 ->uriFor(null, [$queryParam => $nextPageNumber]);
@@ -62,7 +56,7 @@ class JsonService
         $pages = [];
 
         for ($page = $firstPageNumber; $page <= $lastPageNumber; $page++) {
-            $link = $this->uriBuilder
+            $link = $uriBuilder
                 ->reset()
                 ->setAddQueryString('untrusted')
                 ->uriFor(null, [$queryParam => $page]);
@@ -85,10 +79,5 @@ class JsonService
         ];
 
         return $result;
-    }
-
-    private function getRequest(): ServerRequestInterface
-    {
-        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

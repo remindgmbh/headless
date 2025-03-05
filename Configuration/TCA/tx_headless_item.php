@@ -17,19 +17,6 @@ return [
             'l10n_mode' => 'prefixLangTitle',
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.text',
         ],
-        'endtime' => [
-            'config' => [
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                ],
-                'type' => 'datetime',
-            ],
-            'exclude' => true,
-            'l10n_display' => 'defaultAsReadonly',
-            'l10n_mode' => 'exclude',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-        ],
         'flexform' => [
             'config' => [
                 'ds' => [
@@ -163,47 +150,12 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_position',
         ],
-        'hidden' => [
-            'config' => [
-                'default' => 0,
-                'type' => 'check',
-            ],
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-        ],
         'image' => [
             'config' => [
                 'allowed' => 'common-image-types',
                 'type' => 'file',
             ],
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.images',
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'default' => '',
-                'type' => 'passthrough',
-            ],
-        ],
-        'l10n_parent' => [
-            'config' => [
-                'default' => 0,
-                'foreign_table' => 'tx_headless_item',
-                'foreign_table_where' => 'AND tx_headless_item.uid=###REC_FIELD_l10n_parent### AND tx_headless_item.sys_language_uid IN (-1,0)',
-                'items' => [
-                    [
-                        'label' => '',
-                        'value' => 0,
-                    ],
-                ],
-                'renderType' => 'selectSingle',
-                'type' => 'select',
-            ],
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-        ],
-        'l10n_source' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
         ],
         'space_after_class' => [
             'config' => [
@@ -275,16 +227,6 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:space_before_class',
         ],
-        'starttime' => [
-            'config' => [
-                'default' => 0,
-                'type' => 'datetime',
-            ],
-            'exclude' => true,
-            'l10n_display' => 'defaultAsReadonly',
-            'l10n_mode' => 'exclude',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-        ],
         'subheader' => [
             'config' => [
                 'max' => 256,
@@ -293,13 +235,6 @@ return [
                 'type' => 'input',
             ],
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.subheader',
-        ],
-        'sys_language_uid' => [
-            'config' => [
-                'renderType' => 'selectSingle',
-                'type' => 'language',
-            ],
-            'label' => 'LLL:EXT:lang/Resources/Private/Language/locallang_general.xlf:LGL.language',
         ],
         'title' => [
             'config' => [

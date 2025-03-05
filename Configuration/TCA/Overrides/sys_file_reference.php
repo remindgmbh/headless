@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use TYPO3\CMS\Core\Resource\AbstractFile;
+use TYPO3\CMS\Core\Resource\FileType;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die;
@@ -19,7 +19,7 @@ ExtensionManagementUtility::addTCAcolumns('sys_file_reference', [
     ],
 ]);
 
-$GLOBALS['TCA']['sys_file_reference']['types'][AbstractFile::FILETYPE_IMAGE]['columnsOverrides']['tx_headless_lazy_loading']['config']['default'] = 1;
+$GLOBALS['TCA']['sys_file_reference']['types'][FileType::IMAGE->value]['columnsOverrides']['tx_headless_lazy_loading']['config']['default'] = 1;
 
 ExtensionManagementUtility::addFieldsToPalette(
     'sys_file_reference',

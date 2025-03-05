@@ -6,6 +6,7 @@ namespace Remind\Headless\Preview;
 
 use Doctrine\DBAL\ParameterType;
 use TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -53,8 +54,16 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
                 }
 
                 if ($rmndContentItem['image']) {
-                    $itemContent .= $this->getThumbCodeUnlinked($rmndContentItem, 'tx_headless_item', 'image');
-                    $itemContent .= '<br />';
+                    $fileReferences = BackendUtility::resolveFileReferences(
+                        'tx_headless_item',
+                        'image',
+                        $rmndContentItem
+                    );
+
+                    if (!empty($fileReferences)) {
+                        $itemContent .= $this->getThumbCodeUnlinked(current($fileReferences));
+                        $itemContent .= '<br />';
+                    }
                 }
 
                 if ($lastKey !== $key) {

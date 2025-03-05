@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Remind\Headless\Event\Listener;
 
-use PDO;
+use Doctrine\DBAL\ParameterType;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Configuration\Event\AfterFlexFormDataStructureIdentifierInitializedEvent;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -50,7 +50,7 @@ class AfterFlexFormDataStructureIdentifierInitializedEventListener
                         ->from($foreignTable)
                         ->where($queryBuilder->expr()->eq(
                             'uid',
-                            $queryBuilder->createNamedParameter($foreignUid, PDO::PARAM_INT)
+                            $queryBuilder->createNamedParameter($foreignUid, ParameterType::INTEGER)
                         ));
 
                     $type = $queryBuilder->executeQuery()->fetchOne();

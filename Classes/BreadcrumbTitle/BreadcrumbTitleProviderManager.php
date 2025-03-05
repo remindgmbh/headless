@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Remind\Headless\BreadcrumbTitle;
 
+use Psr\Container\ContainerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Core\Service\DependencyOrderingService;
@@ -21,39 +23,45 @@ class BreadcrumbTitleProviderManager implements SingletonInterface, LoggerAwareI
      */
     private array $breadcrumbTitleCache = [];
 
-    public function getTitle(): string
+    public function __construct(
+        private readonly ContainerInterface $container,
+        private readonly DependencyOrderingService $dependencyOrderingService,
+        private readonly TypoScriptService $typoScriptService,
+    ) {
+    }
+
+    public function getTitle(ServerRequestInterface $request): string
     {
         $breadcrumbTitle = '';
 
-        $titleProviders = $this->getBreadcrumbTitleProviderConfiguration();
+        $titleProviders = $this->getBreadcrumbTitleProviderConfiguration($request);
         $titleProviders = $this->setProviderOrder($titleProviders);
-
-        $orderedTitleProviders = GeneralUtility::makeInstance(DependencyOrderingService::class)
-            ->orderByDependencies($titleProviders);
+        $orderedTitleProviders = $this->dependencyOrderingService->orderByDependencies($titleProviders);
 
         $this->logger?->debug('Breadcrumb title providers ordered', [
             'orderedTitleProviders' => $orderedTitleProviders,
         ]);
 
-        foreach ($orderedTitleProviders as $provider => $configuration) {
+        foreach ($orderedTitleProviders as $configuration) {
             if (
                 class_exists($configuration['provider']) &&
                 is_subclass_of($configuration['provider'], BreadcrumbTitleProviderInterface::class)
             ) {
                 /** @var BreadcrumbTitleProviderInterface $titleProviderObject */
-                $titleProviderObject = GeneralUtility::makeInstance($configuration['provider']);
+                $titleProviderObject = $this->container->get($configuration['provider']);
+                $titleProviderObject->setRequest($request);
                 if (
                     ($breadcrumbTitle = $titleProviderObject->getTitle())
                     || ($breadcrumbTitle = $this->breadcrumbTitleCache[$configuration['provider']] ?? '') !== ''
                 ) {
-                    $this->logger?->debug('Breadcrumb title provider {provider} used on page {title}', [
+                    $this->logger?->debug('Breadcrumb title provider {provider} used on breacrumb {title}', [
                         'provider' => $configuration['provider'],
                         'title' => $breadcrumbTitle,
                     ]);
                     $this->breadcrumbTitleCache[$configuration['provider']] = $breadcrumbTitle;
                     break;
                 }
-                $this->logger?->debug('Breadcrumb title provider {provider} skipped on page {title}', [
+                $this->logger?->debug('Breadcrumb title provider {provider} skipped on breadcrumb {title}', [
                     'provider' => $configuration['provider'],
                     'providerUsed' => $configuration['provider'],
                     'title' => $breadcrumbTitle,
@@ -65,8 +73,24 @@ class BreadcrumbTitleProviderManager implements SingletonInterface, LoggerAwareI
     }
 
     /**
+     * @return string[]
+     */
+    public function getBreadcrumbTitleCache(): array
+    {
+        return $this->breadcrumbTitleCache;
+    }
+
+    /**
+     * @param string[] $breadcrumbTitleCache
+     */
+    public function setBreadcrumbTitleCache(array $breadcrumbTitleCache): void
+    {
+        $this->breadcrumbTitleCache = $breadcrumbTitleCache;
+    }
+
+    /**
      * @param mixed[] $orderInformation
-     * @return mixed[]
+     * @return string[]
      */
     protected function setProviderOrder(array $orderInformation): array
     {
@@ -98,13 +122,13 @@ class BreadcrumbTitleProviderManager implements SingletonInterface, LoggerAwareI
     /**
      * @return mixed[]
      */
-    private function getBreadcrumbTitleProviderConfiguration(): array
+    private function getBreadcrumbTitleProviderConfiguration(ServerRequestInterface $request): array
     {
-        $typoscriptService = GeneralUtility::makeInstance(TypoScriptService::class);
-        $config = $typoscriptService->convertTypoScriptArrayToPlainArray(
-            $GLOBALS['TSFE']->config['config'] ?? []
-        );
-
+        $tsArray = $request->getAttribute('frontend.typoscript')?->getConfigArray();
+        if (!$tsArray) {
+            return [];
+        }
+        $config = $this->typoScriptService->convertTypoScriptArrayToPlainArray($tsArray);
         return $config['breadcrumbTitleProviders'] ?? [];
     }
 }
