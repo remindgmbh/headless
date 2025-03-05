@@ -35,12 +35,12 @@
         }
     },
     "require": {
-        "php": "^8.2",
-        "typo3/cms-core": "^12.4",
-        "friendsoftypo3/headless": "^4.4"
+        "php": "^8",
+        "typo3/cms-core": "^13.4",
+        "friendsoftypo3/headless": "^4.6"
     },
     "require-dev": {
-        "apache-solr-for-typo3/solr": "^12.0",
+        "apache-solr-for-typo3/solr": "^13",
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^1.11",

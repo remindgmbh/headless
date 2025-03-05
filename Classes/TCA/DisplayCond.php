@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Remind\Headless\TCA;
 
-use PDO;
+use Doctrine\DBAL\ParameterType;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -23,7 +23,10 @@ class DisplayCond
             ->select('is_siteroot')
             ->from('pages')
             ->where(
-                $queryBuilder->expr()->eq('uid', $queryBuilder->createNamedParameter($record['pid'], PDO::PARAM_INT))
+                $queryBuilder->expr()->eq(
+                    'uid',
+                    $queryBuilder->createNamedParameter($record['pid'], ParameterType::INTEGER)
+                )
             )
             ->executeQuery();
 

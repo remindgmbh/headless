@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Remind\Headless\DataProcessing;
 
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
 use Remind\Headless\Service\FilesService;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Service\FlexFormService;
@@ -16,13 +18,6 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
 class FlexFormProcessor implements DataProcessorInterface
 {
-    protected ContentObjectRenderer $cObj;
-
-    /**
-     * @var mixed[]
-     */
-    protected array $processorConf;
-
     protected ?ContentDataProcessor $contentDataProcessor = null;
 
     public function __construct()
@@ -43,11 +38,7 @@ class FlexFormProcessor implements DataProcessorInterface
         array $processorConf,
         array $processedData
     ): array {
-        $this->cObj = $cObj;
-        $this->processorConf = $processorConf;
-
         $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
-        $flexFormTools->reNumberIndexesOfSectionData = true;
         $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
 
         $fieldName = (string) $cObj->stdWrapValue('fieldName', $processorConf);
@@ -63,79 +54,76 @@ class FlexFormProcessor implements DataProcessorInterface
 
         $table = $cObj->getCurrentTable();
 
-        $flexFormTools->cleanFlexFormXML($table, $fieldName, $processedData['data']);
+        $fieldTca = $GLOBALS['TCA'][$table]['columns'][$fieldName];
 
-        $flexFormTools->traverseFlexFormXMLData(
+        $dataStructureIdentifier = $flexFormTools->getDataStructureIdentifier(
+            $fieldTca,
             $table,
             $fieldName,
-            $processedData['data'],
-            $this,
-            'parseElement'
+            $processedData['data']
         );
 
-        $flexformData = $flexFormService->convertFlexFormContentToArray(
-            GeneralUtility::array2xml(
-                $flexFormTools->cleanFlexFormXML,
-                '',
-                0,
-                'T3FlexForms',
-                0,
-                [
-                    ...$flexFormTools->flexArray2Xml_options,
-                    'disableTypeAttrib' => 0,
-                ]
-            )
+        $dataStructure = $flexFormTools->parseDataStructureByIdentifier($dataStructureIdentifier);
+
+        $flexFormData = $flexFormService->convertFlexFormContentToArray($processedData['data'][$fieldName]);
+
+        $this->arrayWalkRecursiveWithKey(
+            $flexFormData,
+            function (&$value, $keys) use ($dataStructure, $cObj, $processorConf): void {
+                $key = implode('.', $keys);
+                $flexFormElement = $this->arraySearchByKeyRecursive($dataStructure, $key);
+                $value = $this->parseFlexFormValue($flexFormElement, $value, $cObj, $processorConf);
+            }
         );
 
         if (isset($processorConf['path'])) {
-            $flexformData = ArrayUtility::getValueByPath($flexformData, $processorConf['path'], '.');
+            $flexFormData = ArrayUtility::getValueByPath($flexFormData, $processorConf['path'], '.');
         }
 
         // section keys start at 1 instead of 0
-        $flexformData = $this->reNumberIndexes($flexformData);
+        $flexFormData = $this->reNumberIndexes($flexFormData);
 
         // ignore fields determined in typoscript configuration
         $ignoredFields = GeneralUtility::trimExplode(',', $processorConf['ignoreFields'] ?? '', true);
 
         foreach ($ignoredFields as $ignoredField) {
-            $flexformData = ArrayUtility::removeByPath($flexformData, $ignoredField, '.');
+            $flexFormData = ArrayUtility::removeByPath($flexFormData, $ignoredField, '.');
         }
 
         $overrideData = [];
         $overrideData = $this->contentDataProcessor?->process($cObj, $processorConf, $overrideData) ?? [];
         foreach ($overrideData as $key => &$value) {
-            $flexformData = empty($key) ? $value : ArrayUtility::setValueByPath($flexformData, $key, $value, '.');
+            $flexFormData = empty($key) ? $value : ArrayUtility::setValueByPath($flexFormData, $key, $value, '.');
         }
 
         // save result in "data" (default) or given variable name
         $targetVariableName = $cObj->stdWrapValue('as', $processorConf);
 
         if (!empty($targetVariableName)) {
-            $processedData[$targetVariableName] = $flexformData;
+            $processedData[$targetVariableName] = $flexFormData;
         } else {
-            $processedData['data'][$fieldName] = $flexformData;
+            $processedData['data'][$fieldName] = $flexFormData;
         }
 
         return $processedData;
     }
 
     /**
-     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter
      * @param mixed[] $element
+     * @param mixed[] $processorConf
      */
-    public function parseElement(
-        array $element,
+    private function parseFlexFormValue(
+        ?array $element,
         string $value,
-        mixed $additionalParameters,
-        string $path,
-        FlexFormTools $flexFormTools
-    ): void {
+        ContentObjectRenderer $cObj,
+        array $processorConf,
+    ): mixed {
         $newValue = $value;
 
         $type = $element['config']['type'] ?? null;
 
         if ($type === 'link') {
-            $newValue = $this->cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
+            $newValue = $cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
         }
 
         if ($type === 'check') {
@@ -147,40 +135,73 @@ class FlexFormProcessor implements DataProcessorInterface
         }
 
         if ($type === 'text') {
-            $newValue = $this->cObj->parseFunc($value, null, '< lib.parseFunc_links');
+            $newValue = $cObj->parseFunc($value, null, '< lib.parseFunc_links');
         }
 
         if ($type === 'file') {
-            $fieldName = $element['config']['foreign_match_fields']['fieldname'];
+            $fieldName = $element['config']['foreign_match_fields']['fieldname'] ?? null;
 
-            $overrule = [];
+            if ($fieldName) {
+                $overrule = [];
 
-            try {
-                $overrule = ArrayUtility::getValueByPath(
-                    $this->processorConf,
-                    ['filesConfiguration.', ...array_map(function ($value) {
-                        return $value . '.';
-                    },
-                    explode('.', $fieldName))]
+                try {
+                    $overrule = ArrayUtility::getValueByPath(
+                        $processorConf,
+                        ['filesConfiguration.', ...array_map(function ($value) {
+                            return $value . '.';
+                        },
+                        explode('.', $fieldName))]
+                    );
+                } catch (MissingArrayPathException $e) {
+                }
+
+                $filesService = GeneralUtility::makeInstance(FilesService::class);
+
+                $newValue = $filesService->processImages(
+                    $cObj->getCurrentTable(),
+                    $fieldName,
+                    $cObj->data['uid'],
+                    $overrule
                 );
-            } catch (MissingArrayPathException $e) {
             }
-
-            $filesService = GeneralUtility::makeInstance(FilesService::class);
-
-            $newValue = $filesService->processImages(
-                $this->cObj->getCurrentTable(),
-                $fieldName,
-                $this->cObj->data['uid'],
-                $overrule
-            );
         }
 
-        $flexFormTools->cleanFlexFormXML = ArrayUtility::setValueByPath(
-            $flexFormTools->cleanFlexFormXML,
-            $path,
-            $newValue,
-        );
+        return $newValue;
+    }
+
+    /**
+     * @param mixed[] $array
+     * @param string[] $keys
+     */
+    private function arrayWalkRecursiveWithKey(array &$array, callable $callback, array $keys = []): void
+    {
+        foreach ($array as $key => &$value) {
+            $keys[] = $key;
+            if (is_array($value)) {
+                $this->arrayWalkRecursiveWithKey($value, $callback, $keys);
+            } else {
+                call_user_func_array($callback, [&$value, $keys]);
+            }
+            array_pop($keys);
+        }
+    }
+
+    /**
+     * see: https://stackoverflow.com/a/3975706
+     *
+     * @param mixed[] $haystack
+     */
+    private function arraySearchByKeyRecursive(array $haystack, string $needle): mixed
+    {
+        $iterator = new RecursiveArrayIterator($haystack);
+        $recursive = new RecursiveIteratorIterator($iterator, RecursiveIteratorIterator::SELF_FIRST);
+
+        foreach ($recursive as $key => $value) {
+            if ($key === $needle) {
+                return $value;
+            }
+        }
+        return null;
     }
 
     private function reNumberIndexes(mixed $value): mixed

@@ -22,7 +22,7 @@ class AfterCacheableContentIsGeneratedEventListener
         try {
             $content = json_decode($event->getController()->content, true, 512, JSON_THROW_ON_ERROR);
 
-            $breadcrumbTitle = $this->breadcrumbTitleProviderManager->getTitle();
+            $breadcrumbTitle = $this->breadcrumbTitleProviderManager->getTitle($event->getRequest());
 
             if ($breadcrumbTitle) {
                 $content['breadcrumbs'][array_key_last($content['breadcrumbs'])]['title'] = $breadcrumbTitle;

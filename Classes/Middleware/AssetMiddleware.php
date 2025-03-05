@@ -11,7 +11,7 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\Area;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
-use TYPO3\CMS\Core\Resource\AbstractFile;
+use TYPO3\CMS\Core\Resource\FileType;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Extbase\Service\ImageService;
 
@@ -44,8 +44,8 @@ class AssetMiddleware implements MiddlewareInterface
         $routing = $request->getAttribute('routing');
         $path = $routing->getUri()->getPath();
         $queryParams = $request->getQueryParams();
-        $uid = $queryParams['uid'] ?? null;
-        $uidLocal = $queryParams['uidLocal'] ?? null;
+        $uid = (int) ($queryParams['uid'] ?? null);
+        $uidLocal = (int) ($queryParams['uidLocal'] ?? null);
         if (
             $path === '/asset' &&
             (
@@ -69,7 +69,7 @@ class AssetMiddleware implements MiddlewareInterface
 
             $processedResource = $resource;
 
-            if ($type === AbstractFile::FILETYPE_IMAGE) {
+            if ($type === FileType::IMAGE->value) {
                 $targetFileExtension = $queryParams['fileExtension'] ?? null;
 
                 $cropName = $queryParams['crop'] ?? null;
