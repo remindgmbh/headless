@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Remind\Headless\Preview;
 
+use Doctrine\DBAL\ParameterType;
 use TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -24,7 +25,16 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
             $queryBuilder
                 ->select('*')
                 ->from('tx_headless_item')
-                ->where($queryBuilder->expr()->eq('foreign_uid', $record['uid']));
+                ->where($queryBuilder->expr()->and(
+                    $queryBuilder->expr()->eq(
+                        'foreign_uid',
+                        $queryBuilder->createNamedParameter($record['uid'], ParameterType::INTEGER)
+                    ),
+                    $queryBuilder->expr()->eq(
+                        'foreign_table',
+                        $queryBuilder->createNamedParameter('tt_content', ParameterType::STRING)
+                    )
+                ));
 
             $result = $queryBuilder->executeQuery();
             $rmndContentItems = $result->fetchAllAssociative();
