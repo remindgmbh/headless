@@ -1,0 +1,6 @@
+page.10.fields.seo.fields {
+    schemaOrgData = TEXT
+    schemaOrgData {
+        field = schema_org_data
+    }
+}

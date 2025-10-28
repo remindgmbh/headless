@@ -12,11 +12,14 @@
             <trans-unit id="footer">
                 <source>Footer</source>
             </trans-unit>
+            <trans-unit id="overview_label">
+                <source>Overview Label</source>
+            </trans-unit>
             <trans-unit id="page_config">
                 <source>Page Config</source>
             </trans-unit>
-            <trans-unit id="overview_label">
-                <source>Overview Label</source>
+            <trans-unit id="schema_org_data">
+                <source>Schema.org Data (JSON)</source>
             </trans-unit>
         </body>
     </file>

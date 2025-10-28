@@ -9,6 +9,16 @@ defined('TYPO3') || die;
 ExtensionManagementUtility::addTCAcolumns(
     'pages',
     [
+        'schema_org_data' => [
+            'config' => [
+                'enableRichtext' => false,
+                'format' => 'json',
+                'renderType' => 't3editor',
+                'type' => 'text',
+                'wrap' => 'off',
+            ],
+            'label' => 'LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_pages.xlf:schema_org_data',
+        ],
         'tx_headless_breadcrumbs_background_color' => [
             'config' => [
                 'default' => null,
@@ -70,6 +80,12 @@ ExtensionManagementUtility::addFieldsToPalette(
     'pages',
     'title',
     '--linebreak--,tx_headless_overview_label',
+);
+
+ExtensionManagementUtility::addFieldsToPalette(
+    'pages',
+    'seo',
+    '--linebreak--,schema_org_data',
 );
 
 ExtensionManagementUtility::addToAllTCAtypes(
