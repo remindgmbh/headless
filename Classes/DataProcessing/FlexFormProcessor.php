@@ -147,10 +147,15 @@ class FlexFormProcessor implements DataProcessorInterface
                 try {
                     $overrule = ArrayUtility::getValueByPath(
                         $processorConf,
-                        ['filesConfiguration.', ...array_map(function ($value) {
-                            return $value . '.';
-                        },
-                        explode('.', $fieldName))]
+                        [
+                            'filesConfiguration.',
+                            ...array_map(
+                                function ($value) {
+                                    return $value . '.';
+                                },
+                                explode('.', $fieldName)
+                            ),
+                        ]
                     );
                 } catch (MissingArrayPathException $e) {
                 }
@@ -164,6 +169,14 @@ class FlexFormProcessor implements DataProcessorInterface
                     $overrule
                 );
             }
+        }
+
+        // Fallback for Links in case a type could not be determined
+        if (
+            is_string($newValue) &&
+            str_starts_with($newValue, 't3://')
+        ) {
+            $newValue = $cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
         }
 
         return $newValue;
