@@ -174,7 +174,10 @@ class FlexFormProcessor implements DataProcessorInterface
         // Fallback for Links in case a type could not be determined
         if (
             is_string($newValue) &&
-            str_starts_with($newValue, 't3://')
+            (
+                str_starts_with($newValue, 't3://') ||
+                str_starts_with($newValue, 'https://')
+            )
         ) {
             $newValue = $cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
         }
