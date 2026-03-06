@@ -176,7 +176,8 @@ class FlexFormProcessor implements DataProcessorInterface
             is_string($newValue) &&
             (
                 str_starts_with($newValue, 't3://') ||
-                str_starts_with($newValue, 'https://')
+                str_starts_with($newValue, 'https://') ||
+                str_starts_with($newValue, 'mailto:')
             )
         ) {
             $newValue = $cObj->typoLink('', ['parameter' => $value, 'returnLast' => 'result']);
