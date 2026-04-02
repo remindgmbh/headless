@@ -43,9 +43,9 @@ class EnrichFileDataEventListener
          * Crop Variants with non-empty crop areas of SVG Images are converted to SVG
          * so these images have to be treated different than pure SVGs in frontend
          */
-
         if ($originalFile->getExtension() === 'svg') {
-            $crop = $originalFile->getProperty('crop');
+            $crop = $originalFile->getProperty('crop') ?? '';
+
             $cropVariantCollection = CropVariantCollection::create($crop);
             $cropVariants = empty($crop) ? [] : array_keys(json_decode($crop, true));
             foreach ($cropVariants as $cropVariant) {
