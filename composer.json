@@ -44,10 +44,12 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^1.11",
+        "phpunit/phpunit": "^11.5",
         "remind/coding-standard": "^1.0",
         "saschaegerer/phpstan-typo3": "^1.10",
         "slevomat/coding-standard": "^8.14",
-        "squizlabs/php_codesniffer": "^3.7"
+        "squizlabs/php_codesniffer": "^3.7",
+        "typo3/testing-framework": "^9.5"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -60,6 +62,7 @@
         "phpcs": "@php ./vendor/bin/phpcs --standard=phpcs.xml --extensions=php --report=full -n .",
         "phpcbf": "@php ./vendor/bin/phpcbf --standard=phpcs.xml --extensions=php .",
         "phpstan": "@php ./vendor/bin/phpstan analyse -c phpstan.neon",
+        "phpunit": "@php ./vendor/bin/phpunit --testdox",
         "static-analysis": [
             "@composer phpcs",
             "@composer phpstan"
