@@ -20,7 +20,7 @@ class AfterCacheableContentIsGeneratedEventListener
     public function __invoke(AfterCacheableContentIsGeneratedEvent $event): void
     {
         try {
-            $content = json_decode($event->getController()->content, true, 512, JSON_THROW_ON_ERROR);
+            $content = json_decode($event->getContent(), true, 512, JSON_THROW_ON_ERROR);
 
             $breadcrumbTitle = $this->breadcrumbTitleProviderManager->getTitle($event->getRequest());
 
@@ -28,7 +28,7 @@ class AfterCacheableContentIsGeneratedEventListener
                 $content['breadcrumbs'][array_key_last($content['breadcrumbs'])]['title'] = $breadcrumbTitle;
             }
 
-            $event->getController()->content = $this->encoder->encode($content);
+            $event->setContent($this->encoder->encode($content));
         } catch (Throwable) {
             return;
         }

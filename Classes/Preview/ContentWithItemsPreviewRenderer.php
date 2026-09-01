@@ -19,7 +19,7 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
 
         $record = $item->getRecord();
 
-        if ($record['tx_headless_item']) {
+        if ($record->getRecordType() == 'tx_headless_item') {
             $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
                 ->getConnectionForTable('tx_headless_item')
                 ->createQueryBuilder();
@@ -29,7 +29,7 @@ class ContentWithItemsPreviewRenderer extends StandardContentPreviewRenderer
                 ->where($queryBuilder->expr()->and(
                     $queryBuilder->expr()->eq(
                         'foreign_uid',
-                        $queryBuilder->createNamedParameter($record['uid'], ParameterType::INTEGER)
+                        $queryBuilder->createNamedParameter($record->getUid(), ParameterType::INTEGER)
                     ),
                     $queryBuilder->expr()->eq(
                         'foreign_table',

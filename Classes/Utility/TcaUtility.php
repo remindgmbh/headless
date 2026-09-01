@@ -77,7 +77,7 @@ class TcaUtility
     {
         $newFlexFormArray = self::getFlexFormArray($dataStructure);
         $currentFlexFormArray = self::getFlexFormArray(
-            $GLOBALS['TCA']['pages']['columns']['tx_headless_config']['config']['ds']['default']
+            $GLOBALS['TCA']['pages']['columns']['tx_headless_config']['config']['ds']
         );
 
         if (($currentFlexFormArray['ROOT']['el'] ?? null) === '') {
@@ -88,7 +88,7 @@ class TcaUtility
         $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
         $newFlexFormString = $flexFormTools->flexArray2Xml($currentFlexFormArray);
 
-        $GLOBALS['TCA']['pages']['columns']['tx_headless_config']['config']['ds']['default'] = $newFlexFormString;
+        $GLOBALS['TCA']['pages']['columns']['tx_headless_config']['config']['ds'] = $newFlexFormString;
     }
 
     /**
@@ -100,7 +100,7 @@ class TcaUtility
         $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
         $newFlexFormString = $flexFormTools->flexArray2Xml($newFlexFormArray);
 
-        $GLOBALS['TCA']['pages']['columns'][$field]['config']['ds']['default'] = $newFlexFormString;
+        $GLOBALS['TCA']['pages']['columns'][$field]['config']['ds'] = $newFlexFormString;
     }
 
     /**

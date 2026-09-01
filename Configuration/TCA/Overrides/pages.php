@@ -13,7 +13,7 @@ ExtensionManagementUtility::addTCAcolumns(
             'config' => [
                 'enableRichtext' => false,
                 'format' => 'json',
-                'renderType' => 't3editor',
+                'renderType' => 'codeEditor',
                 'type' => 'text',
                 'wrap' => 'off',
             ],
@@ -39,9 +39,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-                'ds' => [
-                    'default' => 'FILE:EXT:rmnd_headless/Configuration/FlexForms/Empty.xml',
-                ],
+                'ds' =>  'FILE:EXT:rmnd_headless/Configuration/FlexForms/Empty.xml',
                 'type' => 'flex',
             ],
             'displayCond' => 'FIELD:is_siteroot:REQ:true',
@@ -52,9 +50,7 @@ ExtensionManagementUtility::addTCAcolumns(
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,
                 ],
-                'ds' => [
-                    'default' => 'FILE:EXT:rmnd_headless/Configuration/FlexForms/Empty.xml',
-                ],
+                'ds' => 'FILE:EXT:rmnd_headless/Configuration/FlexForms/Empty.xml',
                 'type' => 'flex',
             ],
             'displayCond' => 'FIELD:is_siteroot:REQ:true',

@@ -8,6 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Service\FlexFormService;
+use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ConfigUtility
@@ -52,8 +53,8 @@ class ConfigUtility
             ->executeQuery()
             ->fetchOne();
 
-        $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
-        return $flexFormService->convertFlexFormContentToArray($flexFormStr);
+        $flexFormTools = GeneralUtility::makeInstance(FlexFormTools::class);
+        return $flexFormTools->convertFlexFormContentToArray($flexFormStr);
     }
 
     private static function getRequest(): ServerRequestInterface

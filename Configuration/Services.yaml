@@ -7,6 +7,8 @@ services:
     resource: '../Classes/*'
   Remind\Headless\Service\JsonService:
     shared: false
+  Remind\Headless\DataProcessing\FlexFormProcessor:
+    public: true
   Remind\Headless\Event\Listener\EnrichFileDataEventListener:
     tags:
       -

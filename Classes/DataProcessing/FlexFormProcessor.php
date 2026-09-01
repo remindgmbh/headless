@@ -8,6 +8,7 @@ use RecursiveArrayIterator;
 use RecursiveIteratorIterator;
 use Remind\Headless\Service\FilesService;
 use TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools;
+use TYPO3\CMS\Core\Schema\TcaSchemaFactory;
 use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\Exception\MissingArrayPathException;
@@ -20,8 +21,9 @@ class FlexFormProcessor implements DataProcessorInterface
 {
     protected ?ContentDataProcessor $contentDataProcessor = null;
 
-    public function __construct()
-    {
+    public function __construct(
+        private readonly TcaSchemaFactory $tcaSchemaFactory,
+    ) {
         $this->contentDataProcessor = GeneralUtility::makeInstance(ContentDataProcessor::class);
     }
 
@@ -56,14 +58,17 @@ class FlexFormProcessor implements DataProcessorInterface
 
         $fieldTca = $GLOBALS['TCA'][$table]['columns'][$fieldName];
 
+        $schema = $this->tcaSchemaFactory->get($table);
+
         $dataStructureIdentifier = $flexFormTools->getDataStructureIdentifier(
             $fieldTca,
             $table,
             $fieldName,
-            $processedData['data']
+            $processedData['data'],
+            $schema,
         );
 
-        $dataStructure = $flexFormTools->parseDataStructureByIdentifier($dataStructureIdentifier);
+        $dataStructure = $flexFormTools->parseDataStructureByIdentifier($dataStructureIdentifier, $schema);
 
         $flexFormData = $flexFormService->convertFlexFormContentToArray($processedData['data'][$fieldName]);
 

@@ -19,25 +19,24 @@ return [
         ],
         'flexform' => [
             'config' => [
-                'ds' => [
-                    'default' => '
-                        <T3DataStructure>
-                            <ROOT>
-                                <type>array</type>
-                                <el>
-                                    <warning>
-                                        <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.label</label>
-                                        <description>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.default</description>
-                                        <config>
-                                            <type>none</type>
-                                            <size>0</size>
-                                        </config>
-                                    </warning>
-                                </el>
-                            </ROOT>
-                        </T3DataStructure>
-                    ',
-                ],
+                'ds' => '
+                    <T3DataStructure>
+                        <ROOT>
+                            <type>array</type>
+                            <el>
+                                <warning>
+                                    <label>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.label</label>
+                                    <description>LLL:EXT:rmnd_headless/Resources/Private/Language/locallang_item.xlf:columns.flexform.warning.default</description>
+                                    <config>
+                                        <type>none</type>
+                                        <size>0</size>
+                                    </config>
+                                </warning>
+                            </el>
+                        </ROOT>
+                    </T3DataStructure>
+                ',
+
                 // FlexForm according to tt_content:CType is selected in Remind\Headless\Event\Listener\AfterFlexFormDataStructureIdentifierInitializedEventListener
                 'type' => 'flex',
             ],
@@ -268,7 +267,6 @@ return [
         'label' => 'header',
         'label_alt' => 'subheader,bodytext',
         'languageField' => 'sys_language_uid',
-        'searchFields' => 'header,subheader,bodytext',
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],

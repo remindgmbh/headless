@@ -4,13 +4,11 @@ initialData {
             navigation {
                 dataProcessing {
                     10 {
-                        overwriteMenuLevelConfig {
-                            stdWrap.cObject {
-                                100 = TEXT
-                                100 {
-                                    field = tx_headless_overview_label
-                                    wrap = ,"overviewLabel":"|"
-                                }
+                        dataProcessing {
+                            100 = Remind\Headless\DataProcessing\FieldAliasProcessor
+                            100 {
+                                field = tx_headless_overview_label
+                                as = overviewLabel
                             }
                         }
                     }
